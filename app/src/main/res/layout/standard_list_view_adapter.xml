@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.parse.ParseImageView
+        android:id="@+id/imageViewStandardListViewAdapter"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/imageViewStandardListViewAdapter"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center_vertical"
+        android:background="@color/black_alpha"
+        android:weightSum="1" >
+
+        <TextView
+            android:layout_width="wrap_content"
+        	android:layout_height="match_parent"
+            android:id="@+id/textViewStandardListViewAdapterName"
+            android:text="Lädt Namen..."
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:layout_weight="0.8" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.2" >
+
+            <TextView
+                android:id="@+id/textViewStandardListViewAdapterDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="- km" />
+
+            <TextView
+                android:id="@+id/textViewStandardListViewAdapterOpening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_red"
+                android:text="Öffnet um: - Uhr" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

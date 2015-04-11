@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/darkBackground"
+    tools:context="de.nightcoin.ActivitySettings">
+
+
+    <TextView
+        android:id="@+id/textViewSettingsErrorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textColor="@color/white"
+        android:text="Nutzername oder Passwort falsch."
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/textFieldSettingsUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Nutzername"
+        android:textColor="@color/white"
+        android:inputType="textPersonName"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textViewSettingsErrorMessage"
+        android:ems="12" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Passwort"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:ems="12"
+        android:id="@+id/textFieldSettingsPassword"
+        android:layout_below="@+id/textFieldSettingsUsername" />
+
+    <Button
+        android:id="@+id/buttonSettingsLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/textFieldSettingsPassword"
+        android:layout_alignLeft="@id/textFieldSettingsPassword"
+        android:layout_alignRight="@id/textFieldSettingsPassword"
+        android:layout_alignStart="@id/textFieldSettingsPassword"
+        android:layout_alignEnd="@id/textFieldSettingsPassword"
+        android:gravity="center"
+        android:text="Einloggen"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSettingsLogin"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textColor="@color/primary_material_light"
+        android:text="Dieser Bereich ist nur für Inhaber einer Location zum Ändern von Daten oder um Statistiken einzusehen. Wenn Sie an Nightcoin teilnehmen möchten, kontaktieren Sie uns unter info@nightcoin.de"/>
+
+</RelativeLayout>

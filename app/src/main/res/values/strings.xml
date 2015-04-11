@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nightcoin - die Nacht in deiner Hand</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_activity_standard_list">ActivityStandardList</string>
+    <string name="title_activity_activity_standard_item_view">ActivityStandardItemView</string>
+    <string name="title_activity_activity_weekplan">ActivityWeekplan</string>
+    <string name="title_activity_activity_event_item_view">ActivityEventItemView</string>
+    <string name="title_activity_activity_coin_view">activity_coin_view</string>
+    <string name="title_activity_activity_settings">ActivitySettings</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_activity_user">ActivityUser</string>
+    <string name="title_activity_activity_coin_item_view">ActivityCoinItemView</string>
+
+</resources>

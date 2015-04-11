@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/paul/android-sdks/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-8709719abe883654fa18a0406c4eefd6131d24a9.jar" />
+    </item>
+    <item
+        jar="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/classes-107022f3e947f8bd773381d34c002e6f56c9e071.jar" />
+    </item>
+    <item
+        jar="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-5cf6ba22066df3477e4c4894f977d077d3cd6fab.jar" />
+    </item>
+    <item
+        jar="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/libs/Parse-1.8.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c2cb0bfe37cbefd855b6faa3c9a5be833aba7300">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/Parse-1.8.2-b066e2be2516c664f62e05e1841ebbaaa1f9ac10.jar" />
+    </item>
+    <item
+        jar="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/libs/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-ac6003766e7c369c9b9f67de16eace0d2c98bbcb.jar" />
+    </item>
+    <item
+        jar="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/libs/ParseCrashReporting-1.8.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ccf9e90414e7bb2cf09f4d7c77c42f70c690e118">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/ParseCrashReporting-1.8.2-10b143a595d914a24973842f3986c74de8058f6a.jar" />
+    </item>
+    <item
+        jar="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/libs/bolts-android-1.1.4-javadoc.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f5dd6492c539679411fa30818320b737c410158f">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-javadoc-b9618a7eb21343a0f27d67fe3f0ad0bf5890b3ba.jar" />
+    </item>
+    <item
+        jar="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/paul/Documents/Projekte/Nightcoin/Nightcoin AndroidStudio/Nightcoin-master1/app/build/intermediates/pre-dexed/debug/classes-fd3eb5da07a3ef6159ad470da743d92662f7924a.jar" />
+    </item>
+
+</items>
