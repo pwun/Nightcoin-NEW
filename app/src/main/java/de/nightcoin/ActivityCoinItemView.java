@@ -1,9 +1,9 @@
 package de.nightcoin;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseImageView;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -37,6 +35,8 @@ public class ActivityCoinItemView extends ActionBarActivity {
     TextView timer;
     Button button;
 
+
+    // GitHub Test
 
 
     @Override
