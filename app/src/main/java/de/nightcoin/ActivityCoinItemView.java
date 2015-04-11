@@ -36,7 +36,7 @@ public class ActivityCoinItemView extends ActionBarActivity {
     Button button;
 
 
-    // GitHub Test
+    // GitHub Test von Paul
 
 
     @Override
