@@ -5,30 +5,31 @@
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:paddingBottom="10dp"
-    android:background="@color/black_alpha" >
+    android:background="@color/darkBackground" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
         <ImageView
             android:id="@+id/imageViewCoinListAdapterImage"
-            android:layout_height="100dp"
-            android:src="@drawable/logo"
-            android:layout_width="100dp"
-            android:layout_weight="0.2"/>
+            android:layout_height="60dp"
+            android:src="@drawable/black_coin"
+            android:layout_width="60dp"
+            android:layout_weight="0.15"
+            android:layout_gravity="center_vertical"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:layout_marginTop="7dp"
             android:layout_weight="0.79"
             android:orientation="vertical" >
 
@@ -57,8 +58,8 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="10dp"
+            android:layout_height="25dp"
             android:src="@drawable/white_arrow"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="3dp"

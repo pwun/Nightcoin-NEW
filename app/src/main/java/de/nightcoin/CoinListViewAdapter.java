@@ -72,7 +72,7 @@ public class CoinListViewAdapter extends BaseAdapter{
 		holder.location.setText(list.get(position).getLocation());
 		holder.date.setText(list.get(position).getDate());
         holder.amount.setText("noch " + list.get(position).getAmount().toString() + " Stück verfügbar");
-		holder.image.setImageResource(R.drawable.logo);
+		holder.image.setImageResource(R.drawable.black_coin);
 		
 		convertView.setOnClickListener(new OnClickListener() {
 
