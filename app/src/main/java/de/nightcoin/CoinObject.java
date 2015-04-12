@@ -9,13 +9,22 @@ public class CoinObject {
 	private String location;
 	private String date;
     private String id;
+    private Integer amount;
 	
 	public CoinObject(){}
+
+    public void setAmount(Integer amount){
+        this.amount = amount;
+    }
+
+    public Integer getAmount(){
+        return this.amount;
+    }
 	
 	public void setValue(String newValue){
 		this.value = newValue;
 	}
-	
+
 	public String getValue(){
 		return this.value;
 	}

@@ -1,17 +1,16 @@
 package de.nightcoin;
 
-import java.util.ArrayList;
-
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.content.Intent;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class CoinListViewAdapter extends BaseAdapter{
 
@@ -49,6 +48,7 @@ public class CoinListViewAdapter extends BaseAdapter{
 		TextView value;
 		TextView location;
 		TextView date;
+        TextView amount;
 		ImageView image;
 	}
 
@@ -63,6 +63,7 @@ public class CoinListViewAdapter extends BaseAdapter{
 			holder.value = (TextView) convertView.findViewById(R.id.textViewCoinListViewAdapterValue);
 			holder.location = (TextView) convertView.findViewById(R.id.textViewCoinListViewAdapterLocation);
 			holder.date = (TextView) convertView.findViewById(R.id.textViewCoinListViewAdapterDate);
+            holder.amount = (TextView) convertView.findViewById(R.id.textViewCoinListViewAdapterAmount);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -70,6 +71,7 @@ public class CoinListViewAdapter extends BaseAdapter{
 		holder.value.setText(list.get(position).getValue());
 		holder.location.setText(list.get(position).getLocation());
 		holder.date.setText(list.get(position).getDate());
+        holder.amount.setText("noch " + list.get(position).getAmount().toString() + " Stück verfügbar");
 		holder.image.setImageResource(R.drawable.logo);
 		
 		convertView.setOnClickListener(new OnClickListener() {

@@ -100,14 +100,17 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setLocation((String) data.get("location"));
 						obj.setDate((Date) data.get("date"));
                         obj.setId((String) data.getObjectId());
+                        obj.setAmount((Integer) data.get("amount"));
+                        /*obj.setLimited((Boolean) data.get("limited"));
+                        obj.setCashedInAmount((Integer) data.get("cashedInAmount"));*/
 						//set every needed value here
 						
 						coinlist.add(obj);
-						System.out.println("Location fetched: "+ obj.getValue());	
+						System.out.println("Coin fetched: "+ obj.getValue());
 					}
 				}
 				catch(Exception e){
-					System.out.println("ERROR, CANT FETCH CLUBS");
+					System.out.println("ERROR, CANT FETCH COINS");
 				}
 			}
 			

@@ -16,6 +16,7 @@ public class ActivityMain extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initButtons();
+        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Roboto-Light.ttf"); // font from assets: "assets/fonts/Roboto-Regular.tt
 	}
 
 	private void initButtons() {

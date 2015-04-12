@@ -2,21 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingBottom="10dp"
     android:background="@color/black_alpha" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/imageViewCoinListAdapterImage"
-            android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            android:layout_width="100dp"
+            android:layout_weight="0.2"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="0.79"
             android:orientation="vertical" >
 
             <TextView
@@ -24,24 +37,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lädt Location.."
-                android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textColor="@color/nightcointint"
+                android:textSize="18dp"
+                android:layout_marginBottom="10dp"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
 
             <TextView
                 android:id="@+id/textViewCoinListViewAdapterValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lädt coin.."
+                android:layout_marginTop="10dp"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/textViewCoinListViewAdapterDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lädt Datum..."
-                android:textColor="@color/white" />
+                android:textSize="18dp" />
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/white_arrow"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="0.01"/>
+
+    </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textViewCoinListViewAdapterDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lädt Datum..."
+                    android:textColor="@color/white"
+                    android:layout_weight="0.5"/>
+
+                <TextView
+                    android:id="@+id/textViewCoinListViewAdapterAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="noch  Stück verfügbar"
+                    android:gravity="right"
+                    android:textColor="@color/white"
+                    android:layout_weight="0.5" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
