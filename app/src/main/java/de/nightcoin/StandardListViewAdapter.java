@@ -41,6 +41,8 @@ public class StandardListViewAdapter extends BaseAdapter {
 
 	public class ViewHolder {
 		TextView name;
+        TextView topDetail;
+        TextView bottomDetail;
 		ImageView image;
 	}
 
@@ -70,6 +72,10 @@ public class StandardListViewAdapter extends BaseAdapter {
 					.findViewById(R.id.textViewStandardListViewAdapterName);
 			holder.image = (ImageView) convertView
 					.findViewById(R.id.imageViewStandardListViewAdapter);
+            holder.topDetail = (TextView) convertView
+                    .findViewById(R.id.textViewStandardListViewAdapterDistance);
+            holder.bottomDetail = (TextView) convertView
+                    .findViewById(R.id.textViewStandardListViewAdapterOpening);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -79,7 +85,9 @@ public class StandardListViewAdapter extends BaseAdapter {
 		//holder.image.loadInBackground();
 
 		if (mode.equals("event")) {
-			convertView.setOnClickListener(new OnClickListener() {
+            holder.topDetail.setText(list.get(position).getDate());
+            holder.bottomDetail.setText(list.get(position).getLocation());
+            convertView.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {

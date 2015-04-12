@@ -208,7 +208,9 @@ public class ActivityStandardList extends ActionBarActivity {
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("title"));
-						obj.setImage((ParseFile) data.getParseFile("image"));
+						obj.setImage(data.getParseFile("image"));
+                        obj.setDate((Date)data.get("date"));
+                        obj.setLocation((String) data.get("location"));
 						//set every needed value here
 						
 						list.add(obj);
@@ -290,7 +292,9 @@ public class ActivityStandardList extends ActionBarActivity {
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("title"));
-						obj.setImage((ParseFile) data.getParseFile("image"));
+						obj.setImage(data.getParseFile("image"));
+                        obj.setDate((Date)data.get("date"));
+                        obj.setLocation((String) data.get("location"));
 						//set every needed value here
 						
 						list.add(obj);
@@ -310,7 +314,7 @@ public class ActivityStandardList extends ActionBarActivity {
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
-						obj.setImage((ParseFile) data.getParseFile("image"));
+						obj.setImage(data.getParseFile("image"));
 						//set every needed value here
 
 						list.add(obj);

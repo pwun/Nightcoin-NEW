@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class StandardObject{
 
@@ -16,8 +18,18 @@ public class StandardObject{
 	private String[] opening = new String[7];
 	private String[] closing = new String[7];
     private String location;
+    private String date;
 	
 	public StandardObject(){}
+
+    public void setDate(Date date){
+        String dateString = new SimpleDateFormat("dd. MMMM").format(date);
+        this.date = dateString;
+    }
+
+    public String getDate(){
+        return this.date;
+    }
 	
 	public void setImage(ParseFile parseFile){
         if(parseFile != null){
@@ -79,7 +91,7 @@ public class StandardObject{
 
 
     public void setLocation(String newLocation){
-        this.location = location;
+        this.location = newLocation;
     }
 
     public String getLocation(){
