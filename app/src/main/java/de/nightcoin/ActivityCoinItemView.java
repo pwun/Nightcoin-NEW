@@ -67,6 +67,7 @@ public class ActivityCoinItemView extends ActionBarActivity {
                 coin.setValue((String) object.get("value"));
                 coin.setDate((Date) object.get("date"));
                 coin.setLocation((String) object.get("location"));
+                coin.setLimited((Boolean) object.get("limited"));
 
                 location.setText(coin.getLocation());
                 value.setText(coin.getValue());
@@ -84,7 +85,13 @@ public class ActivityCoinItemView extends ActionBarActivity {
                         .get(Calendar.YEAR)
                         && cal1.get(Calendar.DAY_OF_YEAR) == cal2
                         .get(Calendar.DAY_OF_YEAR)+1 && cal2.get(Calendar.HOUR_OF_DAY)>cal1.get(Calendar.HOUR_OF_DAY)+18;
-                if(sameDay||sameNight){
+                if(!coin.isLimited()){
+                    button.setBackgroundColor(getResources().getColor(R.color.transparent));
+                    button.setTextSize(18);
+                    button.setText("Du musst diesen Coin bei der Bestellung nicht vorzeigen.");
+                    timer.setVisibility(View.INVISIBLE);
+                    button.setVisibility(View.VISIBLE);
+                }else if(sameDay||sameNight){
                     //Überprüfe ob eingelöst
                     ArrayList<String> cashedInUsers = (ArrayList<String>)object.get("cashedInUsers");
                     if(cashedInUsers.contains(ParseInstallation.getCurrentInstallation().getInstallationId())){
@@ -136,7 +143,7 @@ public class ActivityCoinItemView extends ActionBarActivity {
     };
 
     private void cashIn(){
-        button.setVisibility(View.GONE);
+        button.setVisibility(View.INVISIBLE);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Coupons");
         query.getInBackground(id, new GetCallback<ParseObject>() {
             @Override

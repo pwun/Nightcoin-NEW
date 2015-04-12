@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -102,9 +103,9 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				obj.setOpening((ArrayList<String>) object.get("opensAt"));
 				obj.setClosing((ArrayList<String>) object.get("closesAt"));
 
-				ParseImageView img = (ParseImageView) findViewById(R.id.imageViewStandardItemView);
-				img.setParseFile(obj.getImage());
-				img.loadInBackground();
+				ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
+				img.setImageBitmap(obj.getImage());
+				//img.loadInBackground();
 
 				getOpening();
 

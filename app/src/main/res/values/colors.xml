@@ -8,5 +8,5 @@
     <color name="darkBackground">#37474F</color>
     <color name="orange">#ff9500</color>
     <color name="nightcointint">#ffcc00</color>
-
+    <color name="transparent">#0000</color>
 </resources>

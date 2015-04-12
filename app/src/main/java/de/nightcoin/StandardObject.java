@@ -1,5 +1,9 @@
 package de.nightcoin;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.parse.ParseException;
 import com.parse.ParseFile;
 
 import java.util.ArrayList;
@@ -7,7 +11,7 @@ import java.util.ArrayList;
 public class StandardObject{
 
 	private String name;
-	private ParseFile image;
+	private Bitmap image;
 	private String[] weekplan = new String[7];
 	private String[] opening = new String[7];
 	private String[] closing = new String[7];
@@ -16,10 +20,21 @@ public class StandardObject{
 	public StandardObject(){}
 	
 	public void setImage(ParseFile parseFile){
-		this.image = parseFile;
+        if(parseFile != null){
+            try {
+                byte[] stream = parseFile.getData();
+                Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                Bitmap myImage = Bitmap.createScaledBitmap(bmp,1000,400,true);
+                this.image = myImage;
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
 	}
 	
-	public ParseFile getImage(){
+	public Bitmap getImage(){
 		return this.image;
 	}
 	

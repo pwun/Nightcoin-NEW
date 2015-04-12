@@ -127,8 +127,8 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setDate((Date) data.get("date"));
                         obj.setId((String) data.getObjectId());
                         obj.setAmount((Integer) data.get("amount"));
-                        /*obj.setLimited((Boolean) data.get("limited"));
-                        obj.setCashedInAmount((Integer) data.get("cashedInAmount"));*/
+                        obj.setLimited((Boolean) data.get("limited"));
+                        /*obj.setCashedInAmount((Integer) data.get("cashedInAmount"));*/
 						//set every needed value here
 						
 						coinlist.add(obj);
@@ -153,6 +153,7 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setLocation((String) data.get("location"));
 						obj.setDate((Date) data.get("date"));
                         obj.setId((String) data.getObjectId());
+                        obj.setLimited((Boolean) data.get("limited"));
 						//set every needed value here
 						
 						coinlist.add(obj);
@@ -187,6 +188,7 @@ public class ActivityStandardList extends ActionBarActivity {
                         obj.setLocation((String) data.get("location"));
                         obj.setDate((Date) data.get("date"));
                         obj.setId((String) data.getObjectId());
+                        obj.setLimited((Boolean) data.get("limited"));
                         //set every needed value here
 
                         coinlist.add(obj);
@@ -226,7 +228,9 @@ public class ActivityStandardList extends ActionBarActivity {
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
-						obj.setImage((ParseFile) data.getParseFile("image"));
+                        if(data.getParseFile("image")!= null){
+                            obj.setImage(data.getParseFile("image"));
+                        }
 						
 						list.add(obj);
 						System.out.println("Location fetched: "+ obj.getName());	
@@ -234,6 +238,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH BARS");
+                    System.out.println(e.getStackTrace());
 				}
 				
 				

@@ -10,8 +10,17 @@ public class CoinObject {
 	private String date;
     private String id;
     private Integer amount;
+    private boolean limited;
 	
 	public CoinObject(){}
+
+    public boolean isLimited(){
+        return limited;
+    }
+
+    public void setLimited(boolean limited){
+        this.limited = limited;
+    }
 
     public void setAmount(Integer amount){
         this.amount = amount;

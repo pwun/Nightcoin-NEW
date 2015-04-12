@@ -5,11 +5,14 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -38,7 +41,7 @@ public class StandardListViewAdapter extends BaseAdapter {
 
 	public class ViewHolder {
 		TextView name;
-		ParseImageView image;
+		ImageView image;
 	}
 
 	@Override
@@ -65,15 +68,15 @@ public class StandardListViewAdapter extends BaseAdapter {
 					null);
 			holder.name = (TextView) convertView
 					.findViewById(R.id.textViewStandardListViewAdapterName);
-			holder.image = (ParseImageView) convertView
+			holder.image = (ImageView) convertView
 					.findViewById(R.id.imageViewStandardListViewAdapter);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.name.setText(list.get(position).getName());
-		holder.image.setParseFile(list.get(position).getImage());
-		holder.image.loadInBackground();
+		holder.image.setImageBitmap(list.get(position).getImage());
+		//holder.image.loadInBackground();
 
 		if (mode.equals("event")) {
 			convertView.setOnClickListener(new OnClickListener() {
