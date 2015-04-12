@@ -13,6 +13,7 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.Arrays;
@@ -28,7 +29,7 @@ public class ActivityEditPhone extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_phone);
-        userLocation = "Pavo";
+        userLocation = ParseUser.getCurrentUser().get("location").toString();
         queryForData();
     }
 

@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.parse.ParseUser;
 
 
 public class ActivityUser extends ActionBarActivity {
@@ -16,6 +19,8 @@ public class ActivityUser extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         initButtons();
+        Toast t = Toast.makeText(ActivityUser.this, "Angemeldet als " + ParseUser.getCurrentUser().get("location").toString(), Toast.LENGTH_LONG);
+        t.show();
     }
 
     private void initButtons() {
@@ -36,6 +41,21 @@ public class ActivityUser extends ActionBarActivity {
                 ActivityUser.this.startActivity(i);
             }
         });
+
+        Button editWeekplanButton = (Button) findViewById(R.id.buttonUserActivityEditWeekplan);
+        editWeekplanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityUser.this, ActivityEditWeekplan.class);
+                ActivityUser.this.startActivity(i);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ActivityUser.this, ActivityMain.class);
+        ActivityUser.this.startActivity(i);
     }
 
 
@@ -54,8 +74,11 @@ public class ActivityUser extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            ParseUser.logOut();
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            Intent i = new Intent(ActivityUser.this, ActivityMain.class);
+            ActivityUser.this.startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

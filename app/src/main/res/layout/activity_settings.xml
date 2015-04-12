@@ -30,6 +30,18 @@
         android:ems="12" />
 
     <EditText
+        android:id="@+id/editTextSettingsEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Email-Adresse"
+        android:textColor="@color/white"
+        android:inputType="textPersonName"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textViewSettingsErrorMessage"
+        android:visibility="invisible"
+        android:ems="12" />
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -41,23 +53,56 @@
         android:layout_below="@+id/textFieldSettingsUsername" />
 
     <Button
-        android:id="@+id/buttonSettingsLogin"
+        android:id="@+id/buttonSettingsSendResetMail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/textFieldSettingsPassword"
         android:layout_alignLeft="@id/textFieldSettingsPassword"
         android:layout_alignRight="@id/textFieldSettingsPassword"
         android:layout_alignStart="@id/textFieldSettingsPassword"
         android:layout_alignEnd="@id/textFieldSettingsPassword"
         android:gravity="center"
-        android:text="Einloggen"
-        android:layout_marginTop="20dp"/>
+        android:visibility="invisible"
+        android:text="Email senden"/>
+
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textFieldSettingsPassword"
+        android:layout_alignLeft="@id/textFieldSettingsPassword"
+        android:layout_alignRight="@id/textFieldSettingsPassword"
+        android:layout_alignStart="@id/textFieldSettingsPassword"
+        android:layout_alignEnd="@id/textFieldSettingsPassword"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/buttonSettingsForgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Passwort vergessen"
+            android:layout_weight="0.5"/>
+
+        <Button
+            android:id="@+id/buttonSettingsLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Einloggen"
+            android:layout_weight="0.5"/>
+
+        </LinearLayout>
 
     <TextView
+        android:id="@+id/textViewSettingsInfoMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonSettingsLogin"
+        android:layout_below="@id/buttonLayout"
         android:textAlignment="center"
         android:gravity="center"
         android:padding="15dp"

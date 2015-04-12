@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.parse.LogInCallback;
+import com.parse.ParseUser;
+
 
 public class ActivitySettings extends ActionBarActivity {
 
@@ -27,7 +30,7 @@ public class ActivitySettings extends ActionBarActivity {
         errorMessageTextView = (TextView)findViewById(R.id.textViewSettingsErrorMessage);
         errorMessageTextView.setVisibility(View.INVISIBLE);
 
-        Button loginButton = (Button)findViewById(R.id.buttonSettingsLogin);
+        final Button loginButton = (Button)findViewById(R.id.buttonSettingsLogin);
         final EditText usernameTextField = (EditText)findViewById(R.id.textFieldSettingsUsername);
         final EditText passwordTextField = (EditText)findViewById(R.id.textFieldSettingsPassword);
 
@@ -40,14 +43,9 @@ public class ActivitySettings extends ActionBarActivity {
                 String username = usernameTextField.getText().toString();
                 String password = passwordTextField.getText().toString();
 
-                Intent i = new Intent(ActivitySettings.this,
-                        ActivityUser.class);
-                i.putExtra("userLocation", "test");
-                ActivitySettings.this.startActivity(i);
-
-                /*
                 ParseUser.logInInBackground(username, password, new LogInCallback() {
-                    public void done(ParseUser user, ParseException e) {
+                    @Override
+                    public void done(ParseUser user, com.parse.ParseException e) {
                         if (user != null) {
                             Intent i = new Intent(ActivitySettings.this,
                                     ActivityUser.class);
@@ -58,7 +56,28 @@ public class ActivitySettings extends ActionBarActivity {
                             errorMessageTextView.setVisibility(View.VISIBLE);
                         }
                     }
-                });*/
+                });
+            }
+        });
+
+        final Button sendMailButton = (Button) findViewById(R.id.buttonSettingsSendResetMail);
+
+        final Button forgotPasswortButton = (Button) findViewById(R.id.buttonSettingsForgotPassword);
+        forgotPasswortButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usernameTextField.setVisibility(View.INVISIBLE);
+                passwordTextField.setVisibility(View.INVISIBLE);
+
+                forgotPasswortButton.setVisibility(View.GONE);
+                loginButton.setVisibility(View.GONE);
+                sendMailButton.setVisibility(View.VISIBLE);
+
+                TextView infoTextView = (TextView)findViewById(R.id.textViewSettingsInfoMessage);
+                infoTextView.setText("Sobald die zu Deinem Account zugehörige Email-Adresse bestätigt wurde, senden wir Dir umgehen ein Email, mit der Du Dein Passwort wiederherstellen kannst. Solltest du diese Email-Adresse vergessen oder keinen Zugang mehr dazu haben, kontaktieren uns bitte telefonisch oder über info@nightcoin.de.");
+
+                EditText mailEditText = (EditText) findViewById(R.id.editTextSettingsEmail);
+                mailEditText.setVisibility(View.VISIBLE);
             }
         });
     }

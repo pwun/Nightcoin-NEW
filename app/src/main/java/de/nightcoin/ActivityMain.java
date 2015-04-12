@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.parse.ParseUser;
+
 public class ActivityMain extends ActionBarActivity {
 
 	@Override
@@ -134,13 +136,23 @@ public class ActivityMain extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			openSettings();
-		}
+            System.out.println("Username: " + ParseUser.getCurrentUser().getUsername());
+            if (ParseUser.getCurrentUser().getUsername() == null) {
+                openSettings();
+            } else {
+                openUserActivity();
+            }
+        }
 		return super.onOptionsItemSelected(item);
 	}
 
     private void openSettings() {
         Intent i = new Intent(ActivityMain.this, ActivitySettings.class);
+        ActivityMain.this.startActivity(i);
+    }
+
+    private void openUserActivity() {
+        Intent i = new Intent(ActivityMain.this, ActivityUser.class);
         ActivityMain.this.startActivity(i);
     }
 }

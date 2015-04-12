@@ -1,8 +1,5 @@
 package de.nightcoin;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -12,10 +9,12 @@ import android.widget.ListView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ActivityWeekplan extends ActionBarActivity {
 
@@ -29,6 +28,7 @@ public class ActivityWeekplan extends ActionBarActivity {
 		name = i.getStringExtra("name");
 		
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
+        query.selectKeys(Arrays.asList("weekplan"));
 		query.whereEqualTo("name", name);
 		query.setLimit(1);
 		query.fromLocalDatastore();

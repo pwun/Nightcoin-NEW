@@ -10,6 +10,7 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class ActivityDashboard extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        userLocation = "Pavo";
+        userLocation = ParseUser.getCurrentUser().get("location").toString();
         queryForData();
     }
 
