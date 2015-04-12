@@ -242,28 +242,6 @@ public class ActivityStandardList extends ActionBarActivity {
 					System.out.println("ERROR, CANT FETCH BARS");
                     System.out.println(e.getStackTrace());
 				}
-				
-				
-				//ParseObject.unpinAllInBackground("bars");
-				
-				
-				//Local Versuch
-				/*query = new ParseQuery<ParseObject>("Locations");
-				query.whereEqualTo("category", "Bar");
-				query.findInBackground(new FindCallback<ParseObject>(){
-
-					@Override
-					public void done(List<ParseObject> objects, ParseException e) {
-						ParseObject.pinAllInBackground("bars", objects);
-						for (ParseObject data : parseList) {
-							StandardObject obj = new StandardObject();
-							obj.setName((String) data.get("name"));
-							obj.setImage((ParseFile) data.getParseFile("image"));
-							list.add(obj);
-						}
-					}});*/
-				
-					
 			}
 			if(mode.equals("Clubs")){
 				try{
@@ -310,6 +288,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				try{
 					query = new ParseQuery<ParseObject>("Locations");
                     query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId());
+
 					parseList = query.find();
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
@@ -389,7 +368,7 @@ public class ActivityStandardList extends ActionBarActivity {
 					StandardListViewAdapter adapter = new StandardListViewAdapter(ActivityStandardList.this, list, "event");
 					listview.setAdapter(adapter);
 				}
-				/*if(mode.equals("Favoriten")){
+				if(mode.equals("Favoriten")){
 					ParseObject.unpinAllInBackground("favorites", new DeleteCallback(){
 
 						@Override
@@ -398,9 +377,9 @@ public class ActivityStandardList extends ActionBarActivity {
 						}
 					});
 					ListView listview = (ListView) findViewById(R.id.listViewStandardList);
-				StandardListViewAdapter adapter = new StandardListViewAdapter(ActivityStandardList.this, list, "location");
-				listview.setAdapter(adapter);
-				}*/
+				    StandardListViewAdapter adapter = new StandardListViewAdapter(ActivityStandardList.this, list, "location");
+				    listview.setAdapter(adapter);
+				}
 				
 			}
 			
