@@ -36,9 +36,6 @@ public class ActivityCoinItemView extends ActionBarActivity {
     Button button;
 
 
-    // GitHub Test von Paul
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
