@@ -38,23 +38,23 @@
         </activity>
         <activity
             android:name=".ActivityStandardList"
-            android:label="@string/title_activity_activity_standard_list" >
+            android:label="List" >
         </activity>
         <activity
             android:name=".ActivityStandardItemView"
-            android:label="@string/title_activity_activity_standard_item_view" >
+            android:label="Location" >
         </activity>
         <activity
             android:name=".ActivityWeekplan"
-            android:label="@string/title_activity_activity_weekplan" >
+            android:label="Wochenprogramm" >
         </activity>
         <activity
             android:name=".ActivityEventItemView"
-            android:label="@string/title_activity_activity_event_item_view" >
+            android:label="Veranstaltung" >
         </activity>
         <activity
             android:name=".ActivitySettings"
-            android:label="@string/title_activity_activity_settings" >
+            android:label="Einstellungen" >
         </activity>
         <activity
             android:name=".UserActivity"
@@ -62,11 +62,11 @@
         </activity>
         <activity
             android:name=".ActivityUser"
-            android:label="@string/title_activity_activity_user" >
+            android:label="Mein Konto" >
         </activity>
         <activity
             android:name=".ActivityCoinItemView"
-            android:label="@string/title_activity_activity_coin_item_view" >
+            android:label="Coin" >
         </activity>
     </application>
 

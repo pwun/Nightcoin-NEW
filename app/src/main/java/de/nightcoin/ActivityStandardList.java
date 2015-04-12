@@ -73,6 +73,12 @@ public class ActivityStandardList extends ActionBarActivity {
 			dialog.setIndeterminate(false);
 			dialog.show();
 		}
+
+        private Date normalizedDate (Date date) {
+            date.setHours(1);
+            date.setMinutes(0);
+            return date;
+        }
 		
 		@Override
 		protected Void doInBackground(Void... params) {
@@ -85,6 +91,7 @@ public class ActivityStandardList extends ActionBarActivity {
 			if(mode.equals("Coins")){
 				try{
 					query = new ParseQuery<ParseObject>("Coupons");
+                    query.whereGreaterThan("date", normalizedDate(new Date()));
 					query.orderByAscending("date");
 					parseList = query.find();
 					for (ParseObject data : parseList) {
@@ -108,7 +115,8 @@ public class ActivityStandardList extends ActionBarActivity {
 				try{
 					query = new ParseQuery<ParseObject>("Coupons");
 					query.whereEqualTo("location", i.getStringExtra("name"));
-					query.orderByAscending("date");
+                    query.whereGreaterThan("date", normalizedDate(new Date()));
+                    query.orderByAscending("date");
 					parseList = query.find();
 					for (ParseObject data : parseList) {
 						CoinObject obj = new CoinObject();

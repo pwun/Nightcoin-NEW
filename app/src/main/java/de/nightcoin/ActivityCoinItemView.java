@@ -86,8 +86,8 @@ public class ActivityCoinItemView extends ActionBarActivity {
                         .get(Calendar.DAY_OF_YEAR)+1 && cal2.get(Calendar.HOUR_OF_DAY)>cal1.get(Calendar.HOUR_OF_DAY)+18;
                 if(sameDay||sameNight){
                     //Überprüfe ob eingelöst
-                    ArrayList<String> dates = (ArrayList<String>)object.get("cashedInUsers");
-                    if(dates.contains(ParseInstallation.getCurrentInstallation().getInstallationId())){
+                    ArrayList<String> cashedInUsers = (ArrayList<String>)object.get("cashedInUsers");
+                    if(cashedInUsers.contains(ParseInstallation.getCurrentInstallation().getInstallationId())){
                         button.setBackgroundColor(getResources().getColor(R.color.dark_red));
                         button.setText("Du hast diesen Coin bereits eingelöst");
                         button.setVisibility(View.VISIBLE);
