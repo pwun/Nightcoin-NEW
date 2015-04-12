@@ -13,5 +13,7 @@
     <string name="title_activity_user">UserActivity</string>
     <string name="title_activity_activity_user">ActivityUser</string>
     <string name="title_activity_activity_coin_item_view">ActivityCoinItemView</string>
+    <string name="title_activity_activity_dashboard">ActivityDashboard</string>
+    <string name="title_activity_activity_edit_phone">ActivityEditPhone</string>
 
 </resources>

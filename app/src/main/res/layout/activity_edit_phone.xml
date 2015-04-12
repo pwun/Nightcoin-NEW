@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/darkBackground"
+    tools:context="de.nightcoin.ActivityEditPhone">
+
+    <TextView
+        android:id="@+id/textViewActivityEditPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="0941 12345"
+        android:textColor="@color/white"
+        android:textSize="35dp"/>
+
+    <Button
+        android:id="@+id/buttonActivityEditPhoneSaveNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@id/textViewActivityEditPhoneNumber"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="Telefonnummer speichern"/>
+
+</RelativeLayout>

@@ -68,6 +68,14 @@
             android:name=".ActivityCoinItemView"
             android:label="Coin" >
         </activity>
+        <activity
+            android:name=".ActivityDashboard"
+            android:label="@string/title_activity_activity_dashboard" >
+        </activity>
+        <activity
+            android:name=".ActivityEditPhone"
+            android:label="@string/title_activity_activity_edit_phone" >
+        </activity>
     </application>
 
 </manifest>

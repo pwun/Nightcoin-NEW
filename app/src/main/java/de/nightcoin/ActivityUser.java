@@ -1,9 +1,12 @@
 package de.nightcoin;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class ActivityUser extends ActionBarActivity {
@@ -12,6 +15,27 @@ public class ActivityUser extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        initButtons();
+    }
+
+    private void initButtons() {
+        Button dashboardButton = (Button) findViewById(R.id.buttonUserActivityDashboard);
+        dashboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityUser.this, ActivityDashboard.class);
+                ActivityUser.this.startActivity(i);
+            }
+        });
+
+        Button editPhoneButton = (Button) findViewById(R.id.buttonUserActivityEditPhone);
+        editPhoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityUser.this, ActivityEditPhone.class);
+                ActivityUser.this.startActivity(i);
+            }
+        });
     }
 
 
