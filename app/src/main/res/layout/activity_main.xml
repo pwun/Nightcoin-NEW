@@ -21,7 +21,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black_alpha" />
+            android:background="@color/background_buttons" />
 
         <Button
             android:id="@+id/buttonMainCoins"
@@ -48,20 +48,24 @@
 
                 <Button
                     android:id="@+id/buttonMainBars"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="Bars"
-                    android:background="@color/white"
+                    android:background="@color/background_buttons"
                     android:layout_marginRight="1dp"/>
+                   <!-- android:drawableTop="@drawable/bar_icon"-->
+
 
                 <Button
                     android:id="@+id/buttonMainClubs"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="Clubs"
-                    android:background="@color/white"
+                    android:background="@color/background_buttons"
                     android:layout_marginLeft="1dp"/>
             </TableRow>
 
@@ -76,20 +80,22 @@
 
                 <Button
                     android:id="@+id/buttonMainTaxi"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="Taxi"
-                    android:background="@color/white"
+                    android:background="@color/background_buttons"
                     android:layout_marginRight="1dp"/>
 
                 <Button
                     android:id="@+id/buttonMainFood"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="Food"
-                    android:background="@color/white"
+                    android:background="@color/background_buttons"
                     android:layout_marginLeft="1dp"/>
             </TableRow>
 
@@ -104,20 +110,22 @@
 
                 <Button
                     android:id="@+id/buttonMainEvents"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="Events"
-                    android:background="@color/white"
+                    android:background="@color/background_buttons"
                     android:layout_marginRight="1dp"/>
 
                 <Button
                     android:id="@+id/buttonMainFavorites"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:text="Favoriten"
-                    android:background="@color/white"
+                    android:background="@color/background_buttons"
                     android:layout_marginLeft="1dp"/>
             </TableRow>
         </TableLayout>

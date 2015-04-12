@@ -17,7 +17,7 @@
         android:layout_alignBottom="@+id/imageViewStandardListViewAdapter"
         android:layout_alignParentLeft="true"
         android:layout_gravity="center_vertical"
-        android:background="@color/white"
+        android:background="@color/black_alpha"
         android:weightSum="1"
         android:padding="5dp">
 

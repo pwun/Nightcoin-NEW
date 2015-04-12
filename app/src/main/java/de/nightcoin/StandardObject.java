@@ -44,7 +44,7 @@ public class StandardObject{
             try {
                 byte[] stream = parseFile.getData();
                 Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                Bitmap myImage = Bitmap.createScaledBitmap(bmp,1000,400,true);
+                Bitmap myImage = Bitmap.createScaledBitmap(bmp,bmp.getWidth()/2,bmp.getHeight()/2,true);
                 this.image = myImage;
             } catch (com.parse.ParseException e) {
                 e.printStackTrace();
