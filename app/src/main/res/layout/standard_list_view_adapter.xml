@@ -17,15 +17,17 @@
         android:layout_alignBottom="@+id/imageViewStandardListViewAdapter"
         android:layout_alignParentLeft="true"
         android:layout_gravity="center_vertical"
-        android:background="@color/black_alpha"
-        android:weightSum="1" >
+        android:background="@color/white"
+        android:weightSum="1"
+        android:padding="5dp">
 
         <TextView
             android:layout_width="wrap_content"
         	android:layout_height="match_parent"
             android:id="@+id/textViewStandardListViewAdapterName"
+            android:gravity="center_vertical"
             android:text="Lädt Namen..."
-            android:textColor="@color/white"
+            android:textColor="@color/darkBackground"
             android:textSize="25sp"
             android:layout_weight="0.8" />
 
@@ -39,7 +41,7 @@
                 android:id="@+id/textViewStandardListViewAdapterDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/darkBackground"
                 android:text="- km" />
 
             <TextView

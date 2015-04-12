@@ -2,20 +2,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.nightcoin.ActivityMain" >
+    android:background="@color/darkBackground"
+    tools:context="de.nightcoin.ActivityMain"
+    android:padding="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="1" >
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="0.25"
+            android:layout_marginBottom="2dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_alpha" />
 
         <Button
             android:id="@+id/buttonMainCoins"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Coins"
-            android:layout_weight="0.25" />
+            android:layout_height="match_parent"
+            android:background="@drawable/nightcoins_main_act_button_bg" />
+
+        </RelativeLayout>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -28,21 +42,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
-                android:layout_weight="0.25" >
+                android:layout_weight="0.25"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp">
 
                 <Button
                     android:id="@+id/buttonMainBars"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:text="Bars" />
+                    android:text="Bars"
+                    android:background="@color/white"
+                    android:layout_marginRight="1dp"/>
 
                 <Button
                     android:id="@+id/buttonMainClubs"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:text="Clubs" />
+                    android:text="Clubs"
+                    android:background="@color/white"
+                    android:layout_marginLeft="1dp"/>
             </TableRow>
 
             <TableRow
@@ -50,21 +70,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
-                android:layout_weight="0.25" >
+                android:layout_weight="0.25"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp" >
 
                 <Button
                     android:id="@+id/buttonMainTaxi"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:text="Taxi" />
+                    android:text="Taxi"
+                    android:background="@color/white"
+                    android:layout_marginRight="1dp"/>
 
                 <Button
                     android:id="@+id/buttonMainFood"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:text="Essen" />
+                    android:text="Food"
+                    android:background="@color/white"
+                    android:layout_marginLeft="1dp"/>
             </TableRow>
 
             <TableRow
@@ -72,21 +98,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
-                android:layout_weight="0.25" >
+                android:layout_weight="0.25"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp" >
 
                 <Button
                     android:id="@+id/buttonMainEvents"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:text="Events" />
+                    android:text="Events"
+                    android:background="@color/white"
+                    android:layout_marginRight="1dp"/>
 
                 <Button
                     android:id="@+id/buttonMainFavorites"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:text="Favoriten" />
+                    android:text="Favoriten"
+                    android:background="@color/white"
+                    android:layout_marginLeft="1dp"/>
             </TableRow>
         </TableLayout>
 
