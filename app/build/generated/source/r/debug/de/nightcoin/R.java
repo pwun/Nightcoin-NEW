@@ -1383,6 +1383,7 @@ containing a value of this type.
         public static final int dialog=0x7f08001b;
         public static final int disableHome=0x7f08000c;
         public static final int dropdown=0x7f08001c;
+        public static final int editTextActivityEditPhoneNumber=0x7f08004c;
         public static final int edit_query=0x7f080033;
         public static final int end=0x7f080014;
         public static final int expand_activities_button=0x7f080022;
@@ -1441,7 +1442,6 @@ containing a value of this type.
         public static final int textViewActivityDashboardFavoritesLabel=0x7f080049;
         public static final int textViewActivityDashboardPageViews=0x7f080046;
         public static final int textViewActivityDashboardPageViewsLabel=0x7f080047;
-        public static final int textViewActivityEditPhoneNumber=0x7f08004c;
         public static final int textViewCoinItemViewDate=0x7f080042;
         public static final int textViewCoinItemViewLocation=0x7f080041;
         public static final int textViewCoinItemViewTimer=0x7f080044;

@@ -7,8 +7,8 @@
     android:background="@color/darkBackground"
     tools:context="de.nightcoin.ActivityEditPhone">
 
-    <TextView
-        android:id="@+id/textViewActivityEditPhoneNumber"
+    <EditText
+        android:id="@+id/editTextActivityEditPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
@@ -21,7 +21,7 @@
         android:id="@+id/buttonActivityEditPhoneSaveNumber"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_below="@id/textViewActivityEditPhoneNumber"
+        android:layout_below="@id/editTextActivityEditPhoneNumber"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:text="Telefonnummer speichern"/>

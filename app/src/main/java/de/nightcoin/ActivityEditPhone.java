@@ -6,12 +6,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
 import java.util.Arrays;
 
@@ -20,13 +22,12 @@ public class ActivityEditPhone extends ActionBarActivity {
 
     ParseObject serverObject;
     String userLocation;
-    TextView phoneTextView;
+    EditText phoneEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_phone);
-        initButton();
         userLocation = "Pavo";
         queryForData();
     }
@@ -38,23 +39,31 @@ public class ActivityEditPhone extends ActionBarActivity {
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject parseObject, ParseException e) {
-                setPhoneTextView((String) parseObject.get("phone"));
+                serverObject = parseObject;
+                setPhoneEditText((String) parseObject.get("phone"));
+                initButton();
             }
         });
     }
 
-    private void setPhoneTextView(String phoneNumber) {
-        phoneTextView = (TextView) findViewById(R.id.textViewActivityEditPhoneNumber);
-        phoneTextView.setText(phoneNumber);
+    private void setPhoneEditText(String phoneNumber) {
+        phoneEditText = (EditText) findViewById(R.id.editTextActivityEditPhoneNumber);
+        phoneEditText.setText(phoneNumber);
     }
 
     private void initButton() {
-        Button dashboardButton = (Button) findViewById(R.id.buttonUserActivityDashboard);
-        dashboardButton.setOnClickListener(new View.OnClickListener() {
+        Button saveNumber = (Button) findViewById(R.id.buttonActivityEditPhoneSaveNumber);
+        saveNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                serverObject.put("phone", phoneTextView.getText());
-                serverObject.saveInBackground();
+                serverObject.put("phone", phoneEditText.getText().toString());
+                serverObject.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        Toast t = Toast.makeText(ActivityEditPhone.this, "Telefonnummer gespeichert", Toast.LENGTH_SHORT);
+                        t.show();
+                    }
+                });
             }
         });
     }
