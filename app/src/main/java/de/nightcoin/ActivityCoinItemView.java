@@ -152,8 +152,8 @@ public class ActivityCoinItemView extends ActionBarActivity {
                     System.out.println(id + "=" + parseObject.getObjectId());
                     parseObject.add("cashedInUsers", ParseInstallation.getCurrentInstallation().getInstallationId());
                     parseObject.increment("cashedInAmount");
-                    //parseObject.saveEventually();
-                    parseObject.saveInBackground();
+                    parseObject.saveEventually();
+                    //parseObject.saveInBackground();
                 }
                 else{
                     System.out.println(e.getStackTrace());

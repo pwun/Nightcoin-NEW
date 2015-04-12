@@ -110,11 +110,21 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
                 favorites = ((ArrayList<String>) serverObject.get("favorites"));
 
+
+
 				ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
 				img.setImageBitmap(obj.getImage());
 				//img.loadInBackground();
 
 				getOpening();
+
+
+                if(menu!= null){
+                    checkIfFavorite();
+                }
+                else{
+                    System.out.println("Menu still null");
+                }
 
 			}
 		});
@@ -173,7 +183,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_standard_item_view, menu);
+        getMenuInflater().inflate(R.menu.activity_standard_item_view, menu);
         this.menu = menu;
         checkIfFavorite();
 		return true;
