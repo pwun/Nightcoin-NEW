@@ -72,7 +72,7 @@ public class CoinListViewAdapter extends BaseAdapter{
 		holder.location.setText(list.get(position).getLocation());
 		holder.date.setText(list.get(position).getDate());
         if(list.get(position).isLimited()){
-            holder.amount.setText("noch " + list.get(position).getAmount().toString() + " Stück verfügbar");
+            holder.amount.setText("noch " + (list.get(position).getAmount()-list.get(position).getCashedIn()) + " Stück verfügbar");
         }
         else{
             holder.amount.setText("Unbegrenzt");

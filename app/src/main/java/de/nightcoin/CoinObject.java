@@ -11,8 +11,17 @@ public class CoinObject {
     private String id;
     private Integer amount;
     private boolean limited;
+    private int cashedIn;
 	
 	public CoinObject(){}
+
+    public int getCashedIn(){
+        return this.cashedIn;
+    }
+
+    public void setCashedIn(Integer cashedIn){
+        this.cashedIn = cashedIn;
+    }
 
     public boolean isLimited(){
         return limited;

@@ -128,7 +128,11 @@ public class ActivityStandardList extends ActionBarActivity {
                         obj.setId((String) data.getObjectId());
                         obj.setAmount((Integer) data.get("amount"));
                         obj.setLimited((Boolean) data.get("limited"));
-                        /*obj.setCashedInAmount((Integer) data.get("cashedInAmount"));*/
+                        try{
+                        obj.setCashedIn((Integer) data.get("cashedInAmount"));}
+                        catch (Exception e){
+                            obj.setCashedIn(0);
+                        }
 						//set every needed value here
 						
 						coinlist.add(obj);
@@ -154,6 +158,11 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setDate((Date) data.get("date"));
                         obj.setId((String) data.getObjectId());
                         obj.setLimited((Boolean) data.get("limited"));
+                        try{
+                            obj.setCashedIn((Integer) data.get("cashedInAmount"));}
+                        catch (Exception e){
+                            obj.setCashedIn(0);
+                        }
 						//set every needed value here
 						
 						coinlist.add(obj);
@@ -189,6 +198,11 @@ public class ActivityStandardList extends ActionBarActivity {
                         obj.setDate((Date) data.get("date"));
                         obj.setId((String) data.getObjectId());
                         obj.setLimited((Boolean) data.get("limited"));
+                        try{
+                            obj.setCashedIn((Integer) data.get("cashedInAmount"));}
+                        catch (Exception e){
+                            obj.setCashedIn(0);
+                        }
                         //set every needed value here
 
                         coinlist.add(obj);
