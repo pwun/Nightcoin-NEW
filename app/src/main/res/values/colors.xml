@@ -5,8 +5,9 @@
     <color name="dark_red">#ff3b30</color>
     <color name="green">#4dd980</color>
     <color name="background">#b0bec5</color>
-    <color name="darkBackground">#37474F</color>
+    <color name="darkBackground">#263238</color>
     <color name="orange">#ff9500</color>
     <color name="nightcointint">#ffcc00</color>
     <color name="transparent">#0000</color>
+    <color name="action_bar">#455A64</color>
 </resources>

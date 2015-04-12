@@ -19,7 +19,6 @@ import com.parse.ParseImageView;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -45,6 +44,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
         setTitle(name);
 		initButtons();
 		getData(name);
+
         System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
 	}
 
