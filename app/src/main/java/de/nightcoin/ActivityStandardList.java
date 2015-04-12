@@ -6,9 +6,14 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.DeleteCallback;
 import com.parse.ParseException;
@@ -34,10 +39,31 @@ public class ActivityStandardList extends ActionBarActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_standard_list);
-		i = getIntent();
+        i = getIntent();
 		mode = i.getStringExtra("input");
+        if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")){
+            setTitle("Nightcoins");
+        }
+        else if(mode.equals("Events")||mode.equals("nextEvents")){
+            setTitle("Events");
+        }
+        else if(mode.equals("Clubs")){
+            setTitle("Clubs");
+        }
+        else if(mode.equals("Bars")){
+            setTitle("Bars");
+        }
+        else if(mode.equals("Favoriten")){
+            setTitle("Favoriten");
+        }
+        else if(mode.equals("Taxi")){
+            setTitle("Taxi");
+        }
+        else if(mode.equals("Food")){
+            setTitle("Food");
+        }
 		System.out.println("Creating "+ mode + "list...");
 		//Execute Async Task
 		new RemoteDataTask().execute();
@@ -47,7 +73,7 @@ public class ActivityStandardList extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_standard_list, menu);
-		return true;
+        return true;
 	}
 
 	@Override
@@ -190,7 +216,6 @@ public class ActivityStandardList extends ActionBarActivity {
 			}
 			
 			if (mode.equals("Bars")){
-				
 				try{
 					query = new ParseQuery<ParseObject>("Locations");
 					query.whereEqualTo("category", "Bar");
