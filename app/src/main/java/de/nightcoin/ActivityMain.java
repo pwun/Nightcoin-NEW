@@ -1,6 +1,8 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -27,6 +29,12 @@ public class ActivityMain extends ActionBarActivity {
 		Button taxi = (Button) findViewById(R.id.buttonMainTaxi);
 		Button favorites = (Button) findViewById(R.id.buttonMainFavorites);
 		Button events = (Button) findViewById(R.id.buttonMainEvents);
+
+        /*Drawable drawable = getResources().getDrawable(R.drawable.bar_icon);
+        drawable.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()*0.5),
+                (int)(drawable.getIntrinsicHeight()*0.5));
+        ScaleDrawable sd = new ScaleDrawable(drawable, 0, 100, 100);
+        bars.setCompoundDrawables(null, sd.getDrawable(), null, null);*/
 
 		coins.setOnClickListener(new OnClickListener() {
 
