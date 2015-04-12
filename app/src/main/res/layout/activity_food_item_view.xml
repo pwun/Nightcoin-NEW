@@ -1,0 +1,252 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="de.nightcoin.ActivityFoodItemView">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageViewFoodItemView"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/textViewFoodItemViewName"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textSize="20dp"
+                    android:text="Öffnungszeiten"
+                    android:layout_alignBottom="@+id/imageViewFoodItemView"
+                    android:background="@color/black_alpha"
+                    android:textColor="@color/white"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp" />
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TableRow
+                    android:id="@+id/tableRowFoodItemViewWeekdays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:weightSum="7" >
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewMo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mo"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewDi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Di"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewMi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mi"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewDo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Do"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewFr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fr"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewSa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sa"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewSo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="So"
+                        android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowFoodItemViewOpening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:weightSum="7" >
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewMoOpening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewDiOpening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewMiOpening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewDoOpening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewFrOpening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewSaOpening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewSoOpening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowFoodItemViewClosing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:weightSum="7" >
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewMoClosing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewDiClosing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewMiClosing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewDoClosing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewFrClosing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewSaClosing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodItemViewSoClosing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:layout_weight="1" />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textViewFoodItemViewContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kontakt" />
+
+                <Button
+                    android:id="@+id/buttonFoodItemViewPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone" />
+
+                <Button
+                    android:id="@+id/buttonFoodItemViewMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Map" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewFoodItemView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tel.:" />
+
+            <TextView
+                android:id="@+id/textViewFoodItemViewAdress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adr.:" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -15,5 +15,7 @@
     <string name="title_activity_activity_coin_item_view">ActivityCoinItemView</string>
     <string name="title_activity_activity_dashboard">ActivityDashboard</string>
     <string name="title_activity_activity_edit_phone">ActivityEditPhone</string>
+    <string name="title_activity_activity_food_item_view">ActivityFoodItemView</string>
+    <string name="title_activity_activity_taxi_item_view">ActivityTaxiItemView</string>
 
 </resources>

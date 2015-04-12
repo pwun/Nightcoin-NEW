@@ -85,6 +85,7 @@ public class StandardListViewAdapter extends BaseAdapter {
 		//holder.image.loadInBackground();
 
 		if (mode.equals("event")) {
+            holder.name.setTextSize(20);
             holder.topDetail.setText(list.get(position).getDate());
             holder.bottomDetail.setText(list.get(position).getLocation());
             convertView.setOnClickListener(new OnClickListener() {
@@ -100,7 +101,38 @@ public class StandardListViewAdapter extends BaseAdapter {
 					listContext.startActivity(intent);
 				}
 			});
-		} else {
+		}
+        else if(mode.equals("taxi")){
+            convertView.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+
+                    Intent intent = new Intent(listContext,
+                            ActivityTaxiItemView.class);
+
+                    intent.putExtra("title", list.get(position).getName());
+                    listContext.startActivity(intent);
+                }
+            });
+        }
+        else if(mode.equals("food")){
+            convertView.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+
+                    Intent intent = new Intent(listContext,
+                            ActivityFoodItemView.class);
+
+                    intent.putExtra("title", list.get(position).getName());
+                    listContext.startActivity(intent);
+                }
+            });
+        }
+        else {
 
 			convertView.setOnClickListener(new OnClickListener() {
 

@@ -94,6 +94,30 @@ public class ActivityMain extends ActionBarActivity {
 				ActivityMain.this.startActivity(i);
 			}
 		});
+
+        food.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(ActivityMain.this,
+                        ActivityStandardList.class);
+                i.putExtra("input", "Food");
+                ActivityMain.this.startActivity(i);
+            }
+        });
+
+        taxi.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(ActivityMain.this,
+                        ActivityStandardList.class);
+                i.putExtra("input", "Taxi");
+                ActivityMain.this.startActivity(i);
+            }
+        });
 	}
 
 	@Override

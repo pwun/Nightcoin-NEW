@@ -27,7 +27,7 @@
             android:id="@+id/textViewStandardListViewAdapterName"
             android:gravity="center_vertical"
             android:text="Lädt Namen..."
-            android:textColor="@color/darkBackground"
+            android:textColor="@color/white"
             android:textSize="25sp"
             android:layout_weight="0.8" />
 
@@ -41,7 +41,7 @@
                 android:id="@+id/textViewStandardListViewAdapterDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/darkBackground"
+                android:textColor="@color/white"
                 android:text="- km" />
 
             <TextView

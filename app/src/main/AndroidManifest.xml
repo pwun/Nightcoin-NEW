@@ -76,6 +76,14 @@
             android:name=".ActivityEditPhone"
             android:label="@string/title_activity_activity_edit_phone" >
         </activity>
+        <activity
+            android:name=".ActivityFoodItemView"
+            android:label="@string/title_activity_activity_food_item_view" >
+        </activity>
+        <activity
+            android:name=".ActivityTaxiItemView"
+            android:label="@string/title_activity_activity_taxi_item_view" >
+        </activity>
     </application>
 
 </manifest>

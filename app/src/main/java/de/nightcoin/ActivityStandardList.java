@@ -318,6 +318,52 @@ public class ActivityStandardList extends ActionBarActivity {
 					System.out.println("ERROR, CANT FETCH FAVORITES");
 				}
 			}
+
+            if(mode.equals("Food")){
+                try{
+                    query = new ParseQuery<ParseObject>("Locations");
+                    query.whereEqualTo("category", "Food");
+                    parseList = query.find();
+                    for (ParseObject data : parseList) {
+                        StandardObject obj = new StandardObject();
+                        obj.setName((String) data.get("name"));
+                        try{obj.setImage(data.getParseFile("image"));}
+                        catch (Exception e){
+                            System.out.println("Image setzen fehler");
+                        }
+                        //set every needed value here
+
+                        list.add(obj);
+                        System.out.println("Food fetched: "+ obj.getName());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("ERROR, CANT FETCH FAVORITES");
+                }
+            }
+
+            if(mode.equals("Taxi")){
+                try{
+                    query = new ParseQuery<ParseObject>("Locations");
+                    query.whereEqualTo("category", "Taxi");
+                    parseList = query.find();
+                    for (ParseObject data : parseList) {
+                        StandardObject obj = new StandardObject();
+                        obj.setName((String) data.get("name"));
+                        try{obj.setImage(data.getParseFile("image"));}
+                        catch (Exception e){
+                            System.out.println("Image setzen fehler");
+                        }
+                        //set every needed value here
+
+                        list.add(obj);
+                        System.out.println("Taxi fetched: "+ obj.getName());
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("ERROR, CANT FETCH FAVORITES");
+                }
+            }
 			
 			
 			return null;
@@ -394,6 +440,32 @@ public class ActivityStandardList extends ActionBarActivity {
 				    StandardListViewAdapter adapter = new StandardListViewAdapter(ActivityStandardList.this, list, "location");
 				    listview.setAdapter(adapter);
 				}
+
+                if(mode.equals("Taxi")){
+                    ParseObject.unpinAllInBackground("taxis", new DeleteCallback(){
+
+                        @Override
+                        public void done(ParseException e) {
+                            ParseObject.pinAllInBackground("taxis", parseList);
+                        }
+                    });
+                    ListView listview = (ListView) findViewById(R.id.listViewStandardList);
+                    StandardListViewAdapter adapter = new StandardListViewAdapter(ActivityStandardList.this, list, "taxi");
+                    listview.setAdapter(adapter);
+                }
+
+                if(mode.equals("Food")){
+                    ParseObject.unpinAllInBackground("food", new DeleteCallback(){
+
+                        @Override
+                        public void done(ParseException e) {
+                            ParseObject.pinAllInBackground("food", parseList);
+                        }
+                    });
+                    ListView listview = (ListView) findViewById(R.id.listViewStandardList);
+                    StandardListViewAdapter adapter = new StandardListViewAdapter(ActivityStandardList.this, list, "food");
+                    listview.setAdapter(adapter);
+                }
 				
 			}
 			
