@@ -1310,10 +1310,12 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020032;
         public static final int black_coin=0x7f020033;
         public static final int coin=0x7f020034;
-        public static final int ic_action_settings=0x7f020035;
-        public static final int ic_launcher=0x7f020036;
-        public static final int logo=0x7f020037;
-        public static final int white_arrow=0x7f020038;
+        public static final int ic_action_important=0x7f020035;
+        public static final int ic_action_not_important=0x7f020036;
+        public static final int ic_action_settings=0x7f020037;
+        public static final int ic_launcher=0x7f020038;
+        public static final int logo=0x7f020039;
+        public static final int white_arrow=0x7f02003a;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080097;
@@ -1325,6 +1327,7 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f08001f;
         public static final int action_bar_title=0x7f08001e;
         public static final int action_context_bar=0x7f080032;
+        public static final int action_favorites=0x7f08009b;
         public static final int action_menu_divider=0x7f080002;
         public static final int action_menu_presenter=0x7f080003;
         public static final int action_mode_bar=0x7f08002e;

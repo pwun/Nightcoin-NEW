@@ -1,11 +1,5 @@
 package de.nightcoin;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -22,13 +16,24 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class ActivityStandardItemView extends ActionBarActivity {
 
 	String name;
+    ParseObject serverObject;
 	StandardObject obj = new StandardObject();
+    ArrayList<String> favorites = new ArrayList<String>();
+    Menu menu;
+    MenuItem menuItemFavorites;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
         setTitle(name);
 		initButtons();
 		getData(name);
+        System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
 	}
 
 	private void initButtons() {
@@ -96,12 +102,13 @@ public class ActivityStandardItemView extends ActionBarActivity {
 			public void done(List<ParseObject> objects, ParseException e) {
 				// TODO Auto-generated method stub
 				System.out.println("Creating " + objects.get(0).get("name"));
-				ParseObject object = objects.get(0);
-				obj.setName((String) object.get("name"));
-				obj.setImage((ParseFile) object.getParseFile("image"));
-				obj.setWeekplan((ArrayList<String>) object.get("weekplan"));
-				obj.setOpening((ArrayList<String>) object.get("opensAt"));
-				obj.setClosing((ArrayList<String>) object.get("closesAt"));
+				serverObject = objects.get(0);
+				obj.setName((String) serverObject.get("name"));
+				obj.setImage((ParseFile) serverObject.getParseFile("image"));
+				obj.setWeekplan((ArrayList<String>) serverObject.get("weekplan"));
+				obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
+				obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
+                favorites = ((ArrayList<String>) serverObject.get("favorites"));
 
 				ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
 				img.setImageBitmap(obj.getImage());
@@ -167,6 +174,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_standard_item_view, menu);
+        checkIfFavorite();
 		return true;
 	}
 
@@ -176,11 +184,52 @@ public class ActivityStandardItemView extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		if (id == R.id.action_favorites) {
+            menuItemFavorites = item;
+			updateFavoriteStatus(item);
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+    private boolean isFavorite() {
+        return (favorites.contains(ParseInstallation.getCurrentInstallation().getInstallationId()));
+    }
+
+    private void checkIfFavorite() {
+        if (isFavorite()) {
+            System.out.println("is favorites");
+            menu.findItem(R.id.action_favorites).setIcon(getResources().getDrawable(R.drawable.ic_action_important));
+        } else {
+            System.out.println("no favorite");
+            menu.findItem(R.id.action_favorites).setIcon(getResources().getDrawable(R.drawable.ic_action_not_important));
+        }
+    }
+
+    private void updateFavoriteStatus(MenuItem item) {
+       if (isFavorite()) {
+           removeFromFavorites();
+           item.setIcon(getResources().getDrawable(R.drawable.ic_action_not_important));
+       } else {
+           addToFavorites();
+           item.setIcon(getResources().getDrawable(R.drawable.ic_action_important));
+       }
+
+        System.out.println("isFavorite: " + isFavorite());
+    }
+
+    private void addToFavorites() {
+        serverObject.add("favorites", ParseInstallation.getCurrentInstallation().getInstallationId());
+        favorites.add(ParseInstallation.getCurrentInstallation().getInstallationId());
+        serverObject.saveInBackground();
+        //menuItemFavorites.setIcon(getResources().getDrawable(R.drawable.ic_action_important));
+    }
+
+    private void removeFromFavorites() {
+        favorites.remove(ParseInstallation.getCurrentInstallation().getInstallationId());
+        ((ArrayList<String>) serverObject.get("favorites")).remove(ParseInstallation.getCurrentInstallation().getInstallationId());
+        serverObject.saveInBackground();
+       // menuItemFavorites.setIcon(getResources().getDrawable(R.drawable.ic_action_important));
+    }
 
 	private void getDailyData() {
 		Date d = new Date();
