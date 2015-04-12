@@ -29,7 +29,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".ActivityMain"
-            android:label="@string/app_name" >
+            android:label="Nightcoin" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

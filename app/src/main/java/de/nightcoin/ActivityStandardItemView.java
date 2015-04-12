@@ -31,10 +31,12 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_standard_item_view);
 		Intent i = getIntent();
 		name = i.getStringExtra("name");
+        setTitle(name);
 		initButtons();
 		getData(name);
 	}
