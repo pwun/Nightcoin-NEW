@@ -17,13 +17,15 @@ public class CoinListViewAdapter extends BaseAdapter{
 	Context listContext;
 	LayoutInflater inflater;
 	ArrayList<CoinObject> list;
+    boolean userModeActive;
 	
-	public CoinListViewAdapter(Context context, ArrayList<CoinObject> objectList){
+	public CoinListViewAdapter(Context context, ArrayList<CoinObject> objectList, boolean userModeActice){
 		super();
 		listContext = context;
 		inflater = LayoutInflater.from(listContext);
 		list = new ArrayList<CoinObject>();
 		list.addAll(objectList);
+        this.userModeActive = userModeActice;
 	}
 
 	@Override
@@ -90,11 +92,18 @@ public class CoinListViewAdapter extends BaseAdapter{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
-				Intent intent = new Intent(listContext, ActivityCoinItemView.class);
 
-				intent.putExtra("id", list.get(position).getId());
-				listContext.startActivity(intent);
+                if (userModeActive) {
+                    Intent intent = new Intent(listContext, ActivityEditCoin.class);
+
+                    intent.putExtra("id", list.get(position).getId());
+                    listContext.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(listContext, ActivityCoinItemView.class);
+
+                    intent.putExtra("id", list.get(position).getId());
+                    listContext.startActivity(intent);
+                }
 			}
 		});
 		

@@ -526,7 +526,7 @@ public class ActivityStandardList extends ActionBarActivity {
                     }
                 });
 				ListView listview = (ListView) findViewById(R.id.listViewStandardList);
-				CoinListViewAdapter adapter = new CoinListViewAdapter(ActivityStandardList.this, coinlist);
+				CoinListViewAdapter adapter = new CoinListViewAdapter(ActivityStandardList.this, coinlist, getIntent().getBooleanExtra("userModeActive", false));
 				listview.setAdapter(adapter);
 			}
 			
