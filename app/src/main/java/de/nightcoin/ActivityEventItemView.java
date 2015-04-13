@@ -41,9 +41,9 @@ public class ActivityEventItemView extends ActionBarActivity {
 		Intent i = getIntent();
 		title = i.getStringExtra("title");
 		initView();
-        initButtons();
         getEventData();
-	}
+
+    }
 	
 	private void initView(){
 		TextView title = (TextView) findViewById(R.id.textViewEventItemViewTitle);
@@ -60,13 +60,14 @@ public class ActivityEventItemView extends ActionBarActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(ActivityEventItemView.this, ActivityStandardList.class);
+                System.out.println(dateToFilterCoins);
                 i.putExtra("dateToFilter", dateToFilterCoins.getTime());
                 i.putExtra("input", "filteredCoins");
                 ActivityEventItemView.this.startActivity(i);
             }
         });
 
-        ticketButton = (Button) findViewById(R.id.buttonEventItemViewReservateTicket);
+        //ticketButton = (Button) findViewById(R.id.buttonEventItemViewReservateTicket);
     }
 
     private void getEventData() {
@@ -91,7 +92,7 @@ public class ActivityEventItemView extends ActionBarActivity {
                 setTextViews();
                 setImage();
 
-                // Tickets
+               /* // Tickets
                 ticketsEnabled = (boolean)object.get("ticketsAvailable");
                 if (ticketsEnabled) {
                     int tickets = (int)object.get("tickets");
@@ -101,7 +102,8 @@ public class ActivityEventItemView extends ActionBarActivity {
                     System.out.println("Tickets" + tickets);
                 } else {
                     ticketButton.setText("Keine Reservierung möglich");
-                }
+                }*/
+                initButtons();
             }
         });
     }

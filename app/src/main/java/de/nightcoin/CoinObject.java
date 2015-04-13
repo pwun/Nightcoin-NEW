@@ -9,7 +9,7 @@ public class CoinObject {
 	private String location;
 	private String date;
     private String id;
-    private Integer amount;
+    private int amount;
     private boolean limited;
     private int cashedIn;
 	
@@ -35,7 +35,7 @@ public class CoinObject {
         this.amount = amount;
     }
 
-    public Integer getAmount(){
+    public int getAmount(){
         return this.amount;
     }
 	

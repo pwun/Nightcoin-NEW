@@ -71,12 +71,18 @@ public class CoinListViewAdapter extends BaseAdapter{
 		holder.value.setText(list.get(position).getValue());
 		holder.location.setText(list.get(position).getLocation());
 		holder.date.setText(list.get(position).getDate());
-        if(list.get(position).isLimited()){
-            holder.amount.setText("noch " + (list.get(position).getAmount()-list.get(position).getCashedIn()) + " Stück verfügbar");
-        }
-        else{
-            holder.amount.setText("Unbegrenzt");
-        }
+
+        System.out.println("Amount= "+list.get(position).getAmount());
+        System.out.println("CashedIn= "+list.get(position).getCashedIn());
+
+            if (list.get(position).isLimited()) {
+                    holder.amount.setText("noch " + (list.get(position).getAmount() - list.get(position).getCashedIn()) + " Stück verfügbar");
+
+            } else {
+                holder.amount.setText("Unbegrenzt");
+            }
+
+
 		holder.image.setImageResource(R.drawable.black_coin);
 		
 		convertView.setOnClickListener(new OnClickListener() {

@@ -156,6 +156,7 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setValue((String) data.get("value"));
 						obj.setLocation((String) data.get("location"));
 						obj.setDate((Date) data.get("date"));
+                        obj.setAmount((Integer) data.get("amount"));
                         obj.setId((String) data.getObjectId());
                         obj.setLimited((Boolean) data.get("limited"));
                         try{
@@ -182,9 +183,12 @@ public class ActivityStandardList extends ActionBarActivity {
                     dateToFilter.setTime(getIntent().getLongExtra("dateToFilter", -1));
 
                     // date from Event set to 23:50 Uhr
-                    Date maxDate = dateToFilter;
+                    Date maxDate = (Date)dateToFilter.clone();
                     maxDate.setHours(23);
                     maxDate.setMinutes(50);
+
+                    System.out.println(dateToFilter);
+                    System.out.println(maxDate);
 
                     query = new ParseQuery<ParseObject>("Coupons");
                     query.whereGreaterThan("date", dateToFilter);
@@ -196,6 +200,7 @@ public class ActivityStandardList extends ActionBarActivity {
                         obj.setValue((String) data.get("value"));
                         obj.setLocation((String) data.get("location"));
                         obj.setDate((Date) data.get("date"));
+                        obj.setAmount((Integer) data.get("amount"));
                         obj.setId((String) data.getObjectId());
                         obj.setLimited((Boolean) data.get("limited"));
                         try{

@@ -300,15 +300,29 @@
 
             <TextView
                 android:id="@+id/textViewstandardItemViewContact"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kontakt" />
+                android:text="Kontakt"
+                android:textColor="@color/white"
+                android:background="@color/black_alpha"/>
 
-            <TextView
-                android:id="@+id/textViewStandardItemView"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tel.:" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewStandardItemView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tel.:" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anrufen"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textViewStandardItemViewAdress"

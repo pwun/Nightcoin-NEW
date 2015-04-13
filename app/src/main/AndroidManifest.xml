@@ -29,7 +29,8 @@
         android:theme="@style/CustomActionBarTheme" >
         <activity
             android:name=".ActivityMain"
-            android:label="Nightcoin" >
+            android:label="Nightcoin"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,51 +39,58 @@
         </activity>
         <activity
             android:name=".ActivityStandardList"
-            android:label="List" >
+            android:label="List"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityStandardItemView"
-            android:label="Location" >
+            android:label="Location"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityWeekplan"
-            android:label="Wochenprogramm" >
+            android:label="Wochenprogramm"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityEventItemView"
-            android:label="Veranstaltung" >
+            android:label="Veranstaltung"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivitySettings"
-            android:label="Einstellungen" >
-        </activity>
-        <activity
-            android:name=".UserActivity"
-            android:label="@string/title_activity_user" >
+            android:label="Einstellungen"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityUser"
-            android:label="Mein Konto" >
+            android:label="Mein Konto"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityCoinItemView"
-            android:label="Coin" >
+            android:label="Coin"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityDashboard"
-            android:label="@string/title_activity_activity_dashboard" >
+            android:label="Dashboard"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityEditPhone"
-            android:label="@string/title_activity_activity_edit_phone" >
+            android:label="Telefonnummer ändern"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityFoodItemView"
-            android:label="@string/title_activity_activity_food_item_view" >
+            android:label="Food"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ActivityTaxiItemView"
-            android:label="@string/title_activity_activity_taxi_item_view" >
+            android:label="Taxi"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
