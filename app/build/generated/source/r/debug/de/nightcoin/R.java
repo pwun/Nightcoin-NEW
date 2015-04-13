@@ -1602,23 +1602,24 @@ containing a value of this type.
         public static final int activity_coin_item_view=0x7f030017;
         public static final int activity_dashboard=0x7f030018;
         public static final int activity_edit_coin=0x7f030019;
-        public static final int activity_edit_phone=0x7f03001a;
-        public static final int activity_edit_weekplan=0x7f03001b;
-        public static final int activity_event_item_view=0x7f03001c;
-        public static final int activity_food_item_view=0x7f03001d;
-        public static final int activity_main=0x7f03001e;
-        public static final int activity_settings=0x7f03001f;
-        public static final int activity_standard_item_view=0x7f030020;
-        public static final int activity_standard_list=0x7f030021;
-        public static final int activity_taxi_item_view=0x7f030022;
-        public static final int activity_user=0x7f030023;
-        public static final int activity_weekplan=0x7f030024;
-        public static final int coin_list_view_adapter=0x7f030025;
-        public static final int edit_weekplan_header_view=0x7f030026;
-        public static final int edit_weekplan_list_adapter=0x7f030027;
-        public static final int standard_list_view_adapter=0x7f030028;
-        public static final int support_simple_spinner_dropdown_item=0x7f030029;
-        public static final int weekplan_adapter=0x7f03002a;
+        public static final int activity_edit_images=0x7f03001a;
+        public static final int activity_edit_phone=0x7f03001b;
+        public static final int activity_edit_weekplan=0x7f03001c;
+        public static final int activity_event_item_view=0x7f03001d;
+        public static final int activity_food_item_view=0x7f03001e;
+        public static final int activity_main=0x7f03001f;
+        public static final int activity_settings=0x7f030020;
+        public static final int activity_standard_item_view=0x7f030021;
+        public static final int activity_standard_list=0x7f030022;
+        public static final int activity_taxi_item_view=0x7f030023;
+        public static final int activity_user=0x7f030024;
+        public static final int activity_weekplan=0x7f030025;
+        public static final int coin_list_view_adapter=0x7f030026;
+        public static final int edit_weekplan_header_view=0x7f030027;
+        public static final int edit_weekplan_list_adapter=0x7f030028;
+        public static final int standard_list_view_adapter=0x7f030029;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
+        public static final int weekplan_adapter=0x7f03002b;
     }
     public static final class menu {
         public static final int activity_event_item_view=0x7f0c0000;
@@ -1630,12 +1631,13 @@ containing a value of this type.
         public static final int menu_activity_coin_view=0x7f0c0006;
         public static final int menu_activity_dashboard=0x7f0c0007;
         public static final int menu_activity_edit_coin=0x7f0c0008;
-        public static final int menu_activity_edit_phone=0x7f0c0009;
-        public static final int menu_activity_edit_weekplan=0x7f0c000a;
-        public static final int menu_activity_food_item_view=0x7f0c000b;
-        public static final int menu_activity_settings=0x7f0c000c;
-        public static final int menu_activity_taxi_item_view=0x7f0c000d;
-        public static final int menu_activity_user=0x7f0c000e;
+        public static final int menu_activity_edit_images=0x7f0c0009;
+        public static final int menu_activity_edit_phone=0x7f0c000a;
+        public static final int menu_activity_edit_weekplan=0x7f0c000b;
+        public static final int menu_activity_food_item_view=0x7f0c000c;
+        public static final int menu_activity_settings=0x7f0c000d;
+        public static final int menu_activity_taxi_item_view=0x7f0c000e;
+        public static final int menu_activity_user=0x7f0c000f;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;
@@ -1661,16 +1663,17 @@ containing a value of this type.
         public static final int title_activity_activity_coin_view=0x7f0a0014;
         public static final int title_activity_activity_dashboard=0x7f0a0015;
         public static final int title_activity_activity_edit_coin=0x7f0a0016;
-        public static final int title_activity_activity_edit_phone=0x7f0a0017;
-        public static final int title_activity_activity_event_item_view=0x7f0a0018;
-        public static final int title_activity_activity_food_item_view=0x7f0a0019;
-        public static final int title_activity_activity_settings=0x7f0a001a;
-        public static final int title_activity_activity_standard_item_view=0x7f0a001b;
-        public static final int title_activity_activity_standard_list=0x7f0a001c;
-        public static final int title_activity_activity_taxi_item_view=0x7f0a001d;
-        public static final int title_activity_activity_user=0x7f0a001e;
-        public static final int title_activity_activity_weekplan=0x7f0a001f;
-        public static final int title_activity_user=0x7f0a0020;
+        public static final int title_activity_activity_edit_images=0x7f0a0017;
+        public static final int title_activity_activity_edit_phone=0x7f0a0018;
+        public static final int title_activity_activity_event_item_view=0x7f0a0019;
+        public static final int title_activity_activity_food_item_view=0x7f0a001a;
+        public static final int title_activity_activity_settings=0x7f0a001b;
+        public static final int title_activity_activity_standard_item_view=0x7f0a001c;
+        public static final int title_activity_activity_standard_list=0x7f0a001d;
+        public static final int title_activity_activity_taxi_item_view=0x7f0a001e;
+        public static final int title_activity_activity_user=0x7f0a001f;
+        public static final int title_activity_activity_weekplan=0x7f0a0020;
+        public static final int title_activity_user=0x7f0a0021;
     }
     public static final class style {
         /** 

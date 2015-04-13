@@ -27,6 +27,7 @@ public class ActivityStandardList extends ActionBarActivity {
 
 	Intent i;
 	String mode;
+    Menu menu;
 	ProgressDialog dialog;
 	List<ParseObject> parseList;
 	List<StandardObject> list = null;
@@ -137,14 +138,27 @@ public class ActivityStandardList extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_standard_list, menu);
-/*        if (mode.equals("nextCoins")) {
-
-        }
-        MenuItem item = menu.findItem(R.id.action_newCoin);
-        item.setVisible(true);
-        item.setEnabled(true);*/
+        this.menu = menu;
+        checkIfUserMode();
         return true;
 	}
+
+    private void checkIfUserMode(){
+        //System.out.println();
+        if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")) {
+           boolean user = i.getBooleanExtra("userModeActive",true);
+            System.out.println("Usermode: "+ user); //GIBT IMMER TRUE AUS!!
+            if(user){//usermode abfragen
+                menu.findItem(R.id.action_newCoin).setVisible(true);
+            }
+        }
+        /*if(menu!=null) {
+                            System.out.println(menu);
+                            MenuItem item = menu.findItem(R.id.action_newCoin);
+                            item.setVisible(true);
+                            item.setEnabled(true);
+                        }*/
+    }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -226,7 +240,8 @@ public class ActivityStandardList extends ActionBarActivity {
                             obj.setCashedIn(0);
                         }
 						//set every needed value here
-						
+
+
 						coinlist.add(obj);
 						System.out.println("Coin fetched: "+ obj.getValue());
 					}

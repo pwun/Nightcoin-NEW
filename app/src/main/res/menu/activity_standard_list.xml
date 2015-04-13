@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="de.nightcoin.ActivityStandardList" >
 
-<!--    <item android:id="@+id/action_newCoin" android:title="Neuer Coin"
+    <item android:id="@+id/action_newCoin" android:title="Neuer Coin"
         android:icon="@drawable/ic_action_new"
         android:visible="false"
         android:enabled="false"
         android:orderInCategory="100" app:showAsAction="always" />
--->
 
 
 </menu>
