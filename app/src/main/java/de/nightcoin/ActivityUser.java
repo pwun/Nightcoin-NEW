@@ -50,6 +50,18 @@ public class ActivityUser extends ActionBarActivity {
                 ActivityUser.this.startActivity(i);
             }
         });
+
+        Button editCoinsButton = (Button) findViewById(R.id.buttonUserActivityEditCoins);
+        editCoinsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityUser.this, ActivityStandardList.class);
+                i.putExtra("input", "nextCoins");
+                i.putExtra("userModeActive", true);
+                i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
+                ActivityUser.this.startActivity(i);
+            }
+        });
     }
 
     @Override

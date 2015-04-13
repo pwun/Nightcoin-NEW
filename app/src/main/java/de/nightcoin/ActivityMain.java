@@ -1,17 +1,19 @@
 package de.nightcoin;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ScaleDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.parse.ParseException;
+import com.parse.ParsePush;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class ActivityMain extends ActionBarActivity {
 
@@ -21,7 +23,21 @@ public class ActivityMain extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		initButtons();
         TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Roboto-Light.ttf"); // font from assets: "assets/fonts/Roboto-Regular.tt
+        subscribeToNotifications();
 	}
+
+    private void subscribeToNotifications() {
+        ParsePush.subscribeInBackground("global", new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.d("com.parse.push", "successfully subscribed to the broadcast channel.");
+                } else {
+                    Log.e("com.parse.push", "failed to subscribe for push", e);
+                }
+            }
+        });
+    }
 
 	private void initButtons() {
 		Button coins = (Button) findViewById(R.id.buttonMainCoins);
