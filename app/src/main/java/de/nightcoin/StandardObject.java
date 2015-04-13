@@ -23,8 +23,26 @@ public class StandardObject{
     private boolean isOpen;
     private String tel;
     private String adr;
+    private double lat;
+    private double lon;
 	
 	public StandardObject(){}
+
+    public void setLat(double lat){
+        this.lat = lat;
+    }
+
+    public double getLat(){
+        return this.lat;
+    }
+
+    public void setLong(double lon){
+        this.lon = lon;
+    }
+
+    public double getLong(){
+        return this.lon;
+    }
 
     public String getTel(){
         return this.tel;

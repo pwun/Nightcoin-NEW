@@ -13,6 +13,7 @@ import android.widget.ListView;
 import com.parse.DeleteCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -461,6 +462,9 @@ public class ActivityStandardList extends ActionBarActivity {
                     for (ParseObject data : parseList) {
                         StandardObject obj = new StandardObject();
                         obj.setName((String) data.get("name"));
+                        ParseGeoPoint geo = (ParseGeoPoint) data.get("geoData");
+                        obj.setLong(geo.getLongitude());
+                        obj.setLat(geo.getLatitude());
                         //obj.setAdr((String) data.get("adress"));
                         //obj.setTel((String) data.get("phone"));
                         try{obj.setImage(data.getParseFile("image"));}

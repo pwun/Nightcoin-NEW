@@ -14,11 +14,13 @@ import android.widget.TextView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class ActivityFoodItemView extends ActionBarActivity {
@@ -40,6 +42,8 @@ public class ActivityFoodItemView extends ActionBarActivity {
 
     private void initButton(){
         Button call = (Button)findViewById(R.id.buttonFoodItemViewCall);
+        Button map = (Button)findViewById(R.id.buttonFoodItemViewMap);
+
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +53,24 @@ public class ActivityFoodItemView extends ActionBarActivity {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(uri));
                 startActivity(intent);
+            }
+        });
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double latitude = obj.getLat();
+                double longitude = obj.getLong();
+                try{
+                    String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
+                    //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<lat>,<long>?q=<lat>,<long>("+obj.getName()+")"));
+
+                    ActivityFoodItemView.this.startActivity(intent);
+                    System.out.println("Lon/Lat = "+ latitude + "/" + longitude);
+                }catch(Exception e){
+                    System.out.println("FEHLER! Lon/Lat = "+ latitude + "/" + longitude);
+                }
             }
         });
     }
@@ -69,6 +91,9 @@ public class ActivityFoodItemView extends ActionBarActivity {
                 obj.setImage((ParseFile) serverObject.getParseFile("image"));
                 obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
                 obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
+                ParseGeoPoint geo = (ParseGeoPoint) serverObject.get("geoData");
+                obj.setLat(geo.getLatitude());
+                obj.setLong(geo.getLongitude());
                 obj.setAdr((String) serverObject.get("address"));
                 obj.setTel((String) serverObject.get("phone"));
 
