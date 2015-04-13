@@ -1,8 +1,10 @@
 package de.nightcoin;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -153,6 +155,7 @@ public class ActivityEditImages extends ActionBarActivity {
                             image5.setImageBitmap(bmp);
                             // Close progress dialog
                             progressDialog.dismiss();
+                            getImageFromDevice();
                         } else {
                             Log.d("test",
                                     "There was a problem downloading the data.");
@@ -161,6 +164,22 @@ public class ActivityEditImages extends ActionBarActivity {
                 });
             }
         });
+    }
+
+
+    private void getImageFromDevice() {
+        Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        photoPickerIntent.setType("image/*");
+        startActivityForResult(photoPickerIntent, 1);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Uri chosenImageUri = data.getData();
+
+            image1.setImageURI(chosenImageUri);
+        }
     }
 
 
