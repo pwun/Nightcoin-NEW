@@ -335,6 +335,14 @@ public class ActivityStandardList extends ActionBarActivity {
                         if(data.getParseFile("image")!= null){
                             obj.setImage(data.getParseFile("image"));
                         }
+                        try{
+                            obj.setOpening((ArrayList<String>)data.get("opensAt"));
+                            obj.setClosing((ArrayList<String>)data.get("closesAt"));
+                        }
+                        catch(Exception e){
+                            System.out.println("Keine öffnungszeiten gefunden");
+                        }
+
 /*
                         obj.setOpen(locationIsOpen(obj));
 */
@@ -359,6 +367,13 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setImage((ParseFile) data.getParseFile("image"));
 						//set every needed value here
                         System.out.println("Checke Öffnungszeiten...");
+                        try{
+                            obj.setOpening((ArrayList<String>)data.get("opensAt"));
+                            obj.setClosing((ArrayList<String>)data.get("closesAt"));
+                        }
+                        catch(Exception e){
+                            System.out.println("Keine öffnungszeiten gefunden");
+                        }
 						
 						list.add(obj);
 						System.out.println("Location fetched: "+ obj.getName());	
@@ -400,6 +415,13 @@ public class ActivityStandardList extends ActionBarActivity {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
 						obj.setImage(data.getParseFile("image"));
+                        try{
+                            obj.setOpening((ArrayList<String>)data.get("opensAt"));
+                            obj.setClosing((ArrayList<String>)data.get("closesAt"));
+                        }
+                        catch(Exception e){
+                            System.out.println("Keine öffnungszeiten gefunden");
+                        }
 						//set every needed value here
 
 						list.add(obj);

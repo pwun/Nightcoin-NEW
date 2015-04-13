@@ -125,6 +125,13 @@ public class StandardListViewAdapter extends BaseAdapter {
         }
         else {
 
+            holder.bottomDetail.setText(list.get(position).getOpeningToday());
+            if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
+                holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));
+            }
+            else{
+                holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.dark_red));
+            }
 /*            try {
                 if (list.get(position).isOpen()) {
                     holder.bottomDetail.setText("Geöffnet");

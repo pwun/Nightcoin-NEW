@@ -7,6 +7,7 @@ import com.parse.ParseFile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class StandardObject{
@@ -22,6 +23,70 @@ public class StandardObject{
     private boolean isOpen;
 	
 	public StandardObject(){}
+
+    public String getOpeningToday(){
+        String open = "";
+        String closed = "";
+        Date now = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(now);
+        int day = cal.DAY_OF_WEEK;
+        switch (day)
+        {
+            case Calendar.MONDAY:	open=opening[1];
+                closed=closing[1];
+                break;
+            case Calendar.TUESDAY:	open=opening[2];
+                closed=closing[2];
+                break;
+            case Calendar.WEDNESDAY:open=opening[3];
+                closed=closing[3];
+                break;
+            case Calendar.THURSDAY:	open=opening[4];
+                closed=closing[4];
+                break;
+            case Calendar.FRIDAY:	open=opening[5];
+                closed=closing[5];
+                break;
+            case Calendar.SATURDAY:	open=opening[6];
+                closed=closing[6];
+                break;
+            case Calendar.SUNDAY:	open=opening[0];
+                closed=closing[0];
+                break;
+        }
+        if(open.equals("")){
+            return "";
+        }
+        if(open.equals("-")){
+            return "Heute geschlossen";
+        }
+        if(/*Geöffnet*/openToday(open, closed, now.getHours())){
+            return "Geöffnet";
+        }
+        return "Öffnet um "+ open+ " Uhr";
+    }
+
+    private boolean openToday (String open, String closed, int hour){
+        int o = 1;
+        if(open.length()>1) {
+            String onew = "" + open.charAt(0) + open.charAt(1);
+            o = Integer.parseInt(onew);
+        }
+        int c = 1;
+        if(closed.length()>1) {
+            String cnew = "" + closed.charAt(0) + closed.charAt(1);
+            c = Integer.parseInt(cnew);
+        }
+
+
+        if (hour >= o || hour < c) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
     public void setFavorite(boolean status) {
         this.isFavorite = status;
