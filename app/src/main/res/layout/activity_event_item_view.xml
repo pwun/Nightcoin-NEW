@@ -76,13 +76,17 @@
                     android:id="@+id/buttonEventItemViewFilteredCoins"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textSize="20dp"
+                    android:background="@color/black_alpha"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:gravity="center_vertical"
-                    android:text="Coins an diesem Tag"
-                    android:layout_below="@+id/textViewEventItemViewPrice"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
-                    android:paddingBottom="5dp" />
+                    android:paddingBottom="5dp"
+                    android:text="Coins an diesem Tag"
+                    android:layout_below="@+id/textViewEventItemViewPrice"
+                     />
 <!--
                 <Button
                     android:id="@+id/buttonEventItemViewReservateTicket"
@@ -96,16 +100,16 @@
 -->
                 <TextView
                     android:id="@+id/textViewEventItemViewDescriptionTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
                     android:text="Beschreibung"
-                    android:layout_below="@+id/buttonEventItemViewReservateTicket"
-                    android:paddingLeft="10dp"
-                    android:gravity="center_vertical"
+                    android:layout_below="@+id/buttonEventItemViewFilteredCoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textSize="20dp"
                     android:background="@color/black_alpha"
                     android:textColor="@color/white"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
 
                 <TextView
                     android:id="@+id/textViewEventItemViewDescription"

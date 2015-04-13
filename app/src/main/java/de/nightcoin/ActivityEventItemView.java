@@ -126,14 +126,14 @@ public class ActivityEventItemView extends ActionBarActivity {
         img.loadInBackground();
     }
 
-    private void checkTickets(int numberOfTickets, int reservatedTickets) {
+    /*private void checkTickets(int numberOfTickets, int reservatedTickets) {
         Button ticketButton = (Button)findViewById(R.id.buttonEventItemViewReservateTicket);
         if (reservatedTickets < numberOfTickets) {
             ticketButton.setText("Reservierung möglich");
         } else {
             ticketButton.setText("Keine Reservierung möglich");
         }
-    }
+    }*/
 
     // gets the date of the event as parameter and sets it to 1 p.m.
     // then sets the Date ivar that's later used to filter coins
