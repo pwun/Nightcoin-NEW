@@ -338,8 +338,7 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setName((String) data.get("name"));
                         //obj.setAdr((String) data.get("adress"));
                         //obj.setTel((String) data.get("phone"));
-                        obj.setOpening((ArrayList<String>) data.get("opensAt"));
-                        obj.setClosing((ArrayList<String>) data.get("closesAt"));
+
                         if(data.getParseFile("image")!= null){
                             obj.setImage(data.getParseFile("image"));
                         }

@@ -1,6 +1,7 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -43,14 +44,27 @@ public class ActivityStandardItemView extends ActionBarActivity {
 		Intent i = getIntent();
 		name = i.getStringExtra("name");
         setTitle(name);
-        initButtons();
         getData(name);
+        initButtons();
         System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
 	}
 
 
 
 	private void initButtons() {
+        Button callTaxi = (Button)findViewById(R.id.buttonStandardItemViewCall);
+        callTaxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tel = obj.getTel();
+
+                String uri = "tel:" + tel.trim() ;
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(uri));
+                startActivity(intent);
+            }
+        });
+
 		Button weekplan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
 
 		weekplan.setOnClickListener(new OnClickListener() {

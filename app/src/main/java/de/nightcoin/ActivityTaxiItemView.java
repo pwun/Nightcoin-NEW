@@ -1,10 +1,13 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +35,23 @@ public class ActivityTaxiItemView extends ActionBarActivity {
         name = i.getStringExtra("title");
         setTitle(name);
         getData(name);
+        initButton();
+    }
+
+    private void initButton(){
+        Button callTaxi = (Button)findViewById(R.id.buttonTaxiItemViewCallTaxi);
+        callTaxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tel = obj.getTel();
+
+                String uri = "tel:" + tel.trim() ;
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(uri));
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void getData(String name) {
@@ -48,6 +68,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
                 serverObject = objects.get(0);
                 obj.setName((String) serverObject.get("name"));
                 obj.setImage((ParseFile) serverObject.getParseFile("image"));
+                obj.setTel((String) serverObject.get("phone"));
                 obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
                 obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
 

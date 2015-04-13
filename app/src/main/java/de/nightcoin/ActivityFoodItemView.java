@@ -1,10 +1,13 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +35,22 @@ public class ActivityFoodItemView extends ActionBarActivity {
         name = i.getStringExtra("title");
         setTitle(name);
         getData(name);
+        initButton();
+    }
+
+    private void initButton(){
+        Button call = (Button)findViewById(R.id.buttonFoodItemViewCall);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tel = obj.getTel();
+
+                String uri = "tel:" + tel.trim() ;
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(uri));
+                startActivity(intent);
+            }
+        });
     }
 
     private void getData(String name) {
@@ -50,8 +69,24 @@ public class ActivityFoodItemView extends ActionBarActivity {
                 obj.setImage((ParseFile) serverObject.getParseFile("image"));
                 obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
                 obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
+                obj.setAdr((String) serverObject.get("address"));
+                obj.setTel((String) serverObject.get("phone"));
 
 
+                TextView tel = (TextView)findViewById(R.id.textViewFoodItemViewTel);
+                if(obj.getTel()!=null){
+                    tel.setText("Tel.: "+obj.getTel());
+                    System.out.println(obj.getTel());
+                }
+                else{System.out.println("Fehler bei Telefonnummer");}
+                TextView adr = (TextView)findViewById(R.id.textViewFoodItemViewAdress);
+                if(obj.getAdr()!=null){
+                    adr.setText("Adr.: "+obj.getAdr());
+                    System.out.println(obj.getAdr());
+                }
+                else{
+                    System.out.println("Fehler bei der Adresse");
+                }
 
                 ImageView img = (ImageView) findViewById(R.id.imageViewFoodItemView);
 
