@@ -30,6 +30,7 @@ public class ActivityEditCoin extends ActionBarActivity {
     EditText editValue;
     EditText editAmount;
     Button saveButton;
+    boolean isNewCoin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,30 @@ public class ActivityEditCoin extends ActionBarActivity {
         setContentView(R.layout.activity_edit_coin);
         init();
         setSaveButtonClickListener();
+        isNewCoin = getIntent().getBooleanExtra("isNewCoin", true);
+        if (isNewCoin) {
+            Date now = new Date();
+            datePicker.init(now.getYear(), now.getMonth(), now.getDay(), null);
+            editValue.setHint("Wert");
+            editAmount.setHint("Anzahl");
+        } else {
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Coupons");
+            query.whereEqualTo("objectId", getIntent().getStringExtra("id"));
+            query.setLimit(1);
+            query.fromLocalDatastore();
+            query.findInBackground(new FindCallback<ParseObject>() {
+
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+                    // TODO Auto-generated method stub
+                    serverObject = objects.get(0);
+                    Date objectDate = (serverObject.getDate("date"));
+                    datePicker.init(objectDate.getYear(), objectDate.getMonth(), objectDate.getDay(), null);
+                    editValue.setText(serverObject.get("value").toString());
+                    editAmount.setText(serverObject.get("amount").toString());
+                }
+            });
+        }
     }
 
     private void setSaveButtonClickListener() {
@@ -70,29 +95,16 @@ public class ActivityEditCoin extends ActionBarActivity {
         });
     }
 
+
     private void init(){
         datePicker = (DatePicker) findViewById(R.id.datePickerActivityEditCoins);
+        datePicker.setMinDate(new Date().getTime());
         editValue = (EditText) findViewById(R.id.editTextActivityEditCoinsValue);
         editAmount = (EditText) findViewById(R.id.editTextActivityEditCoinsAmount);
         saveButton = (Button) findViewById(R.id.buttonActivityEditCoinsSave);
-
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Coupons");
-        query.whereEqualTo("objectId", getIntent().getStringExtra("id"));
-        query.setLimit(1);
-        query.fromLocalDatastore();
-        query.findInBackground(new FindCallback<ParseObject>() {
-
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                // TODO Auto-generated method stub
-                serverObject = objects.get(0);
-                Date objectDate = (serverObject.getDate("date"));
-                datePicker.init(objectDate.getYear(), objectDate.getMonth(), objectDate.getDay(), null);
-                editValue.setText(serverObject.get("value").toString());
-                editAmount.setText(serverObject.get("amount").toString());
-            }
-        });
     }
+
+
 
 
     @Override

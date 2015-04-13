@@ -137,6 +137,12 @@ public class ActivityStandardList extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_standard_list, menu);
+/*        if (mode.equals("nextCoins")) {
+
+        }
+        MenuItem item = menu.findItem(R.id.action_newCoin);
+        item.setVisible(true);
+        item.setEnabled(true);*/
         return true;
 	}
 
@@ -146,7 +152,7 @@ public class ActivityStandardList extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_newCoin) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

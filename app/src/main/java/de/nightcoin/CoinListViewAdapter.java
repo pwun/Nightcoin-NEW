@@ -97,6 +97,7 @@ public class CoinListViewAdapter extends BaseAdapter{
                     Intent intent = new Intent(listContext, ActivityEditCoin.class);
 
                     intent.putExtra("id", list.get(position).getId());
+                    intent.putExtra("isNewCoin", true);
                     listContext.startActivity(intent);
                 } else {
                     Intent intent = new Intent(listContext, ActivityCoinItemView.class);
