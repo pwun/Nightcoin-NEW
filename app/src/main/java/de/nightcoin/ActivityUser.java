@@ -62,6 +62,16 @@ public class ActivityUser extends ActionBarActivity {
                 ActivityUser.this.startActivity(i);
             }
         });
+
+        Button editImagesButton = (Button) findViewById(R.id.buttonUserActivityEditImages);
+        editImagesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityUser.this, ActivityEditImages.class);
+                i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
+                ActivityUser.this.startActivity(i);
+            }
+        });
     }
 
     @Override
