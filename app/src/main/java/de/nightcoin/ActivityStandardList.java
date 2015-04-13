@@ -146,8 +146,7 @@ public class ActivityStandardList extends ActionBarActivity {
     private void checkIfUserMode(){
         //System.out.println();
         if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")) {
-           boolean user = i.getBooleanExtra("userModeActive",true);
-            System.out.println("Usermode: "+ user); //GIBT IMMER TRUE AUS!!
+           boolean user = i.getBooleanExtra("userModeActive",false);
             if(user){//usermode abfragen
                 menu.findItem(R.id.action_newCoin).setVisible(true);
             }
