@@ -42,13 +42,10 @@ public class ActivityStandardItemView extends ActionBarActivity {
 		setContentView(R.layout.activity_standard_item_view);
 		Intent i = getIntent();
 		name = i.getStringExtra("name");
-
-            setTitle(name);
-            initButtons();
-            getData(name);
-            System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
-
-
+        setTitle(name);
+        initButtons();
+        getData(name);
+        System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
 	}
 
 	private void initButtons() {
