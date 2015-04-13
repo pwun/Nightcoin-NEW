@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 
 
 public class ActivitySettings extends ActionBarActivity {
@@ -74,10 +76,30 @@ public class ActivitySettings extends ActionBarActivity {
                 sendMailButton.setVisibility(View.VISIBLE);
 
                 TextView infoTextView = (TextView)findViewById(R.id.textViewSettingsInfoMessage);
-                infoTextView.setText("Sobald die zu Deinem Account zugehörige Email-Adresse bestätigt wurde, senden wir Dir umgehen ein Email, mit der Du Dein Passwort wiederherstellen kannst. Solltest du diese Email-Adresse vergessen oder keinen Zugang mehr dazu haben, kontaktieren uns bitte telefonisch oder über info@nightcoin.de.");
+                infoTextView.setText("Sobald die zu Deinem Account zugehörige Email-Adresse bestätigt wurde, senden wir Dir umgehend eine Email, mit der Du Dein Passwort wiederherstellen kannst. Solltest du diese Email-Adresse vergessen haben oder keinen Zugang mehr dazu haben, kontaktiere uns bitte telefonisch oder über info@nightcoin.de.");
 
-                EditText mailEditText = (EditText) findViewById(R.id.editTextSettingsEmail);
+                final EditText mailEditText = (EditText) findViewById(R.id.editTextSettingsEmail);
                 mailEditText.setVisibility(View.VISIBLE);
+
+                sendMailButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        ParseUser.requestPasswordResetInBackground(mailEditText.getText().toString(),
+                                new RequestPasswordResetCallback() {
+                                    @Override
+                                    public void done(com.parse.ParseException e) {
+                                        if (e == null) {
+                                            Toast t = Toast.makeText(ActivitySettings.this, "Email gesendet an: " + mailEditText.getText().toString(), Toast.LENGTH_LONG);
+                                            t.show();
+                                        } else {
+                                            Toast t = Toast.makeText(ActivitySettings.this, "Fehler: Email konnte nicht gesendet werden.", Toast.LENGTH_LONG);
+                                            t.show();
+                                        }
+                                    }
+                                });
+                    }
+                });
             }
         });
     }
