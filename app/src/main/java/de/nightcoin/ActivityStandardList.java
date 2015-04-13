@@ -315,6 +315,8 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setImage(data.getParseFile("image"));
                         obj.setDate((Date)data.get("date"));
                         obj.setLocation((String) data.get("location"));
+                        //obj.setAdr((String) data.get("adress"));
+                        //obj.setTel((String) data.get("phone"));
 						//set every needed value here
 						
 						list.add(obj);
@@ -334,6 +336,8 @@ public class ActivityStandardList extends ActionBarActivity {
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
+                        //obj.setAdr((String) data.get("adress"));
+                        //obj.setTel((String) data.get("phone"));
                         obj.setOpening((ArrayList<String>) data.get("opensAt"));
                         obj.setClosing((ArrayList<String>) data.get("closesAt"));
                         if(data.getParseFile("image")!= null){
@@ -376,6 +380,8 @@ public class ActivityStandardList extends ActionBarActivity {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
 						obj.setImage((ParseFile) data.getParseFile("image"));
+                        //obj.setAdr((String) data.get("adress"));
+                        //obj.setTel((String) data.get("phone"));
 						//set every needed value here
                         System.out.println("Checke Öffnungszeiten...");
                         try{
@@ -405,6 +411,8 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setImage(data.getParseFile("image"));
                         obj.setDate((Date)data.get("date"));
                         obj.setLocation((String) data.get("location"));
+                        //obj.setAdr((String) data.get("adress"));
+                        //obj.setTel((String) data.get("phone"));
 						//set every needed value here
 						
 						list.add(obj);
@@ -426,6 +434,8 @@ public class ActivityStandardList extends ActionBarActivity {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
 						obj.setImage(data.getParseFile("image"));
+                        //obj.setAdr((String) data.get("adress"));
+                        //obj.setTel((String) data.get("phone"));
                         try{
                             obj.setOpening((ArrayList<String>)data.get("opensAt"));
                             obj.setClosing((ArrayList<String>)data.get("closesAt"));
@@ -452,9 +462,18 @@ public class ActivityStandardList extends ActionBarActivity {
                     for (ParseObject data : parseList) {
                         StandardObject obj = new StandardObject();
                         obj.setName((String) data.get("name"));
+                        //obj.setAdr((String) data.get("adress"));
+                        //obj.setTel((String) data.get("phone"));
                         try{obj.setImage(data.getParseFile("image"));}
                         catch (Exception e){
                             System.out.println("Image setzen fehler");
+                        }
+                        try{
+                            obj.setOpening((ArrayList<String>)data.get("opensAt"));
+                            obj.setClosing((ArrayList<String>)data.get("closesAt"));
+                        }
+                        catch(Exception e){
+                            System.out.println("Keine öffnungszeiten gefunden");
                         }
                         //set every needed value here
 
@@ -475,6 +494,8 @@ public class ActivityStandardList extends ActionBarActivity {
                     for (ParseObject data : parseList) {
                         StandardObject obj = new StandardObject();
                         obj.setName((String) data.get("name"));
+                        obj.setAdr((String) data.get("adress"));
+                        obj.setTel((String) data.get("phone"));
                         try{obj.setImage(data.getParseFile("image"));}
                         catch (Exception e){
                             System.out.println("Image setzen fehler");

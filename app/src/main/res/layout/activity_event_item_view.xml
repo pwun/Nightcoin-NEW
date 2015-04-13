@@ -83,7 +83,7 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp" />
-
+<!--
                 <Button
                     android:id="@+id/buttonEventItemViewReservateTicket"
                     android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                     android:text="Reservierung möglich"
                     android:layout_below="@+id/buttonEventItemViewFilteredCoins"
                     android:paddingLeft="10dp" />
-
+-->
                 <TextView
                     android:id="@+id/textViewEventItemViewDescriptionTitle"
                     android:layout_width="match_parent"

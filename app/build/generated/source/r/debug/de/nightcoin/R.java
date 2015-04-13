@@ -1359,7 +1359,7 @@ containing a value of this type.
         public static final int buttonActivityEditPhoneSaveNumber=0x7f08004d;
         public static final int buttonCoinItemViewCashIn=0x7f080045;
         public static final int buttonEventItemViewFilteredCoins=0x7f080055;
-        public static final int buttonEventItemViewReservateTicket=0x7f080056;
+        public static final int buttonEventItemViewReservateTicket=0x7f080057;
         public static final int buttonLayout=0x7f080085;
         public static final int buttonMainBars=0x7f080078;
         public static final int buttonMainClubs=0x7f080079;
@@ -1469,7 +1469,7 @@ containing a value of this type.
         public static final int textViewCoinListViewAdapterValue=0x7f0800d3;
         public static final int textViewEventItemViewDate=0x7f080053;
         public static final int textViewEventItemViewDescription=0x7f080058;
-        public static final int textViewEventItemViewDescriptionTitle=0x7f080057;
+        public static final int textViewEventItemViewDescriptionTitle=0x7f080056;
         public static final int textViewEventItemViewLocation=0x7f080052;
         public static final int textViewEventItemViewPrice=0x7f080054;
         public static final int textViewEventItemViewTitle=0x7f080051;
@@ -1500,7 +1500,6 @@ containing a value of this type.
         public static final int textViewFoodItemViewSoOpening=0x7f08006a;
         public static final int textViewSettingsErrorMessage=0x7f080080;
         public static final int textViewSettingsInfoMessage=0x7f080088;
-        public static final int textViewStandardItemView=0x7f0800ac;
         public static final int textViewStandardItemViewAdress=0x7f0800ad;
         public static final int textViewStandardItemViewDi=0x7f080095;
         public static final int textViewStandardItemViewDiClosing=0x7f0800a5;
@@ -1524,6 +1523,7 @@ containing a value of this type.
         public static final int textViewStandardItemViewSo=0x7f08009a;
         public static final int textViewStandardItemViewSoClosing=0x7f0800aa;
         public static final int textViewStandardItemViewSoOpening=0x7f0800a2;
+        public static final int textViewStandardItemViewTel=0x7f0800ac;
         public static final int textViewStandardItemViewTodaysCoins=0x7f08008d;
         public static final int textViewStandardItemViewTodaysCoinsDetail=0x7f08008e;
         public static final int textViewStandardItemViewTodaysEvents=0x7f08008b;

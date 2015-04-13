@@ -107,10 +107,27 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				serverObject = objects.get(0);
 				obj.setName((String) serverObject.get("name"));
 				obj.setImage((ParseFile) serverObject.getParseFile("image"));
+                obj.setAdr((String) serverObject.get("address"));
+                obj.setTel((String) serverObject.get("phone"));
 				obj.setWeekplan((ArrayList<String>) serverObject.get("weekplan"));
 				obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
 				obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
                 favorites = ((ArrayList<String>) serverObject.get("favorites"));
+
+                TextView tel = (TextView)findViewById(R.id.textViewStandardItemViewTel);
+                if(obj.getTel()!=null){
+                    tel.setText("Tel.: "+obj.getTel());
+                    System.out.println(obj.getTel());
+                }
+                else{System.out.println("Fehler bei Telefonnummer");}
+                TextView adr = (TextView)findViewById(R.id.textViewStandardItemViewAdress);
+                if(obj.getAdr()!=null){
+                    adr.setText("Adr.: "+obj.getAdr());
+                    System.out.println(obj.getAdr());
+                }
+                else{
+                    System.out.println("Fehler bei der Adresse");
+                }
 
 
 

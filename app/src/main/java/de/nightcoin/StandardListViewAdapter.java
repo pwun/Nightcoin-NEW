@@ -94,6 +94,8 @@ public class StandardListViewAdapter extends BaseAdapter {
 			});
 		}
         else if(mode.equals("taxi")){
+            holder.topDetail.setVisibility(View.INVISIBLE);
+            holder.bottomDetail.setVisibility(View.INVISIBLE);
             convertView.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -109,6 +111,13 @@ public class StandardListViewAdapter extends BaseAdapter {
             });
         }
         else if(mode.equals("food")){
+            holder.bottomDetail.setText(list.get(position).getOpeningToday());
+            if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
+                holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));
+            }
+            else{
+                holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.dark_red));
+            }
             convertView.setOnClickListener(new OnClickListener() {
 
                 @Override

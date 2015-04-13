@@ -21,8 +21,26 @@ public class StandardObject{
     private String date;
     private boolean isFavorite;
     private boolean isOpen;
+    private String tel;
+    private String adr;
 	
 	public StandardObject(){}
+
+    public String getTel(){
+        return this.tel;
+    }
+
+    public void setTel(String tel){
+        this.tel = tel;
+    }
+
+    public String getAdr(){
+        return this.adr;
+    }
+
+    public void setAdr(String newAdr){
+        this.adr = newAdr;
+    }
 
     public String getOpeningToday(){
         String open = "";
