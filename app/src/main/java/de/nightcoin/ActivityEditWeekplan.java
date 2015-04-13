@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 
 import com.parse.FindCallback;
@@ -67,8 +68,13 @@ public class ActivityEditWeekplan extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_save) {
+            for (int i = 1; i < 7; i++) {
+                EditText editText = (EditText)adapter.getChildView(i, 1, true, null, null).findViewById(R.id.editTextEditWeekPlanAdapter);
+
+                System.out.println("" + editText.getText().toString());
+
+            }
         }
 
         return super.onOptionsItemSelected(item);

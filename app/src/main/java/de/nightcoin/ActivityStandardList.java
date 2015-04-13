@@ -176,6 +176,8 @@ public class ActivityStandardList extends ActionBarActivity {
 
             if (!(object.getOpening()[normalizeWeekday(new Date())].equals("-"))) {
                 opensAt = Integer.parseInt(object.getOpening()[normalizeWeekday(new Date())]);
+            }
+            if (!(object.getClosing()[normalizeWeekday(new Date())].equals("-"))) {
                 closesAt = Integer.parseInt(object.getClosing()[normalizeWeekday(new Date())]);
             }
 
@@ -332,6 +334,8 @@ public class ActivityStandardList extends ActionBarActivity {
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
+                        obj.setOpening((ArrayList<String>) data.get("opensAt"));
+                        obj.setClosing((ArrayList<String>) data.get("closesAt"));
                         if(data.getParseFile("image")!= null){
                             obj.setImage(data.getParseFile("image"));
                         }
@@ -346,8 +350,15 @@ public class ActivityStandardList extends ActionBarActivity {
 /*
                         obj.setOpen(locationIsOpen(obj));
 */
+                        try {
+                            System.out.println("Objekt: " + obj);
+                            System.out.println("Location is open: " + locationIsOpen(obj));
+                        } catch (Exception e){
+                            System.out.println("Nope");
+                        }
 
-						list.add(obj);
+
+                        list.add(obj);
 						System.out.println("Location fetched: "+ obj.getName());	
 					}
 				}

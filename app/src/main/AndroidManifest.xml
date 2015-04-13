@@ -92,6 +92,11 @@
             android:label="Taxi"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".ActivityEditWeekplan"
+            android:label="Wochenprogramm bearbeiten"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

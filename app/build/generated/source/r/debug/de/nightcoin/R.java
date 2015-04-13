@@ -1344,13 +1344,14 @@ containing a value of this type.
         public static final int action_bar_title=0x7f08001e;
         public static final int action_context_bar=0x7f080032;
         public static final int action_favorites=0x7f0800df;
-        public static final int action_logout=0x7f0800e1;
+        public static final int action_logout=0x7f0800e2;
         public static final int action_menu_divider=0x7f080002;
         public static final int action_menu_presenter=0x7f080003;
         public static final int action_mode_bar=0x7f08002e;
         public static final int action_mode_bar_stub=0x7f08002d;
         public static final int action_mode_close_button=0x7f080020;
         public static final int action_refresh=0x7f0800e0;
+        public static final int action_save=0x7f0800e1;
         public static final int action_settings=0x7f0800de;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
