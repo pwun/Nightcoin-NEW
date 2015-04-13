@@ -99,7 +99,18 @@ public class ActivityCoinItemView extends ActionBarActivity {
                         button.setBackgroundColor(getResources().getColor(R.color.dark_red));
                         button.setText("Du hast diesen Coin bereits eingelöst");
                         button.setVisibility(View.VISIBLE);
-                    }}
+                    }else{
+                        button.setVisibility(View.VISIBLE);
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startTime = SystemClock.uptimeMillis();
+                                customHandler.postDelayed(updateTimerThread, 0);
+                                cashIn();
+                            }
+                        });
+                    }
+                    }
                     else{
                         button.setVisibility(View.VISIBLE);
                         button.setOnClickListener(new View.OnClickListener() {
