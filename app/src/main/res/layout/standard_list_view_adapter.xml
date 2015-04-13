@@ -35,21 +35,24 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="0.2" >
+            android:layout_weight="0.2"
+            android:gravity="right">
 
             <TextView
                 android:id="@+id/textViewStandardListViewAdapterDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="- km" />
+                android:text="- km"
+                android:gravity="center_vertical" />
 
             <TextView
                 android:id="@+id/textViewStandardListViewAdapterOpening"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/dark_red"
-                android:text="Öffnet um: - Uhr" />
+                android:text="Öffnet um: - Uhr"
+                android:gravity="center_vertical" />
 
         </LinearLayout>
 

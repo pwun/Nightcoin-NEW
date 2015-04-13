@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
@@ -19,6 +20,7 @@ import com.parse.ParseFile;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -252,9 +254,13 @@ public class ActivityStandardItemView extends ActionBarActivity {
        if (isFavorite()) {
            removeFromFavorites();
            item.setIcon(getResources().getDrawable(R.drawable.ic_action_not_important));
+           Toast t = Toast.makeText(ActivityStandardItemView.this, "Aus Favoriten entfernt", Toast.LENGTH_SHORT);
+           t.show();
        } else {
            addToFavorites();
            item.setIcon(getResources().getDrawable(R.drawable.ic_action_important));
+           Toast t = Toast.makeText(ActivityStandardItemView.this, "Zu Favoriten hinzugefügt", Toast.LENGTH_SHORT);
+           t.show();
        }
 
         System.out.println("isFavorite: " + isFavorite());

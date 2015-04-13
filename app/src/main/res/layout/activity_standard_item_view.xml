@@ -301,27 +301,37 @@
             <TextView
                 android:id="@+id/textViewstandardItemViewContact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="Kontakt"
+                android:layout_height="35dp"
+                android:textSize="20dp"
+                android:background="@color/black_alpha"
                 android:textColor="@color/white"
-                android:background="@color/black_alpha"/>
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <TextView
                     android:id="@+id/textViewStandardItemViewTel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tel.:" />
+                    android:text="Tel.:"
+                    android:layout_weight="0.8"/>
 
-                <Button
-                    android:id="@+id/buttonStandardItemViewCall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Anrufen"/>
+                    <Button
+                        android:id="@+id/buttonStandardItemViewCall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Anrufen"
+                        android:layout_weight="0.2"/>
+
+
 
             </LinearLayout>
 
