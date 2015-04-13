@@ -6,14 +6,9 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.parse.DeleteCallback;
 import com.parse.ParseException;
@@ -69,6 +64,74 @@ public class ActivityStandardList extends ActionBarActivity {
 		new RemoteDataTask().execute();
 	}
 
+    private int normalizeWeekday(Date date) {
+        // Stimmt das auch?
+        // 1 = Montag So = 0 oder 7?
+        if (date.getDay() == 0) {
+            return 6;
+        } else {
+            return date.getDay() - 1;
+        }
+    }
+
+    private boolean locationIsOpen(StandardObject object) {
+
+        int opensAt = Integer.parseInt(object.getOpening()[normalizeWeekday(new Date())]);
+        int closesAt = Integer.parseInt(object.getClosing()[normalizeWeekday(new Date())]);
+
+        if (opensAt == 0 && closesAt == 0) {
+            return false;
+        }
+        if (new Date().getHours() >= opensAt || new Date().getHours() < closesAt) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+
+        /*
+        - (BOOL)locationIsOpen:(NSString *)opensAtString closingAt:(NSString *)closesAtString {
+
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:[NSDate date]];
+    NSInteger hour = [components hour];
+
+    NSInteger opensAt = [opensAtString integerValue];
+    NSInteger closesAt = [closesAtString integerValue];
+
+    if (opensAt == 0 && closesAt == 0) {
+        return NO;
+    }
+
+    if (hour >= opensAt || hour < closesAt) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+         */
+
+
+        /*
+     NSString *opensAt = [object[@"opensAt"] objectAtIndex:[self getWeekday]];
+     NSString *closesAt = [object[@"closesAt"] objectAtIndex:[self getWeekday]];
+
+     if ([self locationIsOpen:opensAt closingAt:closesAt]) {
+         cell.openLabel.text = @"Geöffnet";
+         cell.openLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.5 alpha:1.0];
+         [openLocations addObject:object[self.textKey]];
+     } else {
+         if ([opensAt isEqualToString:@"-"]) {
+             cell.openLabel.text = [NSString stringWithFormat:@"Heute geschlossen"];
+             cell.openLabel.textColor = [UIColor redColor];
+         } else {
+             cell.openLabel.text = [NSString stringWithFormat:@"öffnet um %@ Uhr", opensAt];
+             cell.openLabel.textColor = [UIColor redColor];
+         }
+     }
+         */
+    }
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -104,6 +167,26 @@ public class ActivityStandardList extends ActionBarActivity {
             date.setHours(1);
             date.setMinutes(0);
             return date;
+        }
+
+        private boolean locationIsOpen(StandardObject object) {
+
+            int opensAt = 0;
+            int closesAt = 0;
+
+            if (!(object.getOpening()[normalizeWeekday(new Date())].equals("-"))) {
+                opensAt = Integer.parseInt(object.getOpening()[normalizeWeekday(new Date())]);
+                closesAt = Integer.parseInt(object.getClosing()[normalizeWeekday(new Date())]);
+            }
+
+            if (opensAt == 0 && closesAt == 0) {
+                return false;
+            }
+            if (new Date().getHours() >= opensAt || new Date().getHours() < closesAt) {
+                return true;
+            } else {
+                return false;
+            }
         }
 		
 		@Override
@@ -252,7 +335,10 @@ public class ActivityStandardList extends ActionBarActivity {
                         if(data.getParseFile("image")!= null){
                             obj.setImage(data.getParseFile("image"));
                         }
-						
+/*
+                        obj.setOpen(locationIsOpen(obj));
+*/
+
 						list.add(obj);
 						System.out.println("Location fetched: "+ obj.getName());	
 					}
@@ -272,6 +358,7 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setName((String) data.get("name"));
 						obj.setImage((ParseFile) data.getParseFile("image"));
 						//set every needed value here
+                        System.out.println("Checke Öffnungszeiten...");
 						
 						list.add(obj);
 						System.out.println("Location fetched: "+ obj.getName());	

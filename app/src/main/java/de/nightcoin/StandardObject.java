@@ -1,10 +1,10 @@
 package de.nightcoin;
 
-import com.parse.ParseFile;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import java.text.ParseException;
+import com.parse.ParseFile;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +19,7 @@ public class StandardObject{
     private String location;
     private String date;
     private boolean isFavorite;
+    private boolean isOpen;
 	
 	public StandardObject(){}
 
@@ -28,6 +29,14 @@ public class StandardObject{
 
     public boolean isFavorite() {
         return this.isFavorite;
+    }
+
+    public void setOpen(boolean isOpen) {
+        this.isOpen = isOpen;
+    }
+
+    public boolean isOpen() {
+        return this.isOpen;
     }
 
     public void setDate(Date date){

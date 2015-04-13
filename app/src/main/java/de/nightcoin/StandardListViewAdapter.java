@@ -1,12 +1,7 @@
 package de.nightcoin;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,12 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
-import com.parse.ParseImageView;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StandardListViewAdapter extends BaseAdapter {
 
@@ -133,6 +124,14 @@ public class StandardListViewAdapter extends BaseAdapter {
             });
         }
         else {
+
+/*            try {
+                if (list.get(position).isOpen()) {
+                    holder.bottomDetail.setText("Geöffnet");
+                }
+            } catch(Exception e) {
+                System.out.println("Ich bin die Filmbühne und ich bin blöd.");
+            }*/
 
 			convertView.setOnClickListener(new OnClickListener() {
 

@@ -15,10 +15,10 @@ import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseImageView;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,6 +47,8 @@ public class ActivityStandardItemView extends ActionBarActivity {
         getData(name);
         System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
 	}
+
+
 
 	private void initButtons() {
 		Button weekplan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
@@ -117,7 +119,6 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				//img.loadInBackground();
 
 				getOpening();
-
 
                 if(menu!= null){
                     checkIfFavorite();
