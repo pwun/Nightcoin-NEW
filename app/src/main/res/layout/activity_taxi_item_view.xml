@@ -42,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:padding="5dp"
                 >
 
 
@@ -49,9 +50,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mindestfahrpreis:"
+                    android:layout_weight="1"
                     />
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3,20€"
@@ -69,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:padding="5dp"
                 >
 
 
@@ -76,6 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fahrpreis pro Kilometer:"
+                    android:layout_weight="1"
                     />
 
                 <TextView
@@ -96,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:padding="5dp"
                 >
 
 
@@ -103,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Wartezeit pro Stunde:"
+                    android:layout_weight="1"
                     />
 
                 <TextView
@@ -123,6 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:padding="5dp"
                 >
 
 
@@ -130,6 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Zuschlag ab 5. Fahrgast (Großraumtaxi):"
+                    android:layout_weight="1"
                     />
 
                 <TextView
@@ -148,21 +157,26 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:text="Taxi bestellen"
+                android:textColor="@color/white"
                 android:background="@color/green"/>
 
 
 
             <TextView
-                android:layout_marginBottom="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="Öffnungszeiten"
+                android:layout_height="35dp"
+                android:textSize="20dp"
+                android:background="@color/black_alpha"
                 android:textColor="@color/white"
-                android:background="@color/black_alpha"/>
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
                 <TableRow
                     android:id="@+id/tableRowTaxiItemViewWeekdays"
