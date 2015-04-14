@@ -13,4 +13,5 @@
     <color name="darkBackground">#263238</color>
     <color name="background_buttons">#37474F</color>
     <color name="black_alpha_2">#8000</color>
+    <color name="transparent_white">#4FFF</color>
 </resources>

@@ -1141,19 +1141,19 @@ containing a value of this type.
         public static final int abc_config_showMenuShortcutsWhenKeyboardPresent=0x7f050005;
     }
     public static final class color {
-        public static final int abc_background_cache_hint_selector_material_dark=0x7f06003d;
-        public static final int abc_background_cache_hint_selector_material_light=0x7f06003e;
+        public static final int abc_background_cache_hint_selector_material_dark=0x7f06003e;
+        public static final int abc_background_cache_hint_selector_material_light=0x7f06003f;
         public static final int abc_input_method_navigation_guard=0x7f060000;
-        public static final int abc_primary_text_disable_only_material_dark=0x7f06003f;
-        public static final int abc_primary_text_disable_only_material_light=0x7f060040;
-        public static final int abc_primary_text_material_dark=0x7f060041;
-        public static final int abc_primary_text_material_light=0x7f060042;
-        public static final int abc_search_url_text=0x7f060043;
+        public static final int abc_primary_text_disable_only_material_dark=0x7f060040;
+        public static final int abc_primary_text_disable_only_material_light=0x7f060041;
+        public static final int abc_primary_text_material_dark=0x7f060042;
+        public static final int abc_primary_text_material_light=0x7f060043;
+        public static final int abc_search_url_text=0x7f060044;
         public static final int abc_search_url_text_normal=0x7f060001;
         public static final int abc_search_url_text_pressed=0x7f060002;
         public static final int abc_search_url_text_selected=0x7f060003;
-        public static final int abc_secondary_text_material_dark=0x7f060044;
-        public static final int abc_secondary_text_material_light=0x7f060045;
+        public static final int abc_secondary_text_material_dark=0x7f060045;
+        public static final int abc_secondary_text_material_light=0x7f060046;
         public static final int accent_material_dark=0x7f060004;
         public static final int accent_material_light=0x7f060005;
         public static final int action_bar=0x7f060006;
@@ -1210,7 +1210,8 @@ containing a value of this type.
         public static final int switch_thumb_normal_material_dark=0x7f060039;
         public static final int switch_thumb_normal_material_light=0x7f06003a;
         public static final int transparent=0x7f06003b;
-        public static final int white=0x7f06003c;
+        public static final int transparent_white=0x7f06003c;
+        public static final int white=0x7f06003d;
     }
     public static final class dimen {
         public static final int abc_action_bar_default_height_material=0x7f070000;
@@ -1340,7 +1341,7 @@ containing a value of this type.
         public static final int white_arrow=0x7f02004c;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f0800f2;
+        public static final int LinearLayout1=0x7f0800f3;
         public static final int action_bar=0x7f080031;
         public static final int action_bar_activity_content=0x7f080000;
         public static final int action_bar_container=0x7f080030;
@@ -1349,18 +1350,18 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f08001f;
         public static final int action_bar_title=0x7f08001e;
         public static final int action_context_bar=0x7f080032;
-        public static final int action_delete=0x7f0800f9;
-        public static final int action_favorites=0x7f0800f6;
-        public static final int action_logout=0x7f0800fb;
+        public static final int action_delete=0x7f0800fa;
+        public static final int action_favorites=0x7f0800f7;
+        public static final int action_logout=0x7f0800fc;
         public static final int action_menu_divider=0x7f080002;
         public static final int action_menu_presenter=0x7f080003;
         public static final int action_mode_bar=0x7f08002e;
         public static final int action_mode_bar_stub=0x7f08002d;
         public static final int action_mode_close_button=0x7f080020;
-        public static final int action_newCoin=0x7f0800f7;
-        public static final int action_refresh=0x7f0800f8;
-        public static final int action_save=0x7f0800fa;
-        public static final int action_settings=0x7f0800f5;
+        public static final int action_newCoin=0x7f0800f8;
+        public static final int action_refresh=0x7f0800f9;
+        public static final int action_save=0x7f0800fb;
+        public static final int action_settings=0x7f0800f6;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
@@ -1532,6 +1533,7 @@ containing a value of this type.
         public static final int textViewSettingsErrorMessage=0x7f080094;
         public static final int textViewSettingsInfoMessage=0x7f08009c;
         public static final int textViewStandardItemViewAdress=0x7f0800c3;
+        public static final int textViewStandardItemViewContact=0x7f0800c0;
         public static final int textViewStandardItemViewDi=0x7f0800aa;
         public static final int textViewStandardItemViewDiClosing=0x7f0800ba;
         public static final int textViewStandardItemViewDiOpening=0x7f0800b2;
@@ -1541,6 +1543,7 @@ containing a value of this type.
         public static final int textViewStandardItemViewFr=0x7f0800ad;
         public static final int textViewStandardItemViewFrClosing=0x7f0800bd;
         public static final int textViewStandardItemViewFrOpening=0x7f0800b5;
+        public static final int textViewStandardItemViewHours=0x7f0800a7;
         public static final int textViewStandardItemViewMi=0x7f0800ab;
         public static final int textViewStandardItemViewMiClosing=0x7f0800bb;
         public static final int textViewStandardItemViewMiOpening=0x7f0800b3;
@@ -1559,9 +1562,9 @@ containing a value of this type.
         public static final int textViewStandardItemViewTodaysCoinsDetail=0x7f0800a3;
         public static final int textViewStandardItemViewTodaysEvents=0x7f0800a0;
         public static final int textViewStandardItemViewTodaysEventsDetail=0x7f0800a1;
-        public static final int textViewStandardListViewAdapterDistance=0x7f0800a7;
+        public static final int textViewStandardListViewAdapterDistance=0x7f0800f1;
         public static final int textViewStandardListViewAdapterName=0x7f0800f0;
-        public static final int textViewStandardListViewAdapterOpening=0x7f0800f1;
+        public static final int textViewStandardListViewAdapterOpening=0x7f0800f2;
         public static final int textViewTaxiItemViewDi=0x7f0800cb;
         public static final int textViewTaxiItemViewDiClosing=0x7f0800db;
         public static final int textViewTaxiItemViewDiOpening=0x7f0800d3;
@@ -1584,9 +1587,8 @@ containing a value of this type.
         public static final int textViewTaxiItemViewSoClosing=0x7f0800e0;
         public static final int textViewTaxiItemViewSoOpening=0x7f0800d8;
         public static final int textViewTaxitemViewSa=0x7f0800cf;
-        public static final int textViewWeekplanContent=0x7f0800f4;
-        public static final int textViewWeekplanTitle=0x7f0800f3;
-        public static final int textViewstandardItemViewContact=0x7f0800c0;
+        public static final int textViewWeekplanContent=0x7f0800f5;
+        public static final int textViewWeekplanTitle=0x7f0800f4;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;

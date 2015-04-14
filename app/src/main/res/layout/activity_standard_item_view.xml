@@ -9,7 +9,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background" >
+        android:background="@color/transparent_white" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,6 +49,7 @@
                 android:textSize="@dimen/textSizeDefault"
                 android:padding="10dp"
                 android:gravity="center_vertical"
+                android:textColor="@color/white"
                 android:text="Lädt Events..." />
 
             <TextView
@@ -57,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textSize="@dimen/textSizeDefault"
+                android:textColor="@color/white"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"/>
 
@@ -67,6 +69,7 @@
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:textSize="@dimen/textSizeDefault"
+                android:textColor="@color/white"
                 android:gravity="center_vertical"
                 android:text="Lädt Coins..." />
 
@@ -75,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textSizeDefault"
+                android:textColor="@color/white"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 />
@@ -123,7 +127,7 @@
                 android:text="Zum Wochenprogramm" />
 
             <TextView
-                android:id="@+id/textViewStandardListViewAdapterDistance"
+                android:id="@+id/textViewStandardItemViewHours"
                 android:layout_width="match_parent"
                 android:text="Öffnungszeiten"
                 android:layout_height="35dp"
@@ -334,7 +338,7 @@
             </TableLayout>
 
             <TextView
-                android:id="@+id/textViewstandardItemViewContact"
+                android:id="@+id/textViewStandardItemViewContact"
                 android:layout_width="match_parent"
                 android:text="Kontakt"
                 android:layout_height="35dp"

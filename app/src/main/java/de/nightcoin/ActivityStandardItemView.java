@@ -203,9 +203,17 @@ public class ActivityStandardItemView extends ActionBarActivity {
                 try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    ColorDrawable colorDrawable = new ColorDrawable(getDominantColor(bmp));
 
-                    layout.setBackgroundColor((getDominantColor(bmp)));
+                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
+                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
+
+                    ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getDominantColor(bmp)));
+                    hours.setBackgroundDrawable(colorDrawable);
+                    contact.setBackgroundDrawable(colorDrawable);
+                    layout.setBackgroundColor(getDominantColor(bmp));
+                    System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
                 }
@@ -230,6 +238,20 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 		getDailyData();
 	}
+
+    private int getSecundaryColorFromColor(int color) {
+        String hexColor = String.format("#%06X", (0xFFFFFF & color));
+        String output = "-";
+        for (int i = 0; i < hexColor.length(); i++) {
+            int colorValue = Character.getNumericValue(hexColor.charAt(i));
+            if (colorValue < 12) {
+                colorValue += 3;
+            }
+            output = output + colorValue;
+        }
+        System.out.println("Output" + output);
+        return Integer.parseInt(output);
+    }
 
     public static int getDominantColor(Bitmap bitmap) {
         Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
