@@ -64,7 +64,7 @@ public class ActivityFoodItemView extends ActionBarActivity {
                 try{
                     String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
                     //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<lat>,<long>?q=<lat>,<long>("+obj.getName()+")"));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+latitude+","+longitude+"?q="+latitude+","+longitude+"("+obj.getName()+")"));
 
                     ActivityFoodItemView.this.startActivity(intent);
                     System.out.println("Lon/Lat = "+ latitude + "/" + longitude);
