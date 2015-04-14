@@ -42,7 +42,7 @@ public class ActivityFoodItemView extends ActionBarActivity {
 
     private void initButton(){
         Button call = (Button)findViewById(R.id.buttonFoodItemViewCall);
-        Button map = (Button)findViewById(R.id.buttonFoodItemViewMap);
+
 
         call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +55,7 @@ public class ActivityFoodItemView extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
+        Button map = (Button)findViewById(R.id.buttonFoodItemViewMap);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

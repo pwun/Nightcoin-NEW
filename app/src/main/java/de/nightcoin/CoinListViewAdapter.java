@@ -71,6 +71,7 @@ public class CoinListViewAdapter extends BaseAdapter{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.value.setText(list.get(position).getValue());
+
 		holder.location.setText(list.get(position).getLocation());
 		holder.date.setText(list.get(position).getDate());
 

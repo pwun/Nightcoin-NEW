@@ -145,8 +145,16 @@ public class ActivityStandardList extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ActivityStandardList.this, ActivityUser.class);
-        ActivityStandardList.this.startActivity(intent);
+        if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")) {
+            boolean user = i.getBooleanExtra("userModeActive",false);
+            if(user){//usermode abfragen
+                Intent intent = new Intent(ActivityStandardList.this, ActivityUser.class);
+                ActivityStandardList.this.startActivity(intent);
+            }
+            super.onBackPressed();
+        }
+        super.onBackPressed();
+
     }
 
     private void checkIfUserMode(){

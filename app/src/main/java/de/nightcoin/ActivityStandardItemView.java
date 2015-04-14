@@ -17,6 +17,7 @@ import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ActivityStandardItemView extends ActionBarActivity {
 
@@ -54,8 +56,8 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 
 	private void initButtons() {
-        Button callTaxi = (Button)findViewById(R.id.buttonStandardItemViewCall);
-        callTaxi.setOnClickListener(new View.OnClickListener() {
+        Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
+        call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String tel = obj.getTel();
@@ -107,6 +109,25 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				ActivityStandardItemView.this.startActivity(i);
 			}
 		});
+
+        Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double latitude = obj.getLat();
+                double longitude = obj.getLong();
+                try{
+                    String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
+                    //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+latitude+","+longitude+"?q="+latitude+","+longitude+"("+obj.getName()+")"));
+
+                    ActivityStandardItemView.this.startActivity(intent);
+                    System.out.println("Lon/Lat = "+ latitude + "/" + longitude);
+                }catch(Exception e){
+                    System.out.println("FEHLER! Lon/Lat = "+ latitude + "/" + longitude);
+                }
+            }
+        });
 	}
 
 	private void getData(String name) {
@@ -125,6 +146,9 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				obj.setImage((ParseFile) serverObject.getParseFile("image"));
                 obj.setAdr((String) serverObject.get("address"));
                 obj.setTel((String) serverObject.get("phone"));
+                ParseGeoPoint geo = (ParseGeoPoint) serverObject.get("geoData");
+                obj.setLat(geo.getLatitude());
+                obj.setLong(geo.getLongitude());
 				obj.setWeekplan((ArrayList<String>) serverObject.get("weekplan"));
 				obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
 				obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
