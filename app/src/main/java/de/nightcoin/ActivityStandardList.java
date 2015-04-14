@@ -485,7 +485,7 @@ public class ActivityStandardList extends ActionBarActivity {
 					query = new ParseQuery<ParseObject>("Locations");
                     query.orderByAscending("name");
                     //query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
-                    query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId());
+                    query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
 
 					parseList = query.find();
 					for (ParseObject data : parseList) {
