@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.parse.ParseGeoPoint;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +43,6 @@ public class StandardListViewAdapter extends BaseAdapter {
             latitude = gps.getLatitude();
             longitude = gps.getLongitude();
             geo = new ParseGeoPoint(latitude,longitude);
-            Toast.makeText(listContext,
-                    "Your Location is -\nLat: " + latitude + "\nLong: "
-                            + longitude, Toast.LENGTH_LONG).show();
         } else {
             gps.showSettingsAlert();
         }
@@ -135,12 +133,9 @@ public class StandardListViewAdapter extends BaseAdapter {
             double lat = list.get(position).getLat();
             double lon = list.get(position).getLong();
             ParseGeoPoint geoLocation = new ParseGeoPoint(lat, lon);
-            System.out.println(geoLocation);
-            System.out.println(geo);
             double distance = geo.distanceInKilometersTo(geoLocation);
-            distance = (int)distance*100;
-            distance /=100;
-            holder.topDetail.setText(""+ distance +" km");
+            DecimalFormat df = new DecimalFormat("###.##");
+            holder.topDetail.setText(""+ df.format(distance) +" km");
             holder.bottomDetail.setText(list.get(position).getOpeningToday());
             if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));
@@ -166,12 +161,9 @@ public class StandardListViewAdapter extends BaseAdapter {
             double lat = list.get(position).getLat();
             double lon = list.get(position).getLong();
             ParseGeoPoint geoLocation = new ParseGeoPoint(lat, lon);
-            System.out.println(geoLocation);
-            System.out.println(geo);
             double distance = geo.distanceInKilometersTo(geoLocation);
-            distance = (int)distance*100;
-            distance /=100;
-            holder.topDetail.setText(""+ distance +" km");
+            DecimalFormat df = new DecimalFormat("###.##");
+            holder.topDetail.setText(""+ df.format(distance) +" km");
             holder.bottomDetail.setText(list.get(position).getOpeningToday());
             if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));
