@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class StandardListViewAdapter extends BaseAdapter {
 	LayoutInflater inflater;
 	ArrayList<StandardObject> list;
 	String mode;
+    GPSTracker gps;
 
 	public StandardListViewAdapter(Context context,
 			List<StandardObject> objectList, String mode) {
@@ -28,7 +30,20 @@ public class StandardListViewAdapter extends BaseAdapter {
 		inflater = LayoutInflater.from(listContext);
 		list = new ArrayList<StandardObject>();
 		list.addAll(objectList);
-	}
+        gps = new GPSTracker(listContext);
+
+        if(gps.canGetLocation()) {
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            Toast.makeText(listContext,
+                    "Your Location is -\nLat: " + latitude + "\nLong: "
+                            + longitude, Toast.LENGTH_LONG).show();
+        } else {
+            gps.showSettingsAlert();
+        }
+
+    }
 
 	public class ViewHolder {
 		TextView name;
