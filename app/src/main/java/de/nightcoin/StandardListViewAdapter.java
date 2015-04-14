@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.ParseGeoPoint;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class StandardListViewAdapter extends BaseAdapter {
 	ArrayList<StandardObject> list;
 	String mode;
     GPSTracker gps;
+    double longitude;
+    double latitude;
+    ParseGeoPoint geo;
 
 	public StandardListViewAdapter(Context context,
 			List<StandardObject> objectList, String mode) {
@@ -33,9 +38,10 @@ public class StandardListViewAdapter extends BaseAdapter {
         gps = new GPSTracker(listContext);
 
         if(gps.canGetLocation()) {
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
 
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+            geo = new ParseGeoPoint(latitude,longitude);
             Toast.makeText(listContext,
                     "Your Location is -\nLat: " + latitude + "\nLong: "
                             + longitude, Toast.LENGTH_LONG).show();
@@ -126,6 +132,15 @@ public class StandardListViewAdapter extends BaseAdapter {
             });
         }
         else if(mode.equals("food")){
+            double lat = list.get(position).getLat();
+            double lon = list.get(position).getLong();
+            ParseGeoPoint geoLocation = new ParseGeoPoint(lat, lon);
+            System.out.println(geoLocation);
+            System.out.println(geo);
+            double distance = geo.distanceInKilometersTo(geoLocation);
+            distance = (int)distance*100;
+            distance /=100;
+            holder.topDetail.setText(""+ distance +" km");
             holder.bottomDetail.setText(list.get(position).getOpeningToday());
             if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));
@@ -148,7 +163,15 @@ public class StandardListViewAdapter extends BaseAdapter {
             });
         }
         else {
-
+            double lat = list.get(position).getLat();
+            double lon = list.get(position).getLong();
+            ParseGeoPoint geoLocation = new ParseGeoPoint(lat, lon);
+            System.out.println(geoLocation);
+            System.out.println(geo);
+            double distance = geo.distanceInKilometersTo(geoLocation);
+            distance = (int)distance*100;
+            distance /=100;
+            holder.topDetail.setText(""+ distance +" km");
             holder.bottomDetail.setText(list.get(position).getOpeningToday());
             if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));

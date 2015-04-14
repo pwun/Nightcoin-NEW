@@ -375,8 +375,12 @@ public class ActivityStandardList extends ActionBarActivity {
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
+                        ParseGeoPoint locationGeo = data.getParseGeoPoint("geoData");
+                        obj.setLat(locationGeo.getLatitude());
+                        obj.setLong(locationGeo.getLongitude());
                         //obj.setAdr((String) data.get("adress"));
                         //obj.setTel((String) data.get("phone"));
+
 
                         if(data.getParseFile("image")!= null){
                             obj.setImage(data.getParseFile("image"));
@@ -418,6 +422,9 @@ public class ActivityStandardList extends ActionBarActivity {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
 						obj.setImage((ParseFile) data.getParseFile("image"));
+                        ParseGeoPoint locationGeo = data.getParseGeoPoint("geoData");
+                        obj.setLat(locationGeo.getLatitude());
+                        obj.setLong(locationGeo.getLongitude());
                         //obj.setAdr((String) data.get("adress"));
                         //obj.setTel((String) data.get("phone"));
 						//set every needed value here
@@ -472,6 +479,9 @@ public class ActivityStandardList extends ActionBarActivity {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
 						obj.setImage(data.getParseFile("image"));
+                        ParseGeoPoint locationGeo = data.getParseGeoPoint("geoData");
+                        obj.setLat(locationGeo.getLatitude());
+                        obj.setLong(locationGeo.getLongitude());
                         //obj.setAdr((String) data.get("adress"));
                         //obj.setTel((String) data.get("phone"));
                         try{
@@ -503,6 +513,9 @@ public class ActivityStandardList extends ActionBarActivity {
                         ParseGeoPoint geo = (ParseGeoPoint) data.get("geoData");
                         obj.setLong(geo.getLongitude());
                         obj.setLat(geo.getLatitude());
+                        ParseGeoPoint locationGeo = data.getParseGeoPoint("geoData");
+                        obj.setLat(locationGeo.getLatitude());
+                        obj.setLong(locationGeo.getLongitude());
                         //obj.setAdr((String) data.get("adress"));
                         //obj.setTel((String) data.get("phone"));
                         try{obj.setImage(data.getParseFile("image"));}
