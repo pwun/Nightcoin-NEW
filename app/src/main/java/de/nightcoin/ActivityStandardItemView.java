@@ -1,6 +1,10 @@
 package de.nightcoin;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +43,8 @@ public class ActivityStandardItemView extends ActionBarActivity {
     ArrayList<String> favorites = new ArrayList<String>();
     Menu menu;
     MenuItem menuItemFavorites;
+    ImageColor imageColor;
+    int tintColor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,23 @@ public class ActivityStandardItemView extends ActionBarActivity {
         getData(name);
         initButtons();
         System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
+        //setActionBarColor(null);
+
 	}
+
+    private void setActionBarColor(Bitmap bitmap) {
+        try {
+/*
+            imageColor = new ImageColor(bitmap);
+*/
+            ActionBar actionBar = getActionBar();
+            actionBar.setBackgroundDrawable(new ColorDrawable(0xff234788));
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
+        } catch (Exception e) {
+            System.out.println("Error setting color");
+        }
+    }
 
     private void updateLocationStatistics(ParseObject object) {
         object.increment("numberOfOpens");
@@ -165,7 +188,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
                 }
                 else{System.out.println("Fehler bei Telefonnummer");}
                 TextView adr = (TextView)findViewById(R.id.textViewStandardItemViewAdress);
-                if(obj.getAdr()!=null){
+                if(obj.getAdr() != null){
                     adr.setText("Adr.: "+obj.getAdr());
                     System.out.println(obj.getAdr());
                 }
@@ -173,6 +196,19 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     System.out.println("Fehler bei der Adresse");
                 }
 
+                Button weekplan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+
+
+
+                try {
+                    byte[] stream = serverObject.getParseFile("image").getData();
+                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+
+                    layout.setBackgroundColor((getDominantColor(bmp)));
+                } catch (Exception ex) {
+                    System.out.println("Error getting color");
+                }
 
 
 				ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
@@ -194,6 +230,12 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 		getDailyData();
 	}
+
+    public static int getDominantColor(Bitmap bitmap) {
+        Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
+        int color = bitmap1.getPixel(0, 0);
+        return color;
+    }
 
 	private void getOpening() {
 		String[] opening = new String[7];
