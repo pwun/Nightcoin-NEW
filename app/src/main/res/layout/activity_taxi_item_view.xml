@@ -196,6 +196,7 @@
                         android:id="@+id/textViewTaxiItemViewMo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Mo"
                         android:layout_weight="1" />
 
@@ -203,6 +204,7 @@
                         android:id="@+id/textViewTaxiItemViewDi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Di"
                         android:layout_weight="1" />
 
@@ -210,6 +212,7 @@
                         android:id="@+id/textViewTaxiItemViewMi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Mi"
                         android:layout_weight="1" />
 
@@ -217,6 +220,7 @@
                         android:id="@+id/textViewTaxiItemViewDo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Do"
                         android:layout_weight="1" />
 
@@ -224,6 +228,7 @@
                         android:id="@+id/textViewTaxiItemViewFr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Fr"
                         android:layout_weight="1" />
 
@@ -231,6 +236,7 @@
                         android:id="@+id/textViewTaxitemViewSa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Sa"
                         android:layout_weight="1" />
 
@@ -238,6 +244,7 @@
                         android:id="@+id/textViewTaxiItemViewSo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="So"
                         android:layout_weight="1" />
                 </TableRow>
@@ -252,6 +259,7 @@
                         android:id="@+id/textViewTaxiItemViewMoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -259,6 +267,7 @@
                         android:id="@+id/textViewTaxiItemViewDiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -266,6 +275,7 @@
                         android:id="@+id/textViewTaxiItemViewMiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -273,6 +283,7 @@
                         android:id="@+id/textViewTaxiItemViewDoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -280,6 +291,7 @@
                         android:id="@+id/textViewTaxiItemViewFrOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -287,6 +299,7 @@
                         android:id="@+id/textViewTaxiItemViewSaOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -294,6 +307,7 @@
                         android:id="@+id/textViewTaxiItemViewSoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
                 </TableRow>
@@ -308,6 +322,7 @@
                         android:id="@+id/textViewTaxiItemViewMoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -315,6 +330,7 @@
                         android:id="@+id/textViewTaxiItemViewDiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -322,6 +338,7 @@
                         android:id="@+id/textViewTaxiItemViewMiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -329,6 +346,7 @@
                         android:id="@+id/textViewTaxiItemViewDoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -336,6 +354,7 @@
                         android:id="@+id/textViewTaxiItemViewFrClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -343,6 +362,7 @@
                         android:id="@+id/textViewTaxiItemViewSaClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -350,6 +370,7 @@
                         android:id="@+id/textViewTaxiItemViewSoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
                 </TableRow>

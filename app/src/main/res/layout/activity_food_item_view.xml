@@ -53,6 +53,7 @@
                         android:id="@+id/textViewFoodItemViewMo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Mo"
                         android:layout_weight="1" />
 
@@ -60,6 +61,7 @@
                         android:id="@+id/textViewFoodItemViewDi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Di"
                         android:layout_weight="1" />
 
@@ -67,6 +69,7 @@
                         android:id="@+id/textViewFoodItemViewMi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Mi"
                         android:layout_weight="1" />
 
@@ -74,6 +77,7 @@
                         android:id="@+id/textViewFoodItemViewDo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Do"
                         android:layout_weight="1" />
 
@@ -81,6 +85,7 @@
                         android:id="@+id/textViewFoodItemViewFr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Fr"
                         android:layout_weight="1" />
 
@@ -88,6 +93,7 @@
                         android:id="@+id/textViewFoodItemViewSa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Sa"
                         android:layout_weight="1" />
 
@@ -95,6 +101,7 @@
                         android:id="@+id/textViewFoodItemViewSo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="So"
                         android:layout_weight="1" />
                 </TableRow>
@@ -109,6 +116,7 @@
                         android:id="@+id/textViewFoodItemViewMoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -116,6 +124,7 @@
                         android:id="@+id/textViewFoodItemViewDiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -123,6 +132,7 @@
                         android:id="@+id/textViewFoodItemViewMiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -130,6 +140,7 @@
                         android:id="@+id/textViewFoodItemViewDoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -137,6 +148,7 @@
                         android:id="@+id/textViewFoodItemViewFrOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -144,6 +156,7 @@
                         android:id="@+id/textViewFoodItemViewSaOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -151,6 +164,7 @@
                         android:id="@+id/textViewFoodItemViewSoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
                 </TableRow>
@@ -165,6 +179,7 @@
                         android:id="@+id/textViewFoodItemViewMoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -172,6 +187,7 @@
                         android:id="@+id/textViewFoodItemViewDiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -179,6 +195,7 @@
                         android:id="@+id/textViewFoodItemViewMiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -186,6 +203,7 @@
                         android:id="@+id/textViewFoodItemViewDoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -193,6 +211,7 @@
                         android:id="@+id/textViewFoodItemViewFrClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -200,6 +219,7 @@
                         android:id="@+id/textViewFoodItemViewSaClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -207,6 +227,7 @@
                         android:id="@+id/textViewFoodItemViewSoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
                 </TableRow>
@@ -236,8 +257,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tel.:"
-                    android:textSize="15dp"
-
+                    android:textSize="@dimen/textSizeDefault"
                     android:layout_weight="1"/>
 
                 <Button
@@ -257,7 +277,7 @@
                 <TextView
                     android:id="@+id/textViewFoodItemViewAdress"
                     android:layout_width="wrap_content"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/textSizeDefault"
                     android:layout_height="wrap_content"
                     android:text="Adr.:"
                     android:layout_weight="1"/>
