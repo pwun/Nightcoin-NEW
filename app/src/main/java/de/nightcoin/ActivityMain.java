@@ -1,5 +1,7 @@
 package de.nightcoin;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -23,6 +25,16 @@ public class ActivityMain extends ActionBarActivity {
 		initButtons();
         TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Roboto-Light.ttf"); // font from assets: "assets/fonts/Roboto-Regular.tt
         subscribeToNotifications();
+
+        new AlertDialog.Builder(ActivityMain.this)
+                .setTitle("Hinweis")
+                .setMessage("Aufgrund von technischen Problemen konnten wir die finale Version noch nicht für Android veröffentlichen. \nDu erhältst in den nächsten Tagen ein Update, mit dem du alle Funktionen und das fertige Design nutzen kannst. \n\nWir bitten dich, dies zu entschuldigen.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .show();
 	}
 
     private void subscribeToNotifications() {
