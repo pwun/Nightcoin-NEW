@@ -66,31 +66,33 @@ public class StandardObject{
         Date now = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(now);
-        int day = cal.DAY_OF_WEEK;
+        int day = cal.get(Calendar.DAY_OF_WEEK);
         switch (day)
         {
-            case Calendar.MONDAY:	open=opening[1];
+            case Calendar.MONDAY:	open=opening[0];
                 closed=closing[1];
                 break;
-            case Calendar.TUESDAY:	open=opening[2];
+            case Calendar.TUESDAY:	open=opening[1];
                 closed=closing[2];
                 break;
-            case Calendar.WEDNESDAY:open=opening[3];
+            case Calendar.WEDNESDAY:open=opening[2];
                 closed=closing[3];
                 break;
-            case Calendar.THURSDAY:	open=opening[4];
+            case Calendar.THURSDAY:	open=opening[3];
                 closed=closing[4];
                 break;
-            case Calendar.FRIDAY:	open=opening[5];
+            case Calendar.FRIDAY:	open=opening[4];
                 closed=closing[5];
                 break;
-            case Calendar.SATURDAY:	open=opening[6];
+            case Calendar.SATURDAY:	open=opening[5];
                 closed=closing[6];
                 break;
-            case Calendar.SUNDAY:	open=opening[0];
+            case Calendar.SUNDAY:	open=opening[6];
                 closed=closing[0];
                 break;
         }
+        System.out.println("HEUTE:" + cal.get(Calendar.DAY_OF_WEEK));
+        System.out.println(open);
         if(open.equals("")){
             return "";
         }
