@@ -1,18 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'NightcoinKey'
+            keyPassword 'n8M2071Asg#&*n'
+            storeFile file('/Users/paul/Documents/Projekte/Nightcoin/Security/clientkeystore.jks')
+            storePassword 'n8M2071Asg#&*n'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 21
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
         }
     }
 }
