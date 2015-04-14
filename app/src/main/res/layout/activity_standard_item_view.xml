@@ -45,8 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="15dp"
-                android:padding="5dp"
+                android:textSize="@dimen/textSizeDefault"
+                android:padding="10dp"
                 android:gravity="center_vertical"
                 android:text="Lädt Events..." />
 
@@ -55,18 +55,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:textSize="15dp"
-
-                android:padding="10dp" />
+                android:textSize="@dimen/textSizeDefault"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"/>
 
             <TextView
                 android:id="@+id/textViewStandardItemViewTodaysCoins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:padding="5dp"
-                android:textSize="15dp"
-
+                android:padding="10dp"
+                android:textSize="@dimen/textSizeDefault"
                 android:gravity="center_vertical"
                 android:text="Lädt Coins..." />
 
@@ -74,15 +73,17 @@
                 android:id="@+id/textViewStandardItemViewTodaysCoinsDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
-
-                android:padding="10dp" />
+                android:textSize="@dimen/textSizeDefault"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                />
 
             <Button
                 android:id="@+id/buttonStandardItemViewNextEvents"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="20dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/black_alpha"
                 android:textColor="@color/white"
                 android:layout_marginBottom="5dp"
@@ -148,8 +149,7 @@
                         android:id="@+id/textViewStandardItemViewMo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Mo"
                         android:layout_weight="1" />
 
@@ -157,8 +157,7 @@
                         android:id="@+id/textViewStandardItemViewDi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Di"
                         android:layout_weight="1" />
 
@@ -166,8 +165,7 @@
                         android:id="@+id/textViewStandardItemViewMi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Mi"
                         android:layout_weight="1" />
 
@@ -175,8 +173,7 @@
                         android:id="@+id/textViewStandardItemViewDo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Do"
                         android:layout_weight="1" />
 
@@ -184,8 +181,7 @@
                         android:id="@+id/textViewStandardItemViewFr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Fr"
                         android:layout_weight="1" />
 
@@ -193,8 +189,7 @@
                         android:id="@+id/textViewStandardItemViewSa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Sa"
                         android:layout_weight="1" />
 
@@ -202,8 +197,7 @@
                         android:id="@+id/textViewStandardItemViewSo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="So"
                         android:layout_weight="1" />
                 </TableRow>
@@ -220,8 +214,7 @@
                         android:id="@+id/textViewStandardItemViewMoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -229,8 +222,7 @@
                         android:id="@+id/textViewStandardItemViewDiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -238,8 +230,7 @@
                         android:id="@+id/textViewStandardItemViewMiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -247,8 +238,7 @@
                         android:id="@+id/textViewStandardItemViewDoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -256,8 +246,7 @@
                         android:id="@+id/textViewStandardItemViewFrOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -265,8 +254,7 @@
                         android:id="@+id/textViewStandardItemViewSaOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -274,8 +262,7 @@
                         android:id="@+id/textViewStandardItemViewSoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
                 </TableRow>
@@ -284,7 +271,6 @@
                     android:id="@+id/tableRowStandardItemViewClosing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15dp"
 
                     android:weightSum="7" >
 
@@ -292,8 +278,7 @@
                         android:id="@+id/textViewStandardItemViewMoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -301,8 +286,7 @@
                         android:id="@+id/textViewStandardItemViewDiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -310,8 +294,7 @@
                         android:id="@+id/textViewStandardItemViewMiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -319,8 +302,7 @@
                         android:id="@+id/textViewStandardItemViewDoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -328,8 +310,7 @@
                         android:id="@+id/textViewStandardItemViewFrClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -337,8 +318,7 @@
                         android:id="@+id/textViewStandardItemViewSaClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
 
@@ -346,8 +326,7 @@
                         android:id="@+id/textViewStandardItemViewSoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
                 </TableRow>
@@ -379,8 +358,7 @@
                         android:id="@+id/textViewStandardItemViewTel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
-
+                        android:textSize="@dimen/textSizeDefault"
                         android:text="Tel.:"
                         android:layout_weight="1"/>
 
@@ -403,7 +381,7 @@
                     android:id="@+id/textViewStandardItemViewAdress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/textSizeDefault"
 
                     android:text="Adr.:"
                     android:layout_weight="1"/>

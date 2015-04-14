@@ -1257,6 +1257,7 @@ containing a value of this type.
         public static final int dialog_fixed_width_minor=0x7f07002a;
         public static final int disabled_alpha_material_dark=0x7f07002b;
         public static final int disabled_alpha_material_light=0x7f07002c;
+        public static final int textSizeDefault=0x7f07002d;
     }
     public static final class drawable {
         public static final int abc_ab_share_pack_holo_dark=0x7f020000;

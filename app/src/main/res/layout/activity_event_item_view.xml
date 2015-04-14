@@ -46,6 +46,7 @@
                     android:layout_below="@+id/textViewEventItemViewTitle"
                     android:layout_marginTop="7dp"
                     android:paddingLeft="10dp"
+                    android:textSize="@dimen/textSizeDefault"
                     android:gravity="center_vertical"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
@@ -57,6 +58,7 @@
                     android:text="Datum"
                     android:layout_below="@+id/textViewEventItemViewLocation"
                     android:paddingLeft="10dp"
+                    android:textSize="@dimen/textSizeDefault"
                     android:gravity="center_vertical"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
@@ -68,6 +70,7 @@
                     android:text="Eintritt"
                     android:layout_below="@+id/textViewEventItemViewDate"
                     android:paddingLeft="10dp"
+                    android:textSize="@dimen/textSizeDefault"
                     android:gravity="center_vertical"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
@@ -116,6 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Beschreibung"
+                    android:textSize="@dimen/textSizeDefault"
                     android:layout_below="@+id/textViewEventItemViewDescriptionTitle"
                     android:padding="10dp"
                     android:gravity="center_vertical"
