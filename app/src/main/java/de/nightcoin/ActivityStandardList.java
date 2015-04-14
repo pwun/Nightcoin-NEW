@@ -255,7 +255,10 @@ public class ActivityStandardList extends ActionBarActivity {
 						obj.setLocation((String) data.get("location"));
 						obj.setDate((Date) data.get("date"));
                         obj.setId((String) data.getObjectId());
-                        obj.setAmount((Integer) data.get("amount"));
+                        try {
+                            obj.setAmount((Integer) data.get("amount"));
+                        }
+                        catch (Exception ex){obj.setAmount(0);}
                         obj.setLimited((Boolean) data.get("limited"));
                         try{
                         obj.setCashedIn((Integer) data.get("cashedInAmount"));}
