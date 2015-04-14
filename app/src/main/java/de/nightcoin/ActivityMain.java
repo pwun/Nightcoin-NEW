@@ -3,7 +3,6 @@ package de.nightcoin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,11 +29,11 @@ public class ActivityMain extends ActionBarActivity {
         ParsePush.subscribeInBackground("global", new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if (e == null) {
+/*                if (e == null) {
                     Log.d("com.parse.push", "successfully subscribed to the broadcast channel.");
                 } else {
                     Log.e("com.parse.push", "failed to subscribe for push", e);
-                }
+                }*/
             }
         });
     }
