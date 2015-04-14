@@ -143,12 +143,19 @@ public class ActivityStandardList extends ActionBarActivity {
         return true;
 	}
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ActivityStandardList.this, ActivityUser.class);
+        ActivityStandardList.this.startActivity(intent);
+    }
+
     private void checkIfUserMode(){
         //System.out.println();
         if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")) {
            boolean user = i.getBooleanExtra("userModeActive",false);
             if(user){//usermode abfragen
                 menu.findItem(R.id.action_newCoin).setVisible(true);
+                menu.findItem(R.id.action_newCoin).setEnabled(true);
             }
         }
         /*if(menu!=null) {
@@ -165,9 +172,12 @@ public class ActivityStandardList extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-/*		if (id == R.id.action_newCoin) {
-			return true;
-		}*/
+		if (id == R.id.action_newCoin) {
+            Intent intent = new Intent(ActivityStandardList.this, ActivityEditCoin.class);
+
+            intent.putExtra("isNewCoin", true);
+            ActivityStandardList.this.startActivity(intent);
+		}
 		return super.onOptionsItemSelected(item);
 	}
 	

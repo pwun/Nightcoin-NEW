@@ -96,7 +96,7 @@
         </activity>
         <activity
             android:name=".ActivityEditPhone"
-            android:label="Telefonnummer ändern"
+            android:label="Telefonnummer bearbeiten"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -110,6 +110,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name=".ActivityEditWeekplan"
             android:label="Wochenprogramm bearbeiten"
             android:screenOrientation="portrait" >

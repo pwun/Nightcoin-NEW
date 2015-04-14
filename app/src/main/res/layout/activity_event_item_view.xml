@@ -82,8 +82,7 @@
                     android:layout_marginBottom="5dp"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
+                    android:layout_marginTop="10dp"
                     android:text="Coins an diesem Tag"
                     android:layout_below="@+id/textViewEventItemViewPrice"
                      />
@@ -107,6 +106,7 @@
                     android:textSize="20dp"
                     android:background="@color/black_alpha"
                     android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp" />

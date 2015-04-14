@@ -73,6 +73,9 @@ public class ActivityEditCoin extends ActionBarActivity {
                 coinDate.setMonth(datePicker.getMonth());
                 coinDate.setDate(datePicker.getDayOfMonth());
                 coinDate.setHours(21);
+                if (isNewCoin) {
+                    serverObject = new ParseObject("Coupons");
+                }
                 serverObject.put("date", coinDate);
                 serverObject.put("value", editValue.getText().toString());
                 serverObject.put("amount", Integer.parseInt(editAmount.getText().toString()));
@@ -117,6 +120,9 @@ public class ActivityEditCoin extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent(ActivityEditCoin.this, ActivityStandardList.class);
+        i.putExtra("input", "nextCoins");
+        i.putExtra("userModeActive", true);
+        i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
         ActivityEditCoin.this.startActivity(i);
     }
 
@@ -134,6 +140,9 @@ public class ActivityEditCoin extends ActionBarActivity {
                 public void done(ParseException e) {
                     if (e != null) {
                         Intent i = new Intent(ActivityEditCoin.this, ActivityStandardList.class);
+                        i.putExtra("input", "nextCoins");
+                        i.putExtra("userModeActive", true);
+                        i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
                         ActivityEditCoin.this.startActivity(i);
                         Toast t = Toast.makeText(ActivityEditCoin.this, "Coin wurde erfolgreich gelöscht.", Toast.LENGTH_SHORT);
                         t.show();

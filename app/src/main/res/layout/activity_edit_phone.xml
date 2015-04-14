@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="0941 12345"
+        android:text="Lädt..."
         android:textColor="@color/white"
         android:textSize="35dp"/>
 

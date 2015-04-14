@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 
@@ -47,6 +48,7 @@ public class ActivityEditWeekplan extends ActionBarActivity {
 
                 adapter = new EditWeekplanListAdapter(context, week, weekplan);
                 ExpandableListView list = (ExpandableListView) findViewById(R.id.expListViewEditWeekplanListView);
+                list.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
                 list.setAdapter(adapter);
             }
         });

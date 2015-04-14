@@ -1,5 +1,7 @@
 package de.nightcoin;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -70,6 +72,32 @@ public class ActivityUser extends ActionBarActivity {
                 Intent i = new Intent(ActivityUser.this, ActivityEditImages.class);
                 i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
                 ActivityUser.this.startActivity(i);
+            }
+        });
+
+        Button editEventsButton = (Button) findViewById(R.id.buttonUserActivityEditEvents);
+        editEventsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(ActivityUser.this)
+                        .setTitle("Sende uns eine Email, um ein Event zu erstellen, zu bearbeiten oder zu löschen.")
+                        .setMessage("Wir arbeiten daran, dies schnellstmöglich innerhalb der zu ermöglichen.")
+                        .setPositiveButton("Zur Email-Vorlage", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Intent.ACTION_SEND);
+                                intent.setType("message");
+                                intent.putExtra(Intent.EXTRA_SUBJECT, "Betreff");
+                                intent.putExtra(Intent.EXTRA_TEXT, "Nachricht");
+                                Intent mailer = Intent.createChooser(intent, null);
+                                startActivity(mailer);
+                            }
+                        })
+                        .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .show();
             }
         });
     }
