@@ -240,8 +240,12 @@ public class ActivityStandardList extends ActionBarActivity {
 			
 			if(mode.equals("Coins")){
 				try{
+                    long time = new Date().getTime();
+                    Date nowPlus2Weeks = new Date(time + (1000 * 60 * 60 * 24 * 14));
+
 					query = new ParseQuery<ParseObject>("Coupons");
                     query.whereGreaterThan("date", normalizedDate(new Date()));
+                    query.whereLessThan("date", nowPlus2Weeks);
 					query.orderByAscending("date");
 					parseList = query.find();
 					for (ParseObject data : parseList) {
