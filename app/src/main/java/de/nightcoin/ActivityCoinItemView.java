@@ -34,6 +34,7 @@ public class ActivityCoinItemView extends ActionBarActivity {
     private long updatedTime = 0L;
     TextView timer;
     Button button;
+    String coinLocation;
 
 
     @Override
@@ -44,6 +45,21 @@ public class ActivityCoinItemView extends ActionBarActivity {
         timer = (TextView) findViewById(R.id.textViewCoinItemViewTimer);
         init();
         checkIfLimited();
+    }
+
+    private void updateLocationStatistics() {
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
+        query.whereEqualTo("name", coinLocation);
+        query.setLimit(1);
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject parseObject, ParseException e) {
+                if (e == null) {
+                    parseObject.increment("cashedInCoins");
+                    parseObject.saveEventually();
+                }
+            }
+        });
     }
 
     private void checkIfLimited(){}
@@ -72,6 +88,8 @@ public class ActivityCoinItemView extends ActionBarActivity {
                 location.setText(coin.getLocation());
                 value.setText(coin.getValue());
                 date.setText(coin.getDate());
+
+                coinLocation = (String) object.get("location");
 
                 Calendar cal1 = Calendar.getInstance();
                 Calendar cal2 = Calendar.getInstance();
@@ -165,6 +183,7 @@ public class ActivityCoinItemView extends ActionBarActivity {
                     parseObject.add("cashedInUsers", ParseInstallation.getCurrentInstallation().getInstallationId());
                     parseObject.increment("cashedInAmount");
                     parseObject.saveEventually();
+                    updateLocationStatistics();
                     //parseObject.saveInBackground();
                 }
                 else{

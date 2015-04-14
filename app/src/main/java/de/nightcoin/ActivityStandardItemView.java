@@ -21,7 +21,6 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,6 +51,11 @@ public class ActivityStandardItemView extends ActionBarActivity {
         initButtons();
         System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
 	}
+
+    private void updateLocationStatistics(ParseObject object) {
+        object.increment("numberOfOpens");
+        object.saveEventually();
+    }
 
 
 
@@ -176,6 +180,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				//img.loadInBackground();
 
 				getOpening();
+                updateLocationStatistics(serverObject);
 
                 if(menu!= null){
                     checkIfFavorite();

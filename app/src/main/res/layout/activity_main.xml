@@ -47,7 +47,6 @@
                 android:paddingBottom="1dp">
 
 
-
                 <Button
                     android:id="@+id/buttonMainBars"
                     android:textColor="@color/white"
