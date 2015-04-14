@@ -9,50 +9,60 @@
 
     <TextView
         android:id="@+id/textViewActivityEditImagesInstructions"
-        android:text="Zum Bild bearbeiten tippen"
+        android:text="Bearbeitung wird bald verfügbar sein."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/white"/>
     
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewActivityEditImages1"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textViewActivityEditImagesInstructions"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewActivityEditImages2"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageViewActivityEditImages1"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewActivityEditImages3"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageViewActivityEditImages2"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewActivityEditImages4"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageViewActivityEditImages3"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewActivityEditImages5"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageViewActivityEditImages4"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"/>
 
 </RelativeLayout>

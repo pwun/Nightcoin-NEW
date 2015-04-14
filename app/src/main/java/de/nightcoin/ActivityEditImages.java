@@ -10,7 +10,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
@@ -19,16 +20,22 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.io.ByteArrayOutputStream;
+
 
 public class ActivityEditImages extends ActionBarActivity {
 
-    ImageView image1;
-    ImageView image2;
-    ImageView image3;
-    ImageView image4;
-    ImageView image5;
+    ImageButton image1;
+    ImageButton image2;
+    ImageButton image3;
+    ImageButton image4;
+    ImageButton image5;
 
     ProgressDialog progressDialog;
+
+    ParseObject serverObject;
+
+    int imageId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +44,57 @@ public class ActivityEditImages extends ActionBarActivity {
         queryForData();
     }
 
+    private void init() {
+        image1=(ImageButton) findViewById(R.id.imageViewActivityEditImages1);
+        image1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*getImageFromDevice();*/
+            }
+        });
+
+        image2=(ImageButton) findViewById(R.id.imageViewActivityEditImages2);
+        image2.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+/*
+                 getImageFromDevice();
+*/
+             }
+        });
+
+        image3=(ImageButton) findViewById(R.id.imageViewActivityEditImages3);
+        image3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+/*
+                getImageFromDevice();
+*/
+            }
+        });
+
+        image4=(ImageButton) findViewById(R.id.imageViewActivityEditImages4);
+        image4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+/*
+                getImageFromDevice();
+*/
+            }
+        });
+
+        image5=(ImageButton) findViewById(R.id.imageViewActivityEditImages5);
+        image5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+/*
+                getImageFromDevice();
+*/
+            }
+        });
+    }
+
     private void queryForData() {
-
-        image1=(ImageView) findViewById(R.id.imageViewActivityEditImages1);
-        image2=(ImageView) findViewById(R.id.imageViewActivityEditImages2);
-        image3=(ImageView) findViewById(R.id.imageViewActivityEditImages3);
-        image4=(ImageView) findViewById(R.id.imageViewActivityEditImages4);
-        image5=(ImageView) findViewById(R.id.imageViewActivityEditImages5);
-
         progressDialog = ProgressDialog.show(ActivityEditImages.this, "", "Lädt Bilder...", true);
         // Locate the class table named "Footer" in Parse.com
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
@@ -54,6 +104,7 @@ public class ActivityEditImages extends ActionBarActivity {
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject parseObject, com.parse.ParseException e) {
+                serverObject = parseObject;
                 ParseFile file1 = (ParseFile) parseObject.get("image");
                 ParseFile file2 = (ParseFile) parseObject.get("image2");
                 ParseFile file3 = (ParseFile) parseObject.get("image3");
@@ -155,7 +206,6 @@ public class ActivityEditImages extends ActionBarActivity {
                             image5.setImageBitmap(bmp);
                             // Close progress dialog
                             progressDialog.dismiss();
-                            getImageFromDevice();
                         } else {
                             Log.d("test",
                                     "There was a problem downloading the data.");
@@ -171,15 +221,46 @@ public class ActivityEditImages extends ActionBarActivity {
         Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, 1);
+/*
+        imageId = imageViewIndex;
+*/
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             Uri chosenImageUri = data.getData();
-
-            image1.setImageURI(chosenImageUri);
+/*            if (imageId == 1) {
+                image1.setImageURI(chosenImageUri);
+            }
+            if (imageId == 2) {
+                image2.setImageURI(chosenImageUri);
+            }
+            if (imageId == 3) {
+                image3.setImageURI(chosenImageUri);
+            }
+            if (imageId == 4) {
+                image5.setImageURI(chosenImageUri);
+            }
+            if (imageId == 5) {
+                image5.setImageURI(chosenImageUri);
+            }*/
         }
+    }
+
+    public void setImage(Bitmap map, int imageIndex) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Compress image to lower quality scale 1 - 100
+        map.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] image = stream.toByteArray();
+
+        // Create the ParseFile
+        ParseFile file  = new ParseFile("image.jpeg", image);
+
+
+
+
     }
 
 
