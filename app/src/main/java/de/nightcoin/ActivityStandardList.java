@@ -375,7 +375,7 @@ public class ActivityStandardList extends ActionBarActivity {
 			if (mode.equals("Bars")){
 				try{
 					query = new ParseQuery<ParseObject>("Locations");
-                    query.selectKeys(Arrays.asList("name", "image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address", "favorites", "numberOfOpens"));
+                    //query.selectKeys(Arrays.asList("name", "image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address", "favorites", "numberOfOpens"));
                     query.whereEqualTo("category", "Bar");
 					parseList = query.find();
 					for (ParseObject data : parseList) {
@@ -421,7 +421,7 @@ public class ActivityStandardList extends ActionBarActivity {
 			if(mode.equals("Clubs")){
 				try{
 					query = new ParseQuery<ParseObject>("Locations");
-                    query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
+                    //query.selectKeys(Arrays.asList("name","image", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
                     query.whereEqualTo("category", "Club");
 					parseList = query.find();
 					for (ParseObject data : parseList) {
@@ -478,7 +478,7 @@ public class ActivityStandardList extends ActionBarActivity {
 			if(mode.equals("Favoriten")){
 				try{
 					query = new ParseQuery<ParseObject>("Locations");
-                    query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
+                    //query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
                     query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId());
 
 					parseList = query.find();
@@ -512,7 +512,7 @@ public class ActivityStandardList extends ActionBarActivity {
             if(mode.equals("Food")){
                 try{
                     query = new ParseQuery<ParseObject>("Locations");
-                    query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
+                    //query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
                     query.whereEqualTo("category", "Food");
                     parseList = query.find();
                     for (ParseObject data : parseList) {
