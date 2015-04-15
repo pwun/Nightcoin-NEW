@@ -1,6 +1,9 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -88,9 +91,29 @@ public class ActivityEventItemView extends ActionBarActivity {
                 description = (String) object.get("details");
                 image = object.getParseFile("image");
 
+
                 normalizeDate((Date) object.get("date"));
                 setTextViews();
                 setImage();
+
+
+                try {
+                    byte[] stream = image.getData();
+                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                    int dominantColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
+
+                    findViewById(R.id.layoutEventItemViewBackground).setBackgroundColor(getDominantColor(bmp));
+                    findViewById(R.id.buttonEventItemViewFilteredCoins).setBackgroundColor(dominantColor);
+                    findViewById(R.id.textViewEventItemViewDescriptionTitle).setBackgroundColor(dominantColor);
+                    ActivityEventItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
+                    bmp.recycle();
+                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                } catch (Exception ex) {
+                    System.out.println("Error getting color");
+                }
+
 
                /* // Tickets
                 ticketsEnabled = (boolean)object.get("ticketsAvailable");
@@ -141,6 +164,17 @@ public class ActivityEventItemView extends ActionBarActivity {
         date.setHours(1);
         date.setMinutes(0);
         dateToFilterCoins = date;
+    }
+
+    public static int getDominantColor(Bitmap bitmap) {
+        Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
+        int color = bitmap1.getPixel(0, 0);
+        System.out.println("Dominant Color = "+color);
+        if(color == -263173){//Medi Veranstaltung..
+            return -3355442;
+        }
+
+        return color;
     }
 
 	@Override

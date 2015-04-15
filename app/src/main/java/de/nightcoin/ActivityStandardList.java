@@ -1,8 +1,12 @@
 package de.nightcoin;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -160,6 +164,8 @@ public class ActivityStandardList extends ActionBarActivity {
 
     }
 
+
+
     private void checkIfUserMode(){
         //System.out.println();
         if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")) {
@@ -167,6 +173,10 @@ public class ActivityStandardList extends ActionBarActivity {
             if(user){//usermode abfragen
                 menu.findItem(R.id.action_newCoin).setVisible(true);
                 menu.findItem(R.id.action_newCoin).setEnabled(true);
+            }
+            else{
+                menu.findItem(R.id.action_Info).setVisible(true);
+                menu.findItem(R.id.action_Info).setEnabled(true);
             }
         }
         /*if(menu!=null) {
@@ -189,6 +199,17 @@ public class ActivityStandardList extends ActionBarActivity {
             intent.putExtra("isNewCoin", true);
             ActivityStandardList.this.startActivity(intent);
 		}
+        if (id == R.id.action_Info) {
+            new AlertDialog.Builder(ActivityStandardList.this)
+                    .setTitle("So funktionieren die Coins")
+                    .setMessage("Nightcoins sind Rabatt-Gutscheine, die einfach an der Bar vorgezeigt werden. Sobald du auf 'Einlösen' tippst, startet ein Countdown bis der Coin abläuft. Du solltest coins also immer erst bei der Bestellung einlösen. \n\nJeder Coin ist pro Smartphone nur einmal einlösbar.")
+                    .setPositiveButton("Verstanden!", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    })
+                    .show();
+        }
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -383,6 +404,7 @@ public class ActivityStandardList extends ActionBarActivity {
                     query.whereEqualTo("category", "Bar");
                     query.orderByAscending("name");
 					parseList = query.find();
+
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
@@ -485,12 +507,19 @@ public class ActivityStandardList extends ActionBarActivity {
 			
 			if(mode.equals("Favoriten")){
 				try{
+
 					query = new ParseQuery<ParseObject>("Locations");
-                    query.orderByAscending("name");
+                    //query.orderByAscending("name");
                     //query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
+                    //System.out.println("own ID: "+ParseInstallation.getCurrentInstallation().getInstallationId().toString());
                     query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
 
 					parseList = query.find();
+                    /*System.out.println("List:");
+                    for(int i = 0; i < parseList.size(); i++){
+                        System.out.println(parseList.get(i).get("favorites"));
+                    }*/
+                    System.out.println("Setting information for Favorites..."+parseList.size());
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("name"));
@@ -498,7 +527,7 @@ public class ActivityStandardList extends ActionBarActivity {
                         ParseGeoPoint locationGeo = data.getParseGeoPoint("geoData");
                         obj.setLat(locationGeo.getLatitude());
                         obj.setLong(locationGeo.getLongitude());
-                        //obj.setAdr((String) data.get("adress"));
+                        //obj.setAdr((String) data.get("address"));
                         //obj.setTel((String) data.get("phone"));
                         try{
                             obj.setOpening((ArrayList<String>)data.get("opensAt"));
@@ -614,6 +643,7 @@ public class ActivityStandardList extends ActionBarActivity {
 						}
 					});
 					ListView listview = (ListView) findViewById(R.id.listViewStandardList);
+
 					StandardListViewAdapter adapter = new StandardListViewAdapter(ActivityStandardList.this, list, "location");
 					listview.setAdapter(adapter);
 				}

@@ -26,7 +26,7 @@ public class ActivityMain extends ActionBarActivity {
         TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Roboto-Light.ttf"); // font from assets: "assets/fonts/Roboto-Regular.tt
         subscribeToNotifications();
 
-        new AlertDialog.Builder(ActivityMain.this)
+        /*new AlertDialog.Builder(ActivityMain.this)
                 .setTitle("Hinweis")
                 .setMessage("Aufgrund von technischen Problemen konnten wir die finale Version noch nicht für Android veröffentlichen. \nDu erhältst in den nächsten Tagen ein Update, mit dem du alle Funktionen und das fertige Design nutzen kannst. \n\nWir bitten dich, dies zu entschuldigen.")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -34,7 +34,7 @@ public class ActivityMain extends ActionBarActivity {
 
                     }
                 })
-                .show();
+                .show();*/
 	}
 
     private void subscribeToNotifications() {

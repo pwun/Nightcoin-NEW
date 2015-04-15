@@ -9,5 +9,11 @@
         android:enabled="false"
         android:orderInCategory="100" app:showAsAction="always" />
 
+    <item android:id="@+id/action_Info" android:title="So Geht's!"
+
+        android:visible="false"
+        android:enabled="false"
+        android:orderInCategory="100" app:showAsAction="always" />
+
 
 </menu>

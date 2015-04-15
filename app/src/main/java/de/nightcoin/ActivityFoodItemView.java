@@ -1,6 +1,9 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -113,6 +117,24 @@ public class ActivityFoodItemView extends ActionBarActivity {
                     System.out.println("Fehler bei der Adresse");
                 }
 
+                try {
+                    byte[] stream = serverObject.getParseFile("image").getData();
+                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                    int dominantColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
+
+                    findViewById(R.id.layoutFoodItemViewBackground).setBackgroundColor(getDominantColor(bmp));
+                    findViewById(R.id.textViewFoodItemViewName).setBackgroundColor(dominantColor);
+                    findViewById(R.id.textViewFoodItemViewContact).setBackgroundColor(dominantColor);
+                    ActivityFoodItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
+                    bmp.recycle();
+                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                } catch (Exception ex) {
+                    System.out.println("Error getting color");
+                }
+
+
                 ImageView img = (ImageView) findViewById(R.id.imageViewFoodItemView);
 
                     img.setImageBitmap(obj.getImage());
@@ -124,6 +146,13 @@ public class ActivityFoodItemView extends ActionBarActivity {
         });
 
         //getDailyData();
+    }
+
+
+    public static int getDominantColor(Bitmap bitmap) {
+        Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
+        int color = bitmap1.getPixel(0, 0);
+        return color;
     }
 
     private void getOpening() {

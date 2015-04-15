@@ -1,6 +1,9 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -79,12 +82,35 @@ public class ActivityTaxiItemView extends ActionBarActivity {
                 img.setImageBitmap(obj.getImage());
 
 
+                try {
+                    byte[] stream = serverObject.getParseFile("image").getData();
+                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                    int dominantColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
+
+                    findViewById(R.id.layoutTaxiItemViewBackground).setBackgroundColor(getDominantColor(bmp));
+                    findViewById(R.id.textViewTaxiItemViewOpening).setBackgroundColor(dominantColor);
+                    ActivityTaxiItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
+                    bmp.recycle();
+                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                } catch (Exception ex) {
+                    System.out.println("Error getting color");
+                }
+
+
                 //img.loadInBackground();
                 getOpening();
             }
         });
 
         //getDailyData();
+    }
+
+    public static int getDominantColor(Bitmap bitmap) {
+        Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
+        int color = bitmap1.getPixel(0, 0);
+        return color;
     }
 
     private void getOpening() {

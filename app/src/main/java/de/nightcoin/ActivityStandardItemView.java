@@ -203,17 +203,27 @@ public class ActivityStandardItemView extends ActionBarActivity {
                 try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    ColorDrawable colorDrawable = new ColorDrawable(getDominantColor(bmp));
+                    int dominantColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
 
                     RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
                     TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
                     TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
+                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
+                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
+                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
 
-                    ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getDominantColor(bmp)));
-                    hours.setBackgroundDrawable(colorDrawable);
-                    contact.setBackgroundDrawable(colorDrawable);
+                    nextCoins.setBackgroundColor(dominantColor);
+                    nextEvents.setBackgroundColor(dominantColor);
+                    weekPlan.setBackgroundColor(dominantColor);
+
+
+                    ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+                    hours.setBackgroundColor(dominantColor);
+                    contact.setBackgroundColor(dominantColor);
                     layout.setBackgroundColor(getDominantColor(bmp));
-                    System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                    bmp.recycle();
+                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
                 }
