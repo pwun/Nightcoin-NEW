@@ -62,6 +62,12 @@ public class ActivityCoinItemView extends ActionBarActivity {
         });
     }
 
+    private long normalizedDateInMillis(Date date) {
+        date.setHours(12);
+        date.setMinutes(0);
+        return date.getTime();
+    }
+
     private void checkIfLimited(){}
 
     private void init(){
@@ -102,15 +108,32 @@ public class ActivityCoinItemView extends ActionBarActivity {
                 boolean sameNight = cal1.get(Calendar.YEAR) == cal2
                         .get(Calendar.YEAR)
                         && cal1.get(Calendar.DAY_OF_YEAR) == cal2
-                        .get(Calendar.DAY_OF_YEAR)+1 && cal2.get(Calendar.HOUR_OF_DAY)>cal1.get(Calendar.HOUR_OF_DAY)+18;
+                        .get(Calendar.DAY_OF_YEAR)+1 && cal1.getTime().getHours() < 5;
+                boolean correctEvening = cal1.getTimeInMillis() > normalizedDateInMillis(cal1.getTime());
+
                 if(!coin.isLimited()){
-                    button.setBackgroundColor(getResources().getColor(R.color.transparent));
-                    button.setTextSize(18);
-                    button.setText("Du musst diesen Coin bei der Bestellung nicht vorzeigen.");
+                    if(sameDay && !correctEvening) {
+                        button.setBackgroundColor(getResources().getColor(R.color.orange));
+                        button.setText("Verfügbar am Abend des " + coin.getDate());
+                    } else {
+                        button.setBackgroundColor(getResources().getColor(R.color.transparent));
+                        button.setTextSize(18);
+                        button.setText("Du musst diesen Coin bei der Bestellung nicht vorzeigen.");
+                    }
                     timer.setVisibility(View.INVISIBLE);
                     button.setVisibility(View.VISIBLE);
+                    return;
                 }else if(sameDay||sameNight){
-                    //Überprüfe ob eingelöst
+                    if (sameDay) {
+                        // Überprüfe ob abends
+                        if (!correctEvening) {
+                            button.setBackgroundColor(getResources().getColor(R.color.orange));
+                            button.setText("Verfügbar am Abend des " + coin.getDate());
+                            button.setVisibility(View.VISIBLE);
+                            return;
+                        }
+                    }
+                     //Überprüfe ob eingelöst
                     ArrayList<String> cashedInUsers = (ArrayList<String>)object.get("cashedInUsers");
                     if(cashedInUsers!=null){
                     if(cashedInUsers.contains(ParseInstallation.getCurrentInstallation().getInstallationId())){
@@ -140,8 +163,7 @@ public class ActivityCoinItemView extends ActionBarActivity {
                             }
                         });
                     }
-                }
-                else{
+                } else{
                     button.setBackgroundColor(getResources().getColor(R.color.orange));
                     button.setText("Verfügbar am " + coin.getDate());
                     button.setVisibility(View.VISIBLE);

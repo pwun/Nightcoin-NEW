@@ -3,7 +3,6 @@ package de.nightcoin;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +58,13 @@ public class ActivityStandardItemView extends ActionBarActivity {
         //setActionBarColor(null);
 
 	}
+
+    @Override
+    public void onBackPressed() {
+        obj.getImage().recycle();
+        obj.setImage(null);
+        super.onBackPressed();
+    }
 
     private void setActionBarColor(Bitmap bitmap) {
         try {

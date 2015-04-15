@@ -5,8 +5,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -262,11 +260,21 @@ public class ActivityStandardList extends ActionBarActivity {
 			
 			if(mode.equals("Coins")){
 				try{
-                    long time = new Date().getTime();
+                    Date now = new Date();
+                    long time = now.getTime();
                     Date nowPlus2Weeks = new Date(time + (1000 * 60 * 60 * 24 * 14));
 
+                    Date lastEvening = new Date();
+                    lastEvening.setDate(lastEvening.getDate() - 1);
+                    lastEvening.setHours(21);
 					query = new ParseQuery<ParseObject>("Coupons");
-                    query.whereGreaterThan("date", new Date());
+                    if (now.getHours() < 5) {
+                        query.whereGreaterThan("date", lastEvening);
+                        System.out.println("Gestern Abend: " + lastEvening);
+                    } else {
+                        query.whereGreaterThan("date", now);
+                        System.out.println("Heute Abend: " + now);
+                    }
                     query.whereLessThan("date", nowPlus2Weeks);
 					query.orderByAscending("date");
 					parseList = query.find();
