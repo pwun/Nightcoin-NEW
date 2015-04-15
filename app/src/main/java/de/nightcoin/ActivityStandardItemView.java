@@ -3,6 +3,7 @@ package de.nightcoin;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -205,7 +207,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 
 
-                /*try {
+                try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
                     int dominantColor = getDominantColor(bmp);
@@ -217,21 +219,26 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
                     Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
                     Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+                    /*Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
 
                     nextCoins.setBackgroundColor(dominantColor);
                     nextEvents.setBackgroundColor(dominantColor);
                     weekPlan.setBackgroundColor(dominantColor);
-
+                    /*call.setBackgroundColor(dominantColor);
+                    map.setBackgroundColor(dominantColor);*/
 
                     ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
                     hours.setBackgroundColor(dominantColor);
                     contact.setBackgroundColor(dominantColor);
-                    layout.setBackgroundColor(getDominantColor(bmp));
+                    //layout.setBackgroundColor(getDominantColor(bmp));
                     bmp.recycle();
+                    bmp = null;
+                    System.gc();
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
-                }*/
+                }
 
 
 				ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);

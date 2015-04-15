@@ -155,9 +155,16 @@ public class StandardObject{
         if(parseFile != null){
             try {
                 byte[] stream = parseFile.getData();
-                Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                Bitmap myImage = Bitmap.createScaledBitmap(bmp,bmp.getWidth()/2,bmp.getHeight()/2,true);
-                this.image = myImage;
+                try {
+                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                    Bitmap myImage = Bitmap.createScaledBitmap(bmp,bmp.getWidth()/2,bmp.getHeight()/2,true);
+                    this.image = myImage;
+                    bmp.recycle();
+                    //myImage.recycle();
+                    System.gc();
+                } catch (OutOfMemoryError memoryError) {
+                    System.out.println("Memory Error: " + memoryError.getMessage());
+                }
             } catch (com.parse.ParseException e) {
                 e.printStackTrace();
             }

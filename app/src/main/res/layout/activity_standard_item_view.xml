@@ -23,7 +23,7 @@
                 <ImageView
                     android:id="@+id/imageViewStandardItemView"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher" />
 
@@ -49,6 +49,7 @@
                 android:textSize="@dimen/textSizeDefault"
                 android:padding="10dp"
                 android:gravity="center_vertical"
+                android:textColor="@color/black"
                 android:text="Lädt Events..." />
 
             <TextView
@@ -57,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textSize="@dimen/textSizeDefault"
+                android:textColor="@color/black"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"/>
 
@@ -66,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:padding="10dp"
+                android:textColor="@color/black"
                 android:textSize="@dimen/textSizeDefault"
                 android:gravity="center_vertical"
                 android:text="Lädt Coins..." />
@@ -75,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textSizeDefault"
+                android:textColor="@color/black"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 />
@@ -83,7 +87,7 @@
                 android:id="@+id/buttonStandardItemViewNextEvents"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:layout_marginTop="15dp"
                 android:background="@color/black_alpha"
                 android:textColor="@color/white"
@@ -98,7 +102,7 @@
                 android:id="@+id/buttonStandardItemViewNextCoins"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:background="@color/black_alpha"
                 android:textColor="@color/white"
                 android:layout_marginBottom="5dp"
@@ -112,7 +116,7 @@
                 android:id="@+id/buttonStandardItemViewWeekplan"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:background="@color/black_alpha"
                 android:textColor="@color/white"
                 android:layout_marginBottom="15dp"
@@ -152,6 +156,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Mo"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -160,6 +166,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Di"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -167,7 +175,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:gravity="center"
                         android:text="Mi"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -176,6 +186,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Do"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -184,6 +196,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Fr"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -192,22 +206,26 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Sa"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/textViewStandardItemViewSo"
+                         android:id="@+id/textViewStandardItemViewSo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:gravity="center"
                         android:text="So"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/black" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRowStandardItemViewOpening"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginTop="10dp"
 
                     android:weightSum="7" >
 
@@ -217,7 +235,9 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
-                        android:layout_weight="1" />
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/textViewStandardItemViewDiOpening"
@@ -225,30 +245,38 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
-                        android:layout_weight="1" />
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/textViewStandardItemViewMiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:gravity="center"
                         android:text="-"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/textViewStandardItemViewDoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:gravity="center"
                         android:text="-"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/textViewStandardItemViewFrOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:gravity="center"
                         android:text="-"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -257,6 +285,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -264,7 +294,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/black"
                         android:text="-"
+                        android:gravity="center"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -272,7 +304,7 @@
                     android:id="@+id/tableRowStandardItemViewClosing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginTop="10dp"
                     android:weightSum="7" >
 
                     <TextView
@@ -280,7 +312,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/black"
                         android:text="-"
+                        android:gravity="center"
                         android:layout_weight="1" />
 
                     <TextView
@@ -288,7 +322,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/black"
                         android:text="-"
+                        android:gravity="center"
                         android:layout_weight="1" />
 
                     <TextView
@@ -296,7 +332,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/black"
                         android:text="-"
+                        android:gravity="center"
                         android:layout_weight="1" />
 
                     <TextView
@@ -304,7 +342,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/black"
                         android:text="-"
+                        android:gravity="center"
                         android:layout_weight="1" />
 
                     <TextView
@@ -313,6 +353,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -321,13 +363,17 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/textViewStandardItemViewSoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:textSize="@dimen/textSizeDefault"
+                        android:textColor="@color/black"
                         android:text="-"
                         android:layout_weight="1" />
                 </TableRow>
@@ -361,6 +407,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Tel.:"
+                        android:textColor="@color/black"
                         android:layout_weight="1"/>
 
                     <Button
@@ -385,6 +432,7 @@
                     android:textSize="@dimen/textSizeDefault"
 
                     android:text="Adr.:"
+                    android:textColor="@color/black"
                     android:layout_weight="1"/>
 
                 <Button
