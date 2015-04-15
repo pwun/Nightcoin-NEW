@@ -200,7 +200,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 
 
-                try {
+                /*try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
                     int dominantColor = getDominantColor(bmp);
@@ -226,7 +226,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
-                }
+                }*/
 
 
 				ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);

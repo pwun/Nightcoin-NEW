@@ -39,12 +39,18 @@ public class StandardListViewAdapter extends BaseAdapter {
         gps = new GPSTracker(listContext);
 
         if(gps.canGetLocation()) {
-
+            try{
             latitude = gps.getLatitude();
             longitude = gps.getLongitude();
-            geo = new ParseGeoPoint(latitude,longitude);
+            geo = new ParseGeoPoint(latitude,longitude);}
+            catch (Exception e){
+                System.out.println("Fehler, Location nicht bekommen");
+                geo = new ParseGeoPoint(0,0);
+            }
         } else {
-            gps.showSettingsAlert();
+            //gps.showSettingsAlert();
+            System.out.println("Fehler, GPS nicht verfügbar");
+            geo = new ParseGeoPoint(0,0);
         }
 
     }
@@ -134,8 +140,15 @@ public class StandardListViewAdapter extends BaseAdapter {
             double lon = list.get(position).getLong();
             ParseGeoPoint geoLocation = new ParseGeoPoint(lat, lon);
             double distance = geo.distanceInKilometersTo(geoLocation);
-            DecimalFormat df = new DecimalFormat("###.##");
-            holder.topDetail.setText(""+ df.format(distance) +" km");
+            if(distance < 100){
+                DecimalFormat df = new DecimalFormat("###.##");
+                holder.topDetail.setText(""+ df.format(distance) +" km");
+            } else if (geo.getLatitude()==0&&geo.getLongitude()==0){
+                holder.topDetail.setText("kein GPS verfügbar");
+            }
+            else{//kein GPS
+                holder.topDetail.setText("nicht in deiner Nähe");
+            }
             holder.bottomDetail.setText(list.get(position).getOpeningToday());
             if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));
@@ -162,8 +175,16 @@ public class StandardListViewAdapter extends BaseAdapter {
             double lon = list.get(position).getLong();
             ParseGeoPoint geoLocation = new ParseGeoPoint(lat, lon);
             double distance = geo.distanceInKilometersTo(geoLocation);
-            DecimalFormat df = new DecimalFormat("###.##");
-            holder.topDetail.setText(""+ df.format(distance) +" km");
+            if(distance < 100){
+                DecimalFormat df = new DecimalFormat("###.##");
+                holder.topDetail.setText(""+ df.format(distance) +" km");
+            }
+            else if (geo.getLatitude()==0&&geo.getLongitude()==0){
+                holder.topDetail.setText("kein GPS verfügbar");
+            }
+            else{//kein GPS
+                holder.topDetail.setText("nicht in deiner Nähe");
+            }
             holder.bottomDetail.setText(list.get(position).getOpeningToday());
             if(holder.bottomDetail.getText().equals("Geöffnet")){//list.get(position).getOpeningToday().equals("Geöffnet")) {
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.green));

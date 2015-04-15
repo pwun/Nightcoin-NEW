@@ -150,8 +150,8 @@ public class ActivityStandardList extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        query.cancel();
-        System.out.println("Query cancelled");
+        //query.cancel();
+        System.out.println("Query NICHT cancelled");
         if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")) {
             boolean user = i.getBooleanExtra("userModeActive",false);
             if(user){//usermode abfragen
@@ -509,11 +509,12 @@ public class ActivityStandardList extends ActionBarActivity {
 				try{
 
 					query = new ParseQuery<ParseObject>("Locations");
-                    //query.orderByAscending("name");
+                    query.orderByAscending("name");
                     //query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
                     //System.out.println("own ID: "+ParseInstallation.getCurrentInstallation().getInstallationId().toString());
                     query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
 
+                    //query.whereContains("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
 					parseList = query.find();
                     /*System.out.println("List:");
                     for(int i = 0; i < parseList.size(); i++){

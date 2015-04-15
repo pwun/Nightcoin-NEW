@@ -82,7 +82,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
                 img.setImageBitmap(obj.getImage());
 
 
-                try {
+                /*try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
                     int dominantColor = getDominantColor(bmp);
@@ -96,7 +96,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
-                }
+                }*/
 
 
                 //img.loadInBackground();

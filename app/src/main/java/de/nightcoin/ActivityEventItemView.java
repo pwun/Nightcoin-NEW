@@ -97,7 +97,7 @@ public class ActivityEventItemView extends ActionBarActivity {
                 setImage();
 
 
-                try {
+                /*try {
                     byte[] stream = image.getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
                     int dominantColor = getDominantColor(bmp);
@@ -112,7 +112,7 @@ public class ActivityEventItemView extends ActionBarActivity {
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
-                }
+                }*/
 
 
                /* // Tickets
