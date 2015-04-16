@@ -19,6 +19,7 @@ import java.util.List;
 public class ActivityWeekplan extends ActionBarActivity {
 
 	String name;
+    int color;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class ActivityWeekplan extends ActionBarActivity {
 		setContentView(R.layout.activity_weekplan);
 		Intent i = getIntent();
 		name = i.getStringExtra("name");
+        color = i.getIntExtra("color", 1);
 		
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
         query.selectKeys(Arrays.asList("weekplan"));
@@ -41,10 +43,11 @@ public class ActivityWeekplan extends ActionBarActivity {
 				ArrayList<String> weekplan = new ArrayList<String>();
 				weekplan = (ArrayList<String>) object.get("weekplan");
 				ListView listview = (ListView) findViewById(R.id.listViewWeekplan);
-				WeekplanAdapter adapter = new WeekplanAdapter(ActivityWeekplan.this, weekplan);
+				WeekplanAdapter adapter = new WeekplanAdapter(ActivityWeekplan.this, weekplan, color);
 				listview.setAdapter(adapter);
 			}
 		});
+
 	}
 
 	@Override

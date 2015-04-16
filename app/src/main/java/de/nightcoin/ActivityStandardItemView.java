@@ -41,6 +41,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 	StandardObject obj = new StandardObject();
     ArrayList<String> favorites = new ArrayList<String>();
     Menu menu;
+    int dominantColor;
     MenuItem menuItemFavorites;
     ImageColor imageColor;
     int tintColor;
@@ -101,6 +102,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityStandardItemView.this,ActivityWeekplan.class);
 				i.putExtra("name", name);
+                i.putExtra("color", dominantColor);
 				ActivityStandardItemView.this.startActivity(i);
 			}
 		});
@@ -199,7 +201,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
                 try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    int dominantColor = getDominantColor(bmp);
+                    dominantColor = getDominantColor(bmp);
                     ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
 
                     /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);

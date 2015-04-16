@@ -18,13 +18,15 @@ public class WeekplanAdapter extends BaseAdapter {
 	Context listContext;
 	LayoutInflater inflater;
 	ArrayList<String> list;
+    int color;
 
-	public WeekplanAdapter(Context context, ArrayList<String> weeklist) {
+	public WeekplanAdapter(Context context, ArrayList<String> weeklist, int color) {
 		super();
 		listContext = context;
 		inflater = LayoutInflater.from(listContext);
 		list = new ArrayList<String>();
 		list.addAll(weeklist);
+        this.color = color;
 	}
 
 	public class ViewHolder {
@@ -55,6 +57,7 @@ public class WeekplanAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.weekplan_adapter, null);
 			holder.weekday = (TextView) convertView
 					.findViewById(R.id.textViewWeekplanTitle);
+            holder.weekday.setBackgroundColor(color);
 			holder.content = (TextView) convertView
 					.findViewById(R.id.textViewWeekplanContent);
 			convertView.setTag(holder);
