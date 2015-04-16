@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -60,8 +61,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
         initButtons();
         System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
         //setActionBarColor(null);
-
-	}
+    }
 
     @Override
     public void onBackPressed() {
@@ -214,10 +214,10 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
                     Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
                     Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
-
                     findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(dominantColor);
                     findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(dominantColor);
                     findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(dominantColor);
+                    findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(dominantColor);
                     /*call.setBackgroundColor(dominantColor);
                     map.setBackgroundColor(dominantColor);*/
 

@@ -41,9 +41,14 @@ public class ActivityStandardList extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_standard_list);
+        loadActivity();
+
+	}
+
+    private void loadActivity(){
+        setContentView(R.layout.activity_standard_list);
         i = getIntent();
-		mode = i.getStringExtra("input");
+        mode = i.getStringExtra("input");
         if(mode.equals("Coins")||mode.equals("nextCoins")||mode.equals("filteredCoins")){
             setTitle("Nightcoins");
         }
@@ -65,10 +70,10 @@ public class ActivityStandardList extends ActionBarActivity {
         else if(mode.equals("Food")){
             setTitle("Food");
         }
-		System.out.println("Creating "+ mode + "list...");
-		//Execute Async Task
-		new RemoteDataTask().execute();
-	}
+        System.out.println("Creating "+ mode + "list...");
+        //Execute Async Task
+        new RemoteDataTask().execute();
+    }
 
     private int normalizeWeekday(Date date) {
         // Stimmt das auch?
@@ -198,6 +203,9 @@ public class ActivityStandardList extends ActionBarActivity {
             intent.putExtra("isNewCoin", true);
             ActivityStandardList.this.startActivity(intent);
 		}
+        if(id == R.id.action_refresh){
+            loadActivity();
+        }
         if (id == R.id.action_Info) {
             new AlertDialog.Builder(ActivityStandardList.this)
                     .setTitle("So funktionieren die Coins")
@@ -304,6 +312,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH COINS");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
 				}
 			}
 			
@@ -338,6 +347,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH CLUBS");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
 				}
 			}
 
@@ -385,6 +395,7 @@ public class ActivityStandardList extends ActionBarActivity {
                    }
                 catch(Exception e){
                     System.out.println("ERROR, CANT FETCH COINS");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
                 }
             }
 			
@@ -412,6 +423,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH EVENTS");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
 				}
 			}
 			
@@ -421,6 +433,7 @@ public class ActivityStandardList extends ActionBarActivity {
                     //query.selectKeys(Arrays.asList("name", "image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address", "favorites", "numberOfOpens"));
                     query.whereEqualTo("category", "Bar");
                     query.orderByAscending("name");
+
 					parseList = query.find();
 
 					for (ParseObject data : parseList) {
@@ -460,6 +473,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH BARS");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
                     System.out.println(e.getStackTrace());
 				}
 			}
@@ -495,6 +509,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH CLUBS");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
 				}
 			}
 			
@@ -520,6 +535,7 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH EVENTS");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
 				}
 			}
 			
@@ -607,6 +623,7 @@ public class ActivityStandardList extends ActionBarActivity {
                 }
                 catch(Exception e){
                     System.out.println("ERROR, CANT FETCH FAVORITES");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
                 }
             }
 
@@ -633,6 +650,7 @@ public class ActivityStandardList extends ActionBarActivity {
                 }
                 catch(Exception e){
                     System.out.println("ERROR, CANT FETCH FAVORITES");
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
                 }
             }
 			

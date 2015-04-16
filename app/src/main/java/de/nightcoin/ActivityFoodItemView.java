@@ -165,6 +165,7 @@ public class ActivityFoodItemView extends ActionBarActivity {
                     ActivityFoodItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
                     findViewById(R.id.textViewFoodItemViewContact).setBackgroundColor(dominantColor);
                     findViewById(R.id.textViewFoodItemViewName).setBackgroundColor(dominantColor);
+                    findViewById(R.id.ViewfoodItemViewSeperator).setBackgroundColor(dominantColor);
                     Button map = (Button)findViewById(R.id.buttonFoodItemViewMap);
                     map.setTextColor(dominantColor);
                     Button call = (Button)findViewById(R.id.buttonFoodItemViewCall);
