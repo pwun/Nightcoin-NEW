@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.parse.DeleteCallback;
@@ -313,6 +314,9 @@ public class ActivityStandardList extends ActionBarActivity {
                     query.whereGreaterThan("date", normalizedDate(new Date()));
                     query.orderByAscending("date");
 					parseList = query.find();
+                    if (parseList.size() == 0) {
+                        findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
+                    }
 					for (ParseObject data : parseList) {
 						CoinObject obj = new CoinObject();
 						obj.setValue((String) data.get("value"));

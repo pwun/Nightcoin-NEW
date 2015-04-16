@@ -1,6 +1,5 @@
 package de.nightcoin;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -65,22 +64,12 @@ public class ActivityStandardItemView extends ActionBarActivity {
     public void onBackPressed() {
         obj.getImage().recycle();
         obj.setImage(null);
+        obj = null;
+        serverObject = null;
+        System.gc();
         super.onBackPressed();
     }
 
-    private void setActionBarColor(Bitmap bitmap) {
-        try {
-/*
-            imageColor = new ImageColor(bitmap);
-*/
-            ActionBar actionBar = getActionBar();
-            actionBar.setBackgroundDrawable(new ColorDrawable(0xff234788));
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayShowTitleEnabled(true);
-        } catch (Exception e) {
-            System.out.println("Error setting color");
-        }
-    }
 
     private void updateLocationStatistics(ParseObject object) {
         object.increment("numberOfOpens");

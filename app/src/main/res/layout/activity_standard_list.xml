@@ -2,15 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkBackground"
+    android:background="@drawable/blur_background"
     tools:context="de.nightcoin.ActivityStandardList" >
+
+    <TextView
+        android:id="@+id/textViewListNoData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:text="Keine Daten"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
 
     <ListView
         android:id="@+id/listViewStandardList"
-        android:background="@color/white"
+        android:background="@color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content" >
     </ListView>
 
 </RelativeLayout>

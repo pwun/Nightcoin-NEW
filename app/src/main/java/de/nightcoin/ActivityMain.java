@@ -1,7 +1,5 @@
 package de.nightcoin;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -23,7 +21,7 @@ public class ActivityMain extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initButtons();
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/Roboto-Light.ttf"); // font from assets: "assets/fonts/Roboto-Regular.tt
+        TypefaceUtil.overrideFont(getApplicationContext(), "SANS", "font/Roboto-Light.ttf"); // font from assets: "assets/fonts/Roboto-Regular.tt
         subscribeToNotifications();
 
         /*new AlertDialog.Builder(ActivityMain.this)
