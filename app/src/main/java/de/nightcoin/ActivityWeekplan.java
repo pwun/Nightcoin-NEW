@@ -1,6 +1,7 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -28,8 +29,10 @@ public class ActivityWeekplan extends ActionBarActivity {
 		Intent i = getIntent();
 		name = i.getStringExtra("name");
         color = i.getIntExtra("color", 1);
-		
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
+        ColorDrawable colorDrawable = new ColorDrawable(color);
+        ActivityWeekplan.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
         query.selectKeys(Arrays.asList("weekplan"));
 		query.whereEqualTo("name", name);
 		query.setLimit(1);

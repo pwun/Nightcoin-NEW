@@ -3,6 +3,7 @@ package de.nightcoin;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -181,13 +182,13 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
                 TextView tel = (TextView)findViewById(R.id.textViewStandardItemViewTel);
                 if(obj.getTel()!=null){
-                    tel.setText("Tel.: "+obj.getTel());
+                    tel.setText(""+obj.getTel());
                     System.out.println(obj.getTel());
                 }
                 else{System.out.println("Fehler bei Telefonnummer");}
                 TextView adr = (TextView)findViewById(R.id.textViewStandardItemViewAdress);
                 if(obj.getAdr() != null){
-                    adr.setText("Adr.: "+obj.getAdr());
+                    adr.setText(""+obj.getAdr());
                     System.out.println(obj.getAdr());
                 }
                 else{
@@ -222,7 +223,12 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
                     findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(dominantColor);
                     findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(dominantColor);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    map.setTextColor(dominantColor);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
+                    call.setTextColor(dominantColor);
                     //layout.setBackgroundColor(getDominantColor(bmp));
+                    stream = null;
                     bmp.recycle();
                     bmp = null;
                     System.gc();
@@ -269,6 +275,19 @@ public class ActivityStandardItemView extends ActionBarActivity {
     public static int getDominantColor(Bitmap bitmap) {
         Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
         int color = bitmap1.getPixel(0, 0);
+        System.out.println("Dominant Color = "+color);
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        double luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+        System.out.println("Luma: " + luma);
+        if(luma > 170){
+            System.out.println("Too light");
+            color = -7829368;
+        }
+        else{
+            System.out.println("Color ok");
+        }
         return color;
     }
 

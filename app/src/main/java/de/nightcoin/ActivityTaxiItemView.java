@@ -3,6 +3,7 @@ package de.nightcoin;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
@@ -119,6 +120,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
                     ActivityTaxiItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
                     //layout.setBackgroundColor(getDominantColor(bmp));
+                    stream = null;
                     bmp.recycle();
                     bmp = null;
                     System.gc();
@@ -139,6 +141,19 @@ public class ActivityTaxiItemView extends ActionBarActivity {
     public static int getDominantColor(Bitmap bitmap) {
         Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
         int color = bitmap1.getPixel(0, 0);
+        System.out.println("Dominant Color = "+color);
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        double luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+        System.out.println("Luma: " + luma);
+        if(luma > 170){
+            System.out.println("Too light");
+            color = -7829368;
+        }
+        else{
+            System.out.println("Color ok");
+        }
         return color;
     }
 

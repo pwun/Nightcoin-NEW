@@ -361,6 +361,9 @@ public class ActivityStandardList extends ActionBarActivity {
                     query.whereLessThan("date", maxDate);
                     query.orderByAscending("date");
                     parseList = query.find();
+                    if (parseList.size() == 0) {
+                        findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
+                    }
                     for (ParseObject data : parseList) {
                         CoinObject obj = new CoinObject();
                         obj.setValue((String) data.get("value"));
@@ -390,6 +393,9 @@ public class ActivityStandardList extends ActionBarActivity {
 					query = new ParseQuery<ParseObject>("Events");
 					query.whereEqualTo("location", i.getStringExtra("name"));
 					parseList = query.find();
+                    if (parseList.size() == 0) {
+                        findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
+                    }
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
 						obj.setName((String) data.get("title"));
@@ -528,6 +534,9 @@ public class ActivityStandardList extends ActionBarActivity {
 
                     //query.whereContains("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
 					parseList = query.find();
+                    if (parseList.size() == 0) {
+                        findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
+                    }
                     /*System.out.println("List:");
                     for(int i = 0; i < parseList.size(); i++){
                         System.out.println(parseList.get(i).get("favorites"));

@@ -3,6 +3,7 @@ package de.nightcoin;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -148,6 +149,7 @@ public class ActivityEventItemView extends ActionBarActivity {
 
                     ActivityEventItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
                     //layout.setBackgroundColor(getDominantColor(bmp));
+                    stream = null;
                     bmp.recycle();
                     bmp = null;
                     System.gc();
@@ -204,9 +206,28 @@ public class ActivityEventItemView extends ActionBarActivity {
         Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
         int color = bitmap1.getPixel(0, 0);
         System.out.println("Dominant Color = "+color);
-        if(color == -263173){//Medi Veranstaltung..
-            return -3355442;
+        /*String c = ""+color;      // strip #
+        int rgb = Integer.parseInt(c, 16);   // convert rrggbb to decimal
+        int r = (rgb >> 16) & 0xff;  // extract red
+        int g = (rgb >>  8) & 0xff;  // extract green
+        int b = (rgb >>  0) & 0xff;  // extract blue*/
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+
+        double luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+
+        System.out.println("Luma: " + luma);
+
+        if(luma > 170){
+            System.out.println("Too light");
+            color = -7829368;
         }
+        else{
+            System.out.println("Color ok");
+        }
+
+
 
         return color;
     }
