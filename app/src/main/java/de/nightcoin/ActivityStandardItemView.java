@@ -202,24 +202,24 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     int dominantColor = getDominantColor(bmp);
                     ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
 
-                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
                     TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
                     TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
                     Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
                     Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
                     Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
-                    /*Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
                     Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
 
-                    nextCoins.setBackgroundColor(dominantColor);
-                    nextEvents.setBackgroundColor(dominantColor);
-                    weekPlan.setBackgroundColor(dominantColor);
+                    findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(dominantColor);
+                    findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(dominantColor);
+                    findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(dominantColor);
                     /*call.setBackgroundColor(dominantColor);
                     map.setBackgroundColor(dominantColor);*/
 
                     ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-                    hours.setBackgroundColor(dominantColor);
-                    contact.setBackgroundColor(dominantColor);
+                    findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(dominantColor);
+                    findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(dominantColor);
                     //layout.setBackgroundColor(getDominantColor(bmp));
                     bmp.recycle();
                     bmp = null;

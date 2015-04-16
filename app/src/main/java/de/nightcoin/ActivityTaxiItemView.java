@@ -98,6 +98,35 @@ public class ActivityTaxiItemView extends ActionBarActivity {
                     System.out.println("Error getting color");
                 }*/
 
+                try {
+                    byte[] stream = serverObject.getParseFile("image").getData();
+                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                    int dominantColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
+
+                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
+                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
+                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
+                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
+                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
+
+                    /*call.setBackgroundColor(dominantColor);
+                    map.setBackgroundColor(dominantColor);*/
+                    findViewById(R.id.textViewTaxiItemViewOpening).setBackgroundColor(dominantColor);
+                    ActivityTaxiItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
+                    //layout.setBackgroundColor(getDominantColor(bmp));
+                    bmp.recycle();
+                    bmp = null;
+                    System.gc();
+                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                } catch (Exception ex) {
+                    System.out.println("Error getting color");
+                }
+
 
                 //img.loadInBackground();
                 getOpening();

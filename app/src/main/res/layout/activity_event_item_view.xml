@@ -44,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="Location"
+                    android:textColor="@color/black"
                     android:layout_below="@+id/textViewEventItemViewTitle"
                     android:layout_marginTop="7dp"
                     android:paddingLeft="10dp"
@@ -60,6 +61,7 @@
                     android:layout_below="@+id/textViewEventItemViewLocation"
                     android:paddingLeft="10dp"
                     android:textSize="@dimen/textSizeDefault"
+                    android:textColor="@color/black"
                     android:gravity="center_vertical"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
@@ -72,6 +74,7 @@
                     android:layout_below="@+id/textViewEventItemViewDate"
                     android:paddingLeft="10dp"
                     android:textSize="@dimen/textSizeDefault"
+                    android:textColor="@color/black"
                     android:gravity="center_vertical"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
@@ -120,6 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Beschreibung"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/textSizeDefault"
                     android:layout_below="@+id/textViewEventItemViewDescriptionTitle"
                     android:padding="10dp"

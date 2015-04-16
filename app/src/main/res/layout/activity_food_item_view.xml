@@ -14,9 +14,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+
 
                 <ImageView
                     android:id="@+id/imageViewFoodItemView"
@@ -31,13 +29,12 @@
                     android:layout_height="35dp"
                     android:textSize="20dp"
                     android:text="Öffnungszeiten"
-                    android:layout_alignBottom="@+id/imageViewFoodItemView"
                     android:background="@color/black_alpha"
                     android:textColor="@color/white"
                     android:paddingLeft="10dp"
                     android:gravity="center_vertical"
                     android:paddingBottom="5dp" />
-            </RelativeLayout>
+
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -55,6 +52,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:text="Mo"
                         android:layout_weight="1" />
 
@@ -62,6 +61,8 @@
                         android:id="@+id/textViewFoodItemViewDi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Di"
                         android:layout_weight="1" />
@@ -70,6 +71,8 @@
                         android:id="@+id/textViewFoodItemViewMi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Mi"
                         android:layout_weight="1" />
@@ -78,6 +81,8 @@
                         android:id="@+id/textViewFoodItemViewDo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Do"
                         android:layout_weight="1" />
@@ -86,6 +91,8 @@
                         android:id="@+id/textViewFoodItemViewFr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Fr"
                         android:layout_weight="1" />
@@ -94,6 +101,8 @@
                         android:id="@+id/textViewFoodItemViewSa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Sa"
                         android:layout_weight="1" />
@@ -102,6 +111,8 @@
                         android:id="@+id/textViewFoodItemViewSo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="So"
                         android:layout_weight="1" />
@@ -111,12 +122,15 @@
                     android:id="@+id/tableRowFoodItemViewOpening"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:weightSum="7" >
 
                     <TextView
                         android:id="@+id/textViewFoodItemViewMoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -125,6 +139,8 @@
                         android:id="@+id/textViewFoodItemViewDiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -133,6 +149,8 @@
                         android:id="@+id/textViewFoodItemViewMiOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -141,6 +159,8 @@
                         android:id="@+id/textViewFoodItemViewDoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -149,6 +169,8 @@
                         android:id="@+id/textViewFoodItemViewFrOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -157,6 +179,8 @@
                         android:id="@+id/textViewFoodItemViewSaOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -165,6 +189,8 @@
                         android:id="@+id/textViewFoodItemViewSoOpening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -174,12 +200,15 @@
                     android:id="@+id/tableRowFoodItemViewClosing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:weightSum="7" >
 
                     <TextView
                         android:id="@+id/textViewFoodItemViewMoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -188,6 +217,8 @@
                         android:id="@+id/textViewFoodItemViewDiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -196,6 +227,8 @@
                         android:id="@+id/textViewFoodItemViewMiClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -204,6 +237,8 @@
                         android:id="@+id/textViewFoodItemViewDoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -212,6 +247,8 @@
                         android:id="@+id/textViewFoodItemViewFrClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -220,6 +257,8 @@
                         android:id="@+id/textViewFoodItemViewSaClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -228,6 +267,8 @@
                         android:id="@+id/textViewFoodItemViewSoClosing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
                         android:layout_weight="1" />
@@ -257,6 +298,7 @@
                     android:id="@+id/textViewFoodItemViewTel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Tel.:"
                     android:textSize="@dimen/textSizeDefault"
                     android:layout_weight="1"/>
@@ -280,6 +322,7 @@
                     android:layout_width="wrap_content"
                     android:textSize="@dimen/textSizeDefault"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Adr.:"
                     android:layout_weight="1"/>
 
