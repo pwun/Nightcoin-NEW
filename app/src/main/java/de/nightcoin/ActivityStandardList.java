@@ -525,13 +525,11 @@ public class ActivityStandardList extends ActionBarActivity {
 			
 			if(mode.equals("Favoriten")){
 				try{
-
 					query = new ParseQuery<ParseObject>("Locations");
                     query.orderByAscending("name");
                     //query.selectKeys(Arrays.asList("name","image", "location", "city", "weekplan", "opensAt", "closesAt", "geoData", "category", "phone", "address","favorites","numberOfOpens"));
                     System.out.println("own ID: "+ParseInstallation.getCurrentInstallation().getInstallationId().toString());
                     query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
-
                     //query.whereContains("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
 					parseList = query.find();
                     if (parseList.size() == 0) {
@@ -541,6 +539,7 @@ public class ActivityStandardList extends ActionBarActivity {
                     for(int i = 0; i < parseList.size(); i++){
                         System.out.println(parseList.get(i).get("favorites"));
                     }*/
+                    System.out.println("Parselist:" + parseList);
                     System.out.println("Setting information for Favorites..."+parseList.size());
 					for (ParseObject data : parseList) {
 						StandardObject obj = new StandardObject();
@@ -566,7 +565,9 @@ public class ActivityStandardList extends ActionBarActivity {
 				}
 				catch(Exception e){
 					System.out.println("ERROR, CANT FETCH FAVORITES");
-				}
+                    findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
+
+                }
 			}
 
             if(mode.equals("Food")){

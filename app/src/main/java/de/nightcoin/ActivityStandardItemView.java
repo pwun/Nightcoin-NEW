@@ -26,6 +26,7 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -392,16 +393,29 @@ public class ActivityStandardItemView extends ActionBarActivity {
     }
 
     private void addToFavorites() {
-        serverObject.add("favorites", ParseInstallation.getCurrentInstallation().getInstallationId());
+        System.out.println("AddToFavorites Saving..");
+        serverObject.add("favorites", ParseInstallation.getCurrentInstallation().getInstallationId().toString());
         favorites.add(ParseInstallation.getCurrentInstallation().getInstallationId());
-        serverObject.saveInBackground();
+
+        serverObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                System.out.println("Favorit hinzufügen GESPEICHERT!!");
+            }
+        });
         //menuItemFavorites.setIcon(getResources().getDrawable(R.drawable.ic_action_important));
     }
 
     private void removeFromFavorites() {
+        System.out.println("RemoveFromFavorites Saving..");
         favorites.remove(ParseInstallation.getCurrentInstallation().getInstallationId());
-        ((ArrayList<String>) serverObject.get("favorites")).remove(ParseInstallation.getCurrentInstallation().getInstallationId());
-        serverObject.saveInBackground();
+        ((ArrayList<String>) serverObject.get("favorites")).remove(ParseInstallation.getCurrentInstallation().getInstallationId().toString());
+        serverObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                System.out.println("Favorit löschen GESPEICHERT!");
+            }
+        });
        // menuItemFavorites.setIcon(getResources().getDrawable(R.drawable.ic_action_important));
     }
 
