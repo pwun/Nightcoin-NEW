@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -22,7 +21,6 @@ import com.parse.ParseQuery;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 public class ActivityEventItemView extends ActionBarActivity {
 
@@ -84,8 +82,9 @@ public class ActivityEventItemView extends ActionBarActivity {
         query.getInBackground(objectId, new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject object, ParseException e) {
-                System.out.println("Creating " + object.get("title"));
-                location = (String) object.get("location");
+                System.out.println("Creating " + object.getString("title"));
+                title = object.getString("title");
+                location = object.getString("location");
                 priceString = (String) object.get("price");
                 dateString = new SimpleDateFormat("cccc, dd. MMMM, hh:ss").format(object.get("date")) + " Uhr";
                 description = (String) object.get("details");
@@ -139,6 +138,8 @@ public class ActivityEventItemView extends ActionBarActivity {
 
 
     private void setTextViews() {
+        TextView titleTextView = (TextView) findViewById(R.id.textViewEventItemViewTitle);
+        titleTextView.setText(title);
         TextView locationTextView = (TextView) findViewById(R.id.textViewEventItemViewLocation);
         locationTextView.setText(location);
         TextView dateTextView = (TextView) findViewById(R.id.textViewEventItemViewDate);

@@ -100,17 +100,21 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         value.setText(object.getString("value"));
         TextView date = (TextView) v.findViewById(R.id.textViewCoinListViewAdapterDate);
         date.setText(new SimpleDateFormat("EEEE, dd. MMMM").format(object.getDate("date")));
-        int totalAmount = object.getInt("amount");
-        int cashedInCoins = object.getInt("cashedIn");
-        int coinsLeft = totalAmount - cashedInCoins;
         TextView amount = (TextView) v.findViewById(R.id.textViewCoinListViewAdapterAmount);
-        amount.setText("noch " + coinsLeft + " Stück");
+        if (object.getBoolean("limited")) {
+            int totalAmount = object.getInt("amount");
+            int cashedInCoins = object.getInt("cashedIn");
+            int coinsLeft = totalAmount - cashedInCoins;
+            amount.setText("noch " + coinsLeft + " Stück");
+        } else {
+            amount.setText("Unbegrenzt");
+        }
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(listContext,
                         ActivityCoinItemView.class);
-                i.putExtra("objectId", object.getObjectId());
+                i.putExtra("id", object.getObjectId());
                 if(listContext!=null) {
                     listContext.startActivity(i);
                 }

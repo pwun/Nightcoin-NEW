@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
@@ -20,7 +19,6 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 
 public class ActivityCoinItemView extends ActionBarActivity {
@@ -77,15 +75,13 @@ public class ActivityCoinItemView extends ActionBarActivity {
         button = (Button) findViewById(R.id.buttonCoinItemViewCashIn);
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Coupons");
-        query.whereEqualTo("objectId", id);
-        query.setLimit(1);
         query.fromLocalDatastore();
-        query.findInBackground(new FindCallback<ParseObject>() {
-
+        query.getInBackground(id, new GetCallback<ParseObject>() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                // TODO Auto-generated method stub
-                ParseObject object = objects.get(0);
+            public void done(ParseObject object, ParseException e) {
+
+                System.out.println(object.getObjectId());
+
                 coin.setValue((String) object.get("value"));
                 coin.setDate((Date) object.get("date"));
                 coin.setLocation((String) object.get("location"));
@@ -133,24 +129,24 @@ public class ActivityCoinItemView extends ActionBarActivity {
                             return;
                         }
                     }
-                     //Überprüfe ob eingelöst
+                    //Überprüfe ob eingelöst
                     ArrayList<String> cashedInUsers = (ArrayList<String>)object.get("cashedInUsers");
                     if(cashedInUsers!=null){
-                    if(cashedInUsers.contains(ParseInstallation.getCurrentInstallation().getInstallationId())){
-                        button.setBackgroundColor(getResources().getColor(R.color.dark_red));
-                        button.setText("Du hast diesen Coin bereits eingelöst");
-                        button.setVisibility(View.VISIBLE);
-                    }else{
-                        button.setVisibility(View.VISIBLE);
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                startTime = SystemClock.uptimeMillis();
-                                customHandler.postDelayed(updateTimerThread, 0);
-                                cashIn();
-                            }
-                        });
-                    }
+                        if(cashedInUsers.contains(ParseInstallation.getCurrentInstallation().getInstallationId())){
+                            button.setBackgroundColor(getResources().getColor(R.color.dark_red));
+                            button.setText("Du hast diesen Coin bereits eingelöst");
+                            button.setVisibility(View.VISIBLE);
+                        }else{
+                            button.setVisibility(View.VISIBLE);
+                            button.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startTime = SystemClock.uptimeMillis();
+                                    customHandler.postDelayed(updateTimerThread, 0);
+                                    cashIn();
+                                }
+                            });
+                        }
                     }
                     else{
                         button.setVisibility(View.VISIBLE);

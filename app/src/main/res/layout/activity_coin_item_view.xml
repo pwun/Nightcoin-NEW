@@ -61,7 +61,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/green"
         android:text="Einlösen"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:gravity="center"
         android:visibility="invisible"
         android:layout_centerHorizontal="true"
