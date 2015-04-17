@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
@@ -28,6 +29,7 @@ public class ActivityEventItemView extends ActionBarActivity {
     Button ticketButton;
 
 	String title;
+    String objectId;
     private String location;
     private String dateString;
     private String priceString;
@@ -43,6 +45,7 @@ public class ActivityEventItemView extends ActionBarActivity {
 		setContentView(R.layout.activity_event_item_view);
 		Intent i = getIntent();
 		title = i.getStringExtra("title");
+        objectId = i.getStringExtra("objectId");
 		initView();
         getEventData();
 
@@ -75,53 +78,39 @@ public class ActivityEventItemView extends ActionBarActivity {
 
     private void getEventData() {
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Events");
-        query.whereEqualTo("title", title);
-        query.setLimit(1);
         query.fromLocalDatastore();
-        query.findInBackground(new FindCallback<ParseObject>() {
-
+        query.getInBackground(objectId, new GetCallback<ParseObject>() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                System.out.println("Creating " + objects.get(0).get("title"));
-                ParseObject object = objects.get(0);
-
+            public void done(ParseObject object, ParseException e) {
+                System.out.println("Creating " + object.get("title"));
                 location = (String) object.get("location");
                 priceString = (String) object.get("price");
                 dateString = new SimpleDateFormat("cccc, dd. MMMM, hh:ss").format(object.get("date")) + " Uhr";
                 description = (String) object.get("details");
                 image = object.getParseFile("image");
-
-
                 normalizeDate((Date) object.get("date"));
                 setTextViews();
                 setImage();
-
-
                 /*try {
                     byte[] stream = image.getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
                     int dominantColor = getDominantColor(bmp);
                     ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
-
                     findViewById(R.id.layoutEventItemViewBackground).setBackgroundColor(getDominantColor(bmp));
                     findViewById(R.id.buttonEventItemViewFilteredCoins).setBackgroundColor(dominantColor);
                     findViewById(R.id.textViewEventItemViewDescriptionTitle).setBackgroundColor(dominantColor);
                     ActivityEventItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-
                     bmp.recycle();
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
                 }*/
-
-
                /* // Tickets
                 ticketsEnabled = (boolean)object.get("ticketsAvailable");
                 if (ticketsEnabled) {
                     int tickets = (int)object.get("tickets");
                     int reservatedTickets = (int)object.get("reservatedTickets");
                     checkTickets(tickets, reservatedTickets);
-
                     System.out.println("Tickets" + tickets);
                 } else {
                     ticketButton.setText("Keine Reservierung möglich");

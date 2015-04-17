@@ -1,22 +1,18 @@
-
 package de.nightcoin;
-
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 public class StandardListViewAdapter extends ParseQueryAdapter {
-
     Context listContext;
     LayoutInflater inflater;
     ArrayList<ParseObject> list;
@@ -26,107 +22,103 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
     double latitude;
     ParseGeoPoint geo;
     ImageLoader imageLoader;
-
     public StandardListViewAdapter(Context context,
-    com.parse.ParseQueryAdapter.QueryFactory<ParseObject> queryFactory) {
+                                   com.parse.ParseQueryAdapter.QueryFactory<ParseObject> queryFactory) {
         super(context, queryFactory);
+        listContext = context;
         imageLoader = new ImageLoader(context);
     }
-
     @Override
     public View getItemView(ParseObject object, View v, ViewGroup parent) {
+        String objectType = object.getClassName();
+        if (objectType.equals("Locations")) {
+            return setupLocationItemView(object, v);
+        }
+        if (objectType.equals("Events")) {
+            return setupEventItemView(object, v);
+        }
+        if (objectType.equals("Coupons")) {
+            return setupCoinItemView(object, v);
+        }
+        return v;
+    }
+    private View setupLocationItemView(final ParseObject object, View v) {
         if (v == null) {
             v = View.inflate(getContext(), R.layout.standard_list_view_adapter, null);
         }
-
-        TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
+        final TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
         location.setText(object.getString("name"));
-
         ParseFile imageFile = object.getParseFile("image");
         ImageView imageView = (ImageView) v.findViewById(R.id.imageViewStandardListViewAdapter);
         imageLoader.DisplayImage(imageFile.getUrl(), imageView);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(listContext,
+                        ActivityStandardItemView.class);
+                i.putExtra("name", object.getString("name"));
+                if(listContext!=null) {
+                    listContext.startActivity(i);
+                }
+            }
+        });
         return v;
     }
-
+    private View setupEventItemView(final ParseObject object, View v) {
+        if (v == null) {
+            v = View.inflate(getContext(), R.layout.standard_list_view_adapter, null);
+        }
+        TextView title = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
+        title.setText(object.getString("title"));
+        TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterOpening);
+        location.setText(object.getString("location"));
+        TextView date = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterDistance);
+        date.setText(new SimpleDateFormat("dd. MMMM").format(object.getDate("date")));
+        ParseFile imageFile = object.getParseFile("image");
+        ImageView imageView = (ImageView) v.findViewById(R.id.imageViewStandardListViewAdapter);
+        imageLoader.DisplayImage(imageFile.getUrl(), imageView);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(listContext,
+                        ActivityEventItemView.class);
+                i.putExtra("objectId", object.getObjectId());
+                if(listContext!=null) {
+                    listContext.startActivity(i);
+                }
+            }
+        });
+        return v;
+    }
+    private View setupCoinItemView(final ParseObject object, View v) {
+        if (v == null) {
+            v = View.inflate(getContext(), R.layout.coin_list_view_adapter, null);
+        }
+        TextView location = (TextView) v.findViewById(R.id.textViewCoinListViewAdapterLocation);
+        location.setText(object.getString("location"));
+        TextView value = (TextView) v.findViewById(R.id.textViewCoinListViewAdapterValue);
+        value.setText(object.getString("value"));
+        TextView date = (TextView) v.findViewById(R.id.textViewCoinListViewAdapterDate);
+        date.setText(new SimpleDateFormat("EEEE, dd. MMMM").format(object.getDate("date")));
+        int totalAmount = object.getInt("amount");
+        int cashedInCoins = object.getInt("cashedIn");
+        int coinsLeft = totalAmount - cashedInCoins;
+        TextView amount = (TextView) v.findViewById(R.id.textViewCoinListViewAdapterAmount);
+        amount.setText("noch " + coinsLeft + " Stück");
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(listContext,
+                        ActivityCoinItemView.class);
+                i.putExtra("objectId", object.getObjectId());
+                if(listContext!=null) {
+                    listContext.startActivity(i);
+                }
+            }
+        });
+        return v;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*	public StandardListViewAdapter(Context context,
 			List<ParseObject> objectList, String mode) {
 		this.mode = mode;
@@ -135,7 +127,6 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
 		list = new ArrayList<ParseObject>();
 		list.addAll(objectList);
         gps = new GPSTracker(listContext);
-
         if(gps.canGetLocation()) {
             try{
             latitude = gps.getLatitude();
@@ -150,46 +141,36 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             System.out.println("Fehler, GPS nicht verfügbar");
             geo = new ParseGeoPoint(0,0);
         }
-
     }*//*
-
-
 	public class ViewHolder {
 		TextView name;
         TextView topDetail;
         TextView bottomDetail;
 		ImageView image;
 	}
-
     @Override
     public View getItemView(ParseObject object, View v, ViewGroup parent) {
         if (v == null) {
             v = View.inflate(getContext(), R.layout.adapter_item, null);
         }
-
         // Take advantage of ParseQueryAdapter's getItemView logic for
         // populating the main TextView/ImageView.
         // The IDs in your custom layout must match what ParseQueryAdapter expects
         // if it will be populating a TextView or ImageView for you.
         super.getItemView(object, v, parent);
-
         // Do additional configuration before returning the View.
         TextView descriptionView = (TextView) v.findViewById(R.id.description);
         descriptionView.setText(object.getString("description"));
         return v;
     }
-
 	@Override
 	public int getCount() {
 		return list.size();
 	}
-
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
-
-
 */
 /*	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
@@ -212,23 +193,18 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
 		}
 		holder.name.setText(list.get(position).get("name").toString());
 		holder.image*//*
-
 		//holder.image.loadInBackground();
-
 		*/
 /*if (mode.equals("event")) {
             holder.name.setTextSize(20);
             holder.topDetail.setText(list.get(position).getDate());
             holder.bottomDetail.setText(list.get(position).getLocation());
             convertView.setOnClickListener(new OnClickListener() {
-
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-
 					Intent intent = new Intent(listContext,
 							ActivityEventItemView.class);
-
 					intent.putExtra("title", list.get(position).getName());
 					listContext.startActivity(intent);
 				}
@@ -238,14 +214,11 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             holder.topDetail.setVisibility(View.INVISIBLE);
             holder.bottomDetail.setVisibility(View.INVISIBLE);
             convertView.setOnClickListener(new OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-
                     Intent intent = new Intent(listContext,
                             ActivityTaxiItemView.class);
-
                     intent.putExtra("title", list.get(position).getName());
                     listContext.startActivity(intent);
                 }
@@ -273,14 +246,11 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.dark_red));
             }
             convertView.setOnClickListener(new OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-
                     Intent intent = new Intent(listContext,
                             ActivityFoodItemView.class);
-
                     intent.putExtra("title", list.get(position).getName());
                     listContext.startActivity(intent);
                 }
@@ -317,27 +287,19 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             } catch(Exception e) {
                 System.out.println("Ich bin die Filmbühne und ich bin blöd.");
             }*//*
-
-
 			*/
 /*convertView.setOnClickListener(new OnClickListener() {
-
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-
 					Intent intent = new Intent(listContext,
 							ActivityStandardItemView.class);
-
 					intent.putExtra("name", list.get(position).getName());
 					listContext.startActivity(intent);
 				}
 			});
 		}
-
 		return convertView;
 	}*//*
-
-
 }
 */

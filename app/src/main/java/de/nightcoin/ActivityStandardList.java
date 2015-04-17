@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.ListView;
 
+import com.parse.DeleteCallback;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.SaveCallback;
 
+import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 
 public class ActivityStandardList extends ActionBarActivity {
@@ -19,6 +23,7 @@ public class ActivityStandardList extends ActionBarActivity {
     public StandardListViewAdapter parseAdapter;
     Intent i;
     String contentMode;
+    private final int END_OF_NIGHT = 6;
     ProgressDialog progressDialog;
 
     @Override
@@ -34,13 +39,41 @@ public class ActivityStandardList extends ActionBarActivity {
             }
         });
 
+        parseAdapter.addOnQueryLoadListener(new ParseQueryAdapter.OnQueryLoadListener<ParseObject>() {
+            public void onLoading() {
+                progressDialog = new ProgressDialog(ActivityStandardList.this);
+                progressDialog.setTitle("Lädt...");
+                progressDialog.setIndeterminate(true);
+                progressDialog.show();
+            }
+            @Override
+            public void onLoaded(final List<ParseObject> objects, Exception e) {
+                progressDialog.dismiss();
+                ParseObject.unpinAllInBackground(contentMode, new DeleteCallback() {
+
+
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        ParseObject.pinAllInBackground(objects, new SaveCallback() {
+
+                            @Override
+                            public void done(com.parse.ParseException e) {
+                                System.out.println("Pinned " + objects.size() + " objects successfully");
+
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
 
         ListView listView = (ListView) findViewById(R.id.listViewStandardList);
         listView.setAdapter(parseAdapter);
     }
 
     public ParseQuery requestedQuery(String contentMode) {
-        if (contentMode.equals("Bar") || contentMode.equals("Club") || contentMode.equals("Favorites")) {
+        if (contentMode.equals("Bar") || contentMode.equals("Club") || contentMode.equals("Favorites")|| contentMode.equals("Food")|| contentMode.equals("Taxi")) {
             return locationQuery(contentMode);
         }
         if (contentMode.equals("Events")) {
@@ -98,7 +131,7 @@ public class ActivityStandardList extends ActionBarActivity {
     // get date of last evening if it's between midnight and 6am
     private Date hourbasedDate() {
         Date now = new Date();
-        if (now.getHours() < 6) {
+        if (now.getHours() < END_OF_NIGHT) {
             return lastEvening();
         }
         return now;
