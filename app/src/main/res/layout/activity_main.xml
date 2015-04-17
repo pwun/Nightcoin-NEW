@@ -55,7 +55,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/imageView1"
-                    android:background="@color/black_alpha_2" />
+                    android:background="@color/black_alpha_main" />
 
                 <ImageView
                     android:layout_width="fill_parent"
@@ -92,7 +92,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/imageView3"
-                android:background="@color/black_alpha_2" />
+                android:background="@color/black_alpha_main" />
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -134,7 +134,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/imageView5"
-                    android:background="@color/black_alpha_2" />
+                    android:background="@color/black_alpha_main" />
 
                 <ImageView
                     android:layout_width="fill_parent"
@@ -169,7 +169,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/imageView6"
-                    android:background="@color/black_alpha_2" />
+                    android:background="@color/black_alpha_main" />
 
                 <ImageView
                     android:layout_width="fill_parent"
@@ -212,7 +212,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/imageView8"
-                    android:background="@color/black_alpha_2" />
+                    android:background="@color/black_alpha_main" />
 
                 <ImageView
                     android:layout_width="fill_parent"
@@ -247,7 +247,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/imageView10"
-                    android:background="@color/black_alpha_2" />
+                    android:background="@color/black_alpha_main" />
 
                 <ImageView
                     android:layout_width="fill_parent"

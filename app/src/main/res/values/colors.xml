@@ -13,6 +13,7 @@
     <color name="darkBackground">#263238</color>
     <color name="background_buttons">#37474F</color>
     <color name="black_alpha_2">#8000</color>
+    <color name="black_alpha_main">#8333</color>
     <color name="transparent_white">#5FFF</color>
     <color name="black">#222222</color>
 </resources>
