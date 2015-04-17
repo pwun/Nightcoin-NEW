@@ -6,14 +6,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -40,7 +39,7 @@ public class ActivityFoodItemView extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_item_view);
         Intent i = getIntent();
-        name = i.getStringExtra("title");
+        name = i.getStringExtra("name");
         setTitle(name);
         getData(name);
         initButton();

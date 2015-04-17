@@ -13,7 +13,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.SaveCallback;
 
-import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -89,8 +88,9 @@ public class ActivityStandardList extends ActionBarActivity {
         ParseQuery query = new ParseQuery("Locations");
         if (contentMode.equals("Favorites")) {
             query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId());
+        } else {
+            query.whereEqualTo("category", contentMode);
         }
-        query.whereEqualTo("category", contentMode);
         query.orderByAscending("name");
         return query;
     }

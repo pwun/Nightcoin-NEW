@@ -54,16 +54,12 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(listContext,
-                        ActivityStandardItemView.class);
-                i.putExtra("name", object.getString("name"));
-                if(listContext!=null) {
-                    listContext.startActivity(i);
-                }
+               startRequestedIntent(object);
             }
         });
         return v;
     }
+
     private View setupEventItemView(final ParseObject object, View v) {
         if (v == null) {
             v = View.inflate(getContext(), R.layout.standard_list_view_adapter, null);
@@ -90,6 +86,7 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         });
         return v;
     }
+
     private View setupCoinItemView(final ParseObject object, View v) {
         if (v == null) {
             v = View.inflate(getContext(), R.layout.coin_list_view_adapter, null);
@@ -122,6 +119,25 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         });
         return v;
     }
+
+    private void startRequestedIntent(ParseObject object) {
+        String category = object.getString("category");
+        if (category.equals("Food")) {
+            Intent i = new Intent(listContext, ActivityFoodItemView.class);
+            i.putExtra("name", object.getString("name"));
+            if(listContext!=null) {
+                listContext.startActivity(i);
+            }
+        } else {
+            Intent i = new Intent(listContext,
+                    ActivityStandardItemView.class);
+            i.putExtra("name", object.getString("name"));
+            if(listContext!=null) {
+                listContext.startActivity(i);
+            }
+        }
+    }
+
 }
 /*	public StandardListViewAdapter(Context context,
 			List<ParseObject> objectList, String mode) {
