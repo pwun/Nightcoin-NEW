@@ -1,6 +1,7 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -28,7 +29,22 @@ public class ActivityWeekplan extends ActionBarActivity {
 		setContentView(R.layout.activity_weekplan);
 		Intent i = getIntent();
 		name = i.getStringExtra("name");
-		color = i.getIntExtra("color", 1);
+		color = i.getIntExtra("color", 1000);
+
+
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        double luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+        System.out.println("Luma: " + luma);
+        if(luma > 180 || color == 1000){//Schwarz : -14540254
+            System.out.println("Too light");
+            //Set Color to black
+            r = 34;
+            g = 34;
+            b = 34;
+            color = Color.rgb(r,g,b);
+        }
 
         ColorDrawable colorDrawable = new ColorDrawable(color);
         ActivityWeekplan.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);

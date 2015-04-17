@@ -44,7 +44,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
     Menu menu;
     MenuItem menuItemFavorites;
     ImageLoader imageLoader;
-    int tintColor;
+    int tintColor = 1000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
