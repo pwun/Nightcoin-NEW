@@ -41,6 +41,8 @@ public class ActivityStandardList extends ActionBarActivity {
         i = getIntent();
         contentMode = i.getStringExtra("input");
 
+        setCorrectTitle();
+
         parseAdapter = new StandardListViewAdapter(ActivityStandardList.this, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery<ParseObject> create() {
                 return requestedQuery(contentMode);
@@ -50,7 +52,8 @@ public class ActivityStandardList extends ActionBarActivity {
         parseAdapter.addOnQueryLoadListener(new ParseQueryAdapter.OnQueryLoadListener<ParseObject>() {
             public void onLoading() {
                 progressDialog = new ProgressDialog(ActivityStandardList.this);
-                progressDialog.setTitle("Lädt...");
+                progressDialog.setTitle(contentMode);
+                progressDialog.setMessage("Lädt...");
                 progressDialog.setIndeterminate(true);
                 progressDialog.show();
             }
@@ -74,10 +77,22 @@ public class ActivityStandardList extends ActionBarActivity {
                 });
             }
         });
-
-
         ListView listView = (ListView) findViewById(R.id.listViewStandardList);
         listView.setAdapter(parseAdapter);
+    }
+
+    private void setCorrectTitle(){
+        if(contentMode.equals("Bar")){
+            setTitle("Bars");
+        } else if(contentMode.equals("Club")){
+            setTitle("Clubs");
+        }
+        else if (contentMode.equals("Favorites")){
+            setTitle("Favoriten");
+        }
+        else{
+            setTitle(contentMode);
+        }
     }
 
     public ParseQuery requestedQuery(String contentMode) {
