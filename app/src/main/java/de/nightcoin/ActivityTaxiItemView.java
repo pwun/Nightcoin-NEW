@@ -36,7 +36,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taxi_item_view);
         Intent i = getIntent();
-        name = i.getStringExtra("title");
+        name = i.getStringExtra("name");
         setTitle(name);
         getData(name);
         initButton();
@@ -62,7 +62,6 @@ public class ActivityTaxiItemView extends ActionBarActivity {
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
         query.whereEqualTo("name", name);
         query.setLimit(1);
-        query.fromLocalDatastore();
         query.findInBackground(new FindCallback<ParseObject>() {
 
             @Override
@@ -100,7 +99,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
 
                     /*call.setBackgroundColor(dominantColor);
                     map.setBackgroundColor(dominantColor);*/
-
+                    findViewById(R.id.textViewTaxiItemViewOpening).setBackgroundColor(tintColor);
                     ActivityTaxiItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
                     //layout.setBackgroundColor(getDominantColor(bmp));

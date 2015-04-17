@@ -140,8 +140,8 @@ public class ActivityMain extends ActionBarActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(ActivityMain.this,
-                        ActivityStandardList.class);
-                i.putExtra("input", "Taxi");
+                        ActivityTaxiItemView.class);
+                i.putExtra("name", "Taxi Regensburg");
                 ActivityMain.this.startActivity(i);
             }
         });
