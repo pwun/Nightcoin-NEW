@@ -1344,10 +1344,10 @@ containing a value of this type.
         public static final int white_arrow=0x7f02004d;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080102;
+        public static final int LinearLayout1=0x7f080103;
         public static final int ViewfoodItemViewSeperator=0x7f080088;
         public static final int ViewstandardItemViewSeperator=0x7f0800ce;
-        public static final int action_Info=0x7f080108;
+        public static final int action_Info=0x7f080109;
         public static final int action_bar=0x7f080031;
         public static final int action_bar_activity_content=0x7f080000;
         public static final int action_bar_container=0x7f080030;
@@ -1356,18 +1356,18 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f08001f;
         public static final int action_bar_title=0x7f08001e;
         public static final int action_context_bar=0x7f080032;
-        public static final int action_delete=0x7f08010a;
-        public static final int action_favorites=0x7f080106;
-        public static final int action_logout=0x7f08010c;
+        public static final int action_delete=0x7f08010b;
+        public static final int action_favorites=0x7f080107;
+        public static final int action_logout=0x7f08010d;
         public static final int action_menu_divider=0x7f080002;
         public static final int action_menu_presenter=0x7f080003;
         public static final int action_mode_bar=0x7f08002e;
         public static final int action_mode_bar_stub=0x7f08002d;
         public static final int action_mode_close_button=0x7f080020;
-        public static final int action_newCoin=0x7f080107;
-        public static final int action_refresh=0x7f080109;
-        public static final int action_save=0x7f08010b;
-        public static final int action_settings=0x7f080105;
+        public static final int action_newCoin=0x7f080108;
+        public static final int action_refresh=0x7f08010a;
+        public static final int action_save=0x7f08010c;
+        public static final int action_settings=0x7f080106;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
@@ -1411,7 +1411,7 @@ containing a value of this type.
         public static final int editTextActivityEditCoinsAmount=0x7f08004e;
         public static final int editTextActivityEditCoinsValue=0x7f08004d;
         public static final int editTextActivityEditPhoneNumber=0x7f080056;
-        public static final int editTextEditWeekPlanAdapter=0x7f0800fd;
+        public static final int editTextEditWeekPlanAdapter=0x7f0800fe;
         public static final int editTextEditWeekplanDi=0x7f08005a;
         public static final int editTextEditWeekplanDo=0x7f08005c;
         public static final int editTextEditWeekplanFr=0x7f08005d;
@@ -1420,7 +1420,7 @@ containing a value of this type.
         public static final int editTextEditWeekplanSa=0x7f08005e;
         public static final int editTextEditWeekplanSo=0x7f08005f;
         public static final int editTextSettingsEmail=0x7f0800a1;
-        public static final int editWeekplanHeaderViewText=0x7f0800fc;
+        public static final int editWeekplanHeaderViewText=0x7f0800fd;
         public static final int edit_query=0x7f080033;
         public static final int end=0x7f080014;
         public static final int expand_activities_button=0x7f080022;
@@ -1449,11 +1449,11 @@ containing a value of this type.
         public static final int imageViewActivityEditImages4=0x7f080054;
         public static final int imageViewActivityEditImages5=0x7f080055;
         public static final int imageViewCoinItemViewCoin=0x7f080040;
-        public static final int imageViewCoinListAdapterImage=0x7f0800f7;
+        public static final int imageViewCoinListAdapterImage=0x7f0800f8;
         public static final int imageViewEventItemView=0x7f080062;
         public static final int imageViewFoodItemView=0x7f08006b;
         public static final int imageViewStandardItemView=0x7f0800a9;
-        public static final int imageViewStandardListViewAdapter=0x7f0800fe;
+        public static final int imageViewStandardListViewAdapter=0x7f0800ff;
         public static final int imageViewTaxiItemView=0x7f0800d4;
         public static final int layout=0x7f08003f;
         public static final int layoutEventItemViewBackground=0x7f080060;
@@ -1508,14 +1508,15 @@ containing a value of this type.
         public static final int textViewActivityDashboardPageViews=0x7f080046;
         public static final int textViewActivityDashboardPageViewsLabel=0x7f080047;
         public static final int textViewActivityEditImagesInstructions=0x7f080050;
+        public static final int textViewAdapterLoadMore=0x7f0800f7;
         public static final int textViewCoinItemViewDate=0x7f080042;
         public static final int textViewCoinItemViewLocation=0x7f080041;
         public static final int textViewCoinItemViewTimer=0x7f080044;
         public static final int textViewCoinItemViewValue=0x7f080043;
-        public static final int textViewCoinListViewAdapterAmount=0x7f0800fb;
-        public static final int textViewCoinListViewAdapterDate=0x7f0800fa;
-        public static final int textViewCoinListViewAdapterLocation=0x7f0800f8;
-        public static final int textViewCoinListViewAdapterValue=0x7f0800f9;
+        public static final int textViewCoinListViewAdapterAmount=0x7f0800fc;
+        public static final int textViewCoinListViewAdapterDate=0x7f0800fb;
+        public static final int textViewCoinListViewAdapterLocation=0x7f0800f9;
+        public static final int textViewCoinListViewAdapterValue=0x7f0800fa;
         public static final int textViewEventItemViewDate=0x7f080065;
         public static final int textViewEventItemViewDescription=0x7f080069;
         public static final int textViewEventItemViewDescriptionTitle=0x7f080068;
@@ -1580,9 +1581,9 @@ containing a value of this type.
         public static final int textViewStandardItemViewTodaysCoinsDetail=0x7f0800ae;
         public static final int textViewStandardItemViewTodaysEvents=0x7f0800ab;
         public static final int textViewStandardItemViewTodaysEventsDetail=0x7f0800ac;
-        public static final int textViewStandardListViewAdapterDistance=0x7f080100;
-        public static final int textViewStandardListViewAdapterName=0x7f0800ff;
-        public static final int textViewStandardListViewAdapterOpening=0x7f080101;
+        public static final int textViewStandardListViewAdapterDistance=0x7f080101;
+        public static final int textViewStandardListViewAdapterName=0x7f080100;
+        public static final int textViewStandardListViewAdapterOpening=0x7f080102;
         public static final int textViewTaxiItemViewDi=0x7f0800da;
         public static final int textViewTaxiItemViewDiClosing=0x7f0800ea;
         public static final int textViewTaxiItemViewDiOpening=0x7f0800e2;
@@ -1606,8 +1607,8 @@ containing a value of this type.
         public static final int textViewTaxiItemViewSoClosing=0x7f0800ef;
         public static final int textViewTaxiItemViewSoOpening=0x7f0800e7;
         public static final int textViewTaxitemViewSa=0x7f0800de;
-        public static final int textViewWeekplanContent=0x7f080104;
-        public static final int textViewWeekplanTitle=0x7f080103;
+        public static final int textViewWeekplanContent=0x7f080105;
+        public static final int textViewWeekplanTitle=0x7f080104;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;
@@ -1656,12 +1657,13 @@ containing a value of this type.
         public static final int activity_taxi_item_view=0x7f030023;
         public static final int activity_user=0x7f030024;
         public static final int activity_weekplan=0x7f030025;
-        public static final int coin_list_view_adapter=0x7f030026;
-        public static final int edit_weekplan_header_view=0x7f030027;
-        public static final int edit_weekplan_list_adapter=0x7f030028;
-        public static final int standard_list_view_adapter=0x7f030029;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
-        public static final int weekplan_adapter=0x7f03002b;
+        public static final int adapter_load_more=0x7f030026;
+        public static final int coin_list_view_adapter=0x7f030027;
+        public static final int edit_weekplan_header_view=0x7f030028;
+        public static final int edit_weekplan_list_adapter=0x7f030029;
+        public static final int standard_list_view_adapter=0x7f03002a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002b;
+        public static final int weekplan_adapter=0x7f03002c;
     }
     public static final class menu {
         public static final int activity_event_item_view=0x7f0c0000;

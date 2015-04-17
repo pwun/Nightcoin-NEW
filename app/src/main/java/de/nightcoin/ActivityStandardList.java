@@ -24,6 +24,8 @@ import java.util.List;
 
 public class ActivityStandardList extends ActionBarActivity {
 
+    private final int ONE_DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24;
+
     public StandardListViewAdapter parseAdapter;
     Intent i;
     Menu menu;
@@ -73,7 +75,7 @@ public class ActivityStandardList extends ActionBarActivity {
 
                             @Override
                             public void done(com.parse.ParseException e) {
-                                System.out.println("Pinned " + objects.size() + " objects successfully");
+                            //    System.out.println("Pinned " + objects.size() + " objects successfully");
 
                             }
                         });
@@ -121,6 +123,7 @@ public class ActivityStandardList extends ActionBarActivity {
             query.whereEqualTo("category", contentMode);
         }
         query.orderByAscending("name");
+        query.whereEqualTo("city", "Regensburg");
         return query;
     }
 
@@ -128,13 +131,41 @@ public class ActivityStandardList extends ActionBarActivity {
         ParseQuery query = new ParseQuery("Events");
         query.whereGreaterThan("date", hourbasedDate());
         query.orderByAscending("date");
+
+        String filterMode = getIntent().getStringExtra("filterMode");
+        if (filterMode.equals("location")) {
+            String locationToFilter = getIntent().getStringExtra("locationToFilter");
+            query.whereEqualTo("location", locationToFilter);
+        }
+        query.whereEqualTo("city", "Regensburg");
         return query;
     }
 
     private ParseQuery coinQuery() {
         ParseQuery query = new ParseQuery("Coupons");
-        query.whereGreaterThan("date", hourbasedDate());
         query.orderByAscending("date");
+
+        String filterMode = getIntent().getStringExtra("filterMode");
+        if (filterMode.equals("none")) {
+            query.whereGreaterThan("date", hourbasedDate());
+        }
+        if (filterMode.equals("date")) {
+            Date dateToFilter = new Date(getIntent().getLongExtra("dateToFilter", new Date().getTime()));
+            Date maxDate = new Date(dateToFilter.getYear(), dateToFilter.getMonth(), dateToFilter.getDate(), dateToFilter.getHours() + 11, dateToFilter.getMinutes() + 50);
+            query.whereGreaterThan("date", dateToFilter);
+            query.whereLessThan("date", maxDate);
+        }
+        if (filterMode.equals("location")) {
+            String locationToFilter = getIntent().getStringExtra("locationToFilter");
+            query.whereEqualTo("location", locationToFilter);
+            query.whereGreaterThan("date", hourbasedDate());
+        }
+/*        if (filterMode.equals("userMode")) {
+            long dateToFilter = getIntent().getLongExtra("dateToFilter", new Date().getTime());
+            query.whereGreaterThan("date", dateToFilter);
+        }*/
+
+        query.whereEqualTo("city", "Regensburg");
         return query;
     }
 

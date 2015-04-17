@@ -42,6 +42,7 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         }
         return v;
     }
+
     private View setupLocationItemView(final ParseObject object, View v) {
         if (v == null) {
             v = View.inflate(getContext(), R.layout.standard_list_view_adapter, null);
@@ -68,6 +69,7 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         title.setText(object.getString("title"));
         TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterOpening);
         location.setText(object.getString("location"));
+        location.setTextColor(listContext.getResources().getColor(R.color.white));
         TextView date = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterDistance);
         date.setText(new SimpleDateFormat("dd. MMMM").format(object.getDate("date")));
         ParseFile imageFile = object.getParseFile("image");
@@ -136,6 +138,18 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
                 listContext.startActivity(i);
             }
         }
+    }
+
+    @Override
+    public View getNextPageView(View v, ViewGroup parent) {
+        if (v == null) {
+            // R.layout.adapter_next_page contains an ImageView with a custom graphic
+            // and a TextView.
+            v = View.inflate(getContext(), R.layout.adapter_load_more, null);
+        }
+        TextView textView = (TextView) v.findViewById(R.id.textViewAdapterLoadMore);
+        textView.setText(getCount() + " Coins geladen! Mehr laden...");
+        return v;
     }
 
 }

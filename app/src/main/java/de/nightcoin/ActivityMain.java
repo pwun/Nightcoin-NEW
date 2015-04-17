@@ -70,6 +70,7 @@ public class ActivityMain extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityMain.this, ActivityStandardList.class);
 				i.putExtra("input", "Coins");
+                i.putExtra("filterMode", "none");
 				ActivityMain.this.startActivity(i);
 			}
 		});
@@ -118,6 +119,7 @@ public class ActivityMain extends ActionBarActivity {
 				Intent i = new Intent(ActivityMain.this,
 						ActivityStandardList.class);
 				i.putExtra("input", "Events");
+                i.putExtra("filterMode", "none");
 				ActivityMain.this.startActivity(i);
 			}
 		});

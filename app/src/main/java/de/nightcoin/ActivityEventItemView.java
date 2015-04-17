@@ -68,8 +68,9 @@ public class ActivityEventItemView extends ActionBarActivity {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(ActivityEventItemView.this, ActivityStandardList.class);
                 System.out.println(dateToFilterCoins);
+                i.putExtra("filterMode", "date");
                 i.putExtra("dateToFilter", dateToFilterCoins.getTime());
-                i.putExtra("input", "filteredCoins");
+                i.putExtra("input", "Coins");
                 ActivityEventItemView.this.startActivity(i);
             }
         });
@@ -169,7 +170,7 @@ public class ActivityEventItemView extends ActionBarActivity {
     // gets the date of the event as parameter and sets it to 1 p.m.
     // then sets the Date ivar that's later used to filter coins
     private void normalizeDate (Date date) {
-        date.setHours(1);
+        date.setHours(12);
         date.setMinutes(0);
         dateToFilterCoins = date;
     }

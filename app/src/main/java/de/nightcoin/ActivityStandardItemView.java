@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -115,8 +114,9 @@ public class ActivityStandardItemView extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityStandardItemView.this,ActivityStandardList.class);
-				i.putExtra("name", name);
-				i.putExtra("input", "nextEvents");
+                i.putExtra("filterMode", "location");
+				i.putExtra("locationToFilter", name);
+				i.putExtra("input", "Events");
 				ActivityStandardItemView.this.startActivity(i);
 			}
 		});
@@ -129,8 +129,9 @@ public class ActivityStandardItemView extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityStandardItemView.this,ActivityStandardList.class);
-				i.putExtra("name", name);
-				i.putExtra("input", "nextCoins");
+                i.putExtra("input", "Coins");
+                i.putExtra("filterMode", "location");
+                i.putExtra("locationToFilter", name);
 				ActivityStandardItemView.this.startActivity(i);
 			}
 		});
