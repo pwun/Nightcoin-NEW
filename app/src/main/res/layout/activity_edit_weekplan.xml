@@ -4,10 +4,130 @@
     android:background="@color/darkBackground"
     tools:context="de.nightcoin.ActivityEditWeekplan">
 
-    <ExpandableListView
-        android:id="@+id/expListViewEditWeekplanListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        </ExpandableListView>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Montag"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:background="@color/black_alpha"
+                android:padding="5dp"/>
+
+            <EditText android:id="@+id/editTextEditWeekplanMo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dienstag"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:background="@color/black_alpha"
+                android:padding="5dp"/>
+
+            <EditText android:id="@+id/editTextEditWeekplanDi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mittwoch"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:background="@color/black_alpha"
+                android:padding="5dp"/>
+
+            <EditText android:id="@+id/editTextEditWeekplanMi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Donnerstag"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:background="@color/black_alpha"
+                android:padding="5dp"/>
+
+            <EditText android:id="@+id/editTextEditWeekplanDo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Freitag"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:background="@color/black_alpha"
+                android:padding="5dp"/>
+
+            <EditText android:id="@+id/editTextEditWeekplanFr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Samstag"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:background="@color/black_alpha"
+                android:padding="5dp"/>
+
+            <EditText android:id="@+id/editTextEditWeekplanSa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sonntag"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:background="@color/black_alpha"
+                android:padding="5dp"/>
+
+            <EditText android:id="@+id/editTextEditWeekplanSo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>

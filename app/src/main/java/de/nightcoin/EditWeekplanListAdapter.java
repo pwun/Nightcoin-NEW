@@ -1,6 +1,8 @@
 package de.nightcoin;
 
 import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,15 +75,31 @@ public class EditWeekplanListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.edit_weekplan_list_adapter, null);
         }
 
-        EditText editText = (EditText) convertView.findViewById(R.id.editTextEditWeekPlanAdapter);
+        final EditText editText = (EditText) convertView.findViewById(R.id.editTextEditWeekPlanAdapter);
         editText.setText(itemContents.get(groupPosition));
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                System.out.println("TextWatcherTest" + "afterTextChanged:\t" + s.toString());
+                itemContents.set(groupPosition, s.toString());
+            }
+        });
 
         return convertView;
     }

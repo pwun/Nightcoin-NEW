@@ -1,5 +1,6 @@
 package de.nightcoin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseUser;
 
 
 public class ActivitySettings extends ActionBarActivity {
@@ -38,7 +42,7 @@ public class ActivitySettings extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-       /*         // Check if data is entered correctly, log in user and open userActivity
+               // Check if data is entered correctly, log in user and open userActivity
                 // if data is wrong show error message
                 String username = usernameTextField.getText().toString();
                 String password = passwordTextField.getText().toString();
@@ -56,7 +60,7 @@ public class ActivitySettings extends ActionBarActivity {
                             errorMessageTextView.setVisibility(View.VISIBLE);
                         }
                     }
-                });*/
+                });
 
                 Toast t = Toast.makeText(ActivitySettings.this, "Dieser Bereich wird momentan überarbeitet und steht bald zur Verfügung.", Toast.LENGTH_LONG);
                 t.show();
