@@ -215,7 +215,7 @@ public class ActivityStandardList extends ActionBarActivity {
         if (now.getHours() < END_OF_NIGHT) {
             return lastEvening();
         }
-        return now;
+        return normalizedDate(now);
     }
 
     @Override
