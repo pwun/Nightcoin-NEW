@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
@@ -87,7 +88,7 @@ public class ActivityEventItemView extends ActionBarActivity {
                 System.out.println("Creating " + object.getString("title"));
                 title = object.getString("title");
                 location = object.getString("location");
-                priceString = (String) object.get("price");
+                priceString = "Eintritt: " + (String) object.get("price");
                 dateString = new SimpleDateFormat("cccc, dd. MMMM, hh:ss").format(object.get("date")) + " Uhr";
                 description = (String) object.get("details");
                 image = object.getParseFile("image");
@@ -95,31 +96,23 @@ public class ActivityEventItemView extends ActionBarActivity {
                 setTextViews();
                 setImage();
                 try {
-                    byte[] stream = object.getParseFile("image").getData();
-                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    tintColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+                    image.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] stream, ParseException e) {
+                            Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                            tintColor = getDominantColor(bmp);
+                            ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+                            findViewById(R.id.buttonEventItemViewFilteredCoins).setBackgroundColor(tintColor);
+                            findViewById(R.id.textViewEventItemViewDescriptionTitle).setBackgroundColor(tintColor);
 
-                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
-                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
-                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
-                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
-                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
-                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
-                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
-                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
-                    findViewById(R.id.buttonEventItemViewFilteredCoins).setBackgroundColor(tintColor);
-                    findViewById(R.id.textViewEventItemViewDescriptionTitle).setBackgroundColor(tintColor);
-                    /*call.setBackgroundColor(dominantColor);
-                    map.setBackgroundColor(dominantColor);*/
+                            ActivityEventItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
-                    ActivityEventItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-
-                    //layout.setBackgroundColor(getDominantColor(bmp));
-                    bmp.recycle();
-                    bmp = null;
-                    System.gc();
-                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                            //layout.setBackgroundColor(getDominantColor(bmp));
+                            bmp.recycle();
+                            bmp = null;
+                            System.gc();
+                        }
+                    });
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
                 }

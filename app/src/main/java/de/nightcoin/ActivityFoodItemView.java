@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
@@ -120,60 +121,34 @@ public class ActivityFoodItemView extends ActionBarActivity {
 
 
                 try {
-                    byte[] stream = serverObject.getParseFile("image").getData();
-                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    tintColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+                    serverObject.getParseFile("image").getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] stream, ParseException e) {
+                            Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                            tintColor = getDominantColor(bmp);
+                            ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+                            findViewById(R.id.textViewFoodItemViewOpening).setBackgroundColor(tintColor);
 
-                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
-                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
-                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
-                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
-                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
-                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
-                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
-                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
-
-                    findViewById(R.id.ViewfoodItemViewSeperator).setBackgroundColor(tintColor);
-                    /*call.setBackgroundColor(dominantColor);
-                    map.setBackgroundColor(dominantColor);*/
-
-                    ActivityFoodItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-                    findViewById(R.id.textViewFoodItemViewContact).setBackgroundColor(tintColor);
-                    findViewById(R.id.textViewFoodItemViewOpening).setBackgroundColor(tintColor);
-                    Button map = (Button)findViewById(R.id.buttonFoodItemViewMap);
-                    map.setTextColor(tintColor);
-                    Button call = (Button)findViewById(R.id.buttonFoodItemViewCall);
-                    call.setTextColor(tintColor);
-                    //layout.setBackgroundColor(getDominantColor(bmp));
-                    bmp.recycle();
-                    bmp = null;
-                    System.gc();
-                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                            findViewById(R.id.ViewfoodItemViewSeperator).setBackgroundColor(tintColor);
+                            ActivityFoodItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+                            findViewById(R.id.textViewFoodItemViewContact).setBackgroundColor(tintColor);
+                            Button map = (Button)findViewById(R.id.buttonFoodItemViewMap);
+                            map.setTextColor(tintColor);
+                            Button call = (Button)findViewById(R.id.buttonFoodItemViewCall);
+                            call.setTextColor(tintColor);
+                            //layout.setBackgroundColor(getDominantColor(bmp));
+                            bmp.recycle();
+                            bmp = null;
+                            System.gc();
+                        }
+                    });
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
                 }
-                /*try {
-                    byte[] stream = serverObject.getParseFile("image").getData();
-                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    int dominantColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
-
-                    findViewById(R.id.layoutFoodItemViewBackground).setBackgroundColor(getDominantColor(bmp));
-                    findViewById(R.id.textViewFoodItemViewName).setBackgroundColor(dominantColor);
-                    findViewById(R.id.textViewFoodItemViewContact).setBackgroundColor(dominantColor);
-                    ActivityFoodItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-
-                    bmp.recycle();
-                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
-                } catch (Exception ex) {
-                    System.out.println("Error getting color");
-                }*/
-
 
                 ImageView img = (ImageView) findViewById(R.id.imageViewFoodItemView);
 
-                    img.setImageBitmap(obj.getImage());
+                img.setImageBitmap(obj.getImage());
 
 
                 //img.loadInBackground();

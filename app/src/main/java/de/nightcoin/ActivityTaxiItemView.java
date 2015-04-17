@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -83,29 +84,22 @@ public class ActivityTaxiItemView extends ActionBarActivity {
 
 
                 try {
-                    byte[] stream = serverObject.getParseFile("image").getData();
-                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    tintColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+                    serverObject.getParseFile("image").getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] stream, ParseException e) {
+                            Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                            tintColor = getDominantColor(bmp);
+                            ColorDrawable colorDrawable = new ColorDrawable(tintColor);
 
-                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
-                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
-                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
-                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
-                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
-                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
-                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
-                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
+                            findViewById(R.id.textViewTaxiItemViewOpening).setBackgroundColor(tintColor);
+                            ActivityTaxiItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
-                    /*call.setBackgroundColor(dominantColor);
-                    map.setBackgroundColor(dominantColor);*/
-                    findViewById(R.id.textViewTaxiItemViewOpening).setBackgroundColor(tintColor);
-                    ActivityTaxiItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+                            bmp.recycle();
+                            bmp = null;
+                            System.gc();
+                        }
 
-                    //layout.setBackgroundColor(getDominantColor(bmp));
-                    bmp.recycle();
-                    bmp = null;
-                    System.gc();
+                        });
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
