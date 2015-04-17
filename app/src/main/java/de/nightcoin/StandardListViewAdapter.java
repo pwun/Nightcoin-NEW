@@ -1,40 +1,138 @@
+
 package de.nightcoin;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
+import com.parse.ParseQueryAdapter;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
-public class StandardListViewAdapter extends BaseAdapter {
+public class StandardListViewAdapter extends ParseQueryAdapter {
 
-	Context listContext;
-	LayoutInflater inflater;
-	ArrayList<StandardObject> list;
-	String mode;
+    Context listContext;
+    LayoutInflater inflater;
+    ArrayList<ParseObject> list;
+    String mode;
     GPSTracker gps;
     double longitude;
     double latitude;
     ParseGeoPoint geo;
+    ImageLoader imageLoader;
 
-	public StandardListViewAdapter(Context context,
-			List<StandardObject> objectList, String mode) {
-		super();
+    public StandardListViewAdapter(Context context,
+    com.parse.ParseQueryAdapter.QueryFactory<ParseObject> queryFactory) {
+        super(context, queryFactory);
+        imageLoader = new ImageLoader(context);
+    }
+
+    @Override
+    public View getItemView(ParseObject object, View v, ViewGroup parent) {
+        if (v == null) {
+            v = View.inflate(getContext(), R.layout.standard_list_view_adapter, null);
+        }
+
+        TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
+        location.setText(object.getString("name"));
+
+        ParseFile imageFile = object.getParseFile("image");
+        ImageView imageView = (ImageView) v.findViewById(R.id.imageViewStandardListViewAdapter);
+        imageLoader.DisplayImage(imageFile.getUrl(), imageView);
+        return v;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*	public StandardListViewAdapter(Context context,
+			List<ParseObject> objectList, String mode) {
 		this.mode = mode;
 		listContext = context;
 		inflater = LayoutInflater.from(listContext);
-		list = new ArrayList<StandardObject>();
+		list = new ArrayList<ParseObject>();
 		list.addAll(objectList);
         gps = new GPSTracker(listContext);
 
@@ -53,7 +151,8 @@ public class StandardListViewAdapter extends BaseAdapter {
             geo = new ParseGeoPoint(0,0);
         }
 
-    }
+    }*//*
+
 
 	public class ViewHolder {
 		TextView name;
@@ -62,14 +161,27 @@ public class StandardListViewAdapter extends BaseAdapter {
 		ImageView image;
 	}
 
+    @Override
+    public View getItemView(ParseObject object, View v, ViewGroup parent) {
+        if (v == null) {
+            v = View.inflate(getContext(), R.layout.adapter_item, null);
+        }
+
+        // Take advantage of ParseQueryAdapter's getItemView logic for
+        // populating the main TextView/ImageView.
+        // The IDs in your custom layout must match what ParseQueryAdapter expects
+        // if it will be populating a TextView or ImageView for you.
+        super.getItemView(object, v, parent);
+
+        // Do additional configuration before returning the View.
+        TextView descriptionView = (TextView) v.findViewById(R.id.description);
+        descriptionView.setText(object.getString("description"));
+        return v;
+    }
+
 	@Override
 	public int getCount() {
 		return list.size();
-	}
-
-	@Override
-	public Object getItem(int position) {
-		return list.get(position);
 	}
 
 	@Override
@@ -77,7 +189,9 @@ public class StandardListViewAdapter extends BaseAdapter {
 		return position;
 	}
 
-	@Override
+
+*/
+/*	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final ViewHolder holder;
 		if (convertView == null) {
@@ -96,11 +210,13 @@ public class StandardListViewAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.name.setText(list.get(position).getName());
-		holder.image.setImageBitmap(list.get(position).getImage());
+		holder.name.setText(list.get(position).get("name").toString());
+		holder.image*//*
+
 		//holder.image.loadInBackground();
 
-		if (mode.equals("event")) {
+		*/
+/*if (mode.equals("event")) {
             holder.name.setTextSize(20);
             holder.topDetail.setText(list.get(position).getDate());
             holder.bottomDetail.setText(list.get(position).getLocation());
@@ -192,15 +308,19 @@ public class StandardListViewAdapter extends BaseAdapter {
             else{
                 holder.bottomDetail.setTextColor(listContext.getResources().getColor(R.color.dark_red));
             }
+*//*
+*/
 /*            try {
                 if (list.get(position).isOpen()) {
                     holder.bottomDetail.setText("Geöffnet");
                 }
             } catch(Exception e) {
                 System.out.println("Ich bin die Filmbühne und ich bin blöd.");
-            }*/
+            }*//*
 
-			convertView.setOnClickListener(new OnClickListener() {
+
+			*/
+/*convertView.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
@@ -216,6 +336,8 @@ public class StandardListViewAdapter extends BaseAdapter {
 		}
 
 		return convertView;
-	}
+	}*//*
+
 
 }
+*/

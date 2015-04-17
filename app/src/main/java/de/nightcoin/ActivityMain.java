@@ -81,7 +81,7 @@ public class ActivityMain extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityMain.this,
 						ActivityStandardList.class);
-				i.putExtra("input", "Bars");
+				i.putExtra("input", "Bar");
 				ActivityMain.this.startActivity(i);
 			}
 		});
@@ -93,7 +93,7 @@ public class ActivityMain extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityMain.this,
 						ActivityStandardList.class);
-				i.putExtra("input", "Clubs");
+				i.putExtra("input", "Club");
 				ActivityMain.this.startActivity(i);
 			}
 		});
@@ -105,7 +105,7 @@ public class ActivityMain extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityMain.this,
 						ActivityStandardList.class);
-				i.putExtra("input", "Favoriten");
+				i.putExtra("input", "Favorites");
 				ActivityMain.this.startActivity(i);
 			}
 		});
