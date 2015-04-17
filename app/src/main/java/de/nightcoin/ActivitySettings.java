@@ -50,7 +50,7 @@ public class ActivitySettings extends ActionBarActivity {
                 ParseUser.logInInBackground(username, password, new LogInCallback() {
                     @Override
                     public void done(ParseUser user, com.parse.ParseException e) {
-                        if (user != null) {
+                        /*if (user != null) {
                             Intent i = new Intent(ActivitySettings.this,
                                     ActivityUser.class);
                             i.putExtra("userLocation", ParseUser.getCurrentUser().get("location").toString());
@@ -58,7 +58,7 @@ public class ActivitySettings extends ActionBarActivity {
                             errorMessageTextView.setVisibility(View.INVISIBLE);
                         } else {
                             errorMessageTextView.setVisibility(View.VISIBLE);
-                        }
+                        }*/
                     }
                 });
 
