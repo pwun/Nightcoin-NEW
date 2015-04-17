@@ -206,12 +206,12 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
                 if (!name.equals("Piratenhöhle")) {
                     try {
+                        System.out.println("FARBANPASSUNG LÄUFT");
                         imageFile.getDataInBackground(new GetDataCallback() {
                             @Override
                             public void done(byte[] stream, ParseException e) {
-                                if (e != null) {
+                                if (e == null) {
                                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                                    stream = null;
                                     tintColor = getDominantColor(bmp);
                                     ColorDrawable colorDrawable = new ColorDrawable(tintColor);
 
@@ -238,11 +238,13 @@ public class ActivityStandardItemView extends ActionBarActivity {
                                     Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
                                     call.setTextColor(tintColor);
                                     //layout.setBackgroundColor(getDominantColor(bmp));
+                                    stream = null;
                                     bmp.recycle();
                                     bmp = null;
                                     System.gc();
                                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                                 }
+                                else{System.out.println(e.getStackTrace());}
                             }
                         });
 

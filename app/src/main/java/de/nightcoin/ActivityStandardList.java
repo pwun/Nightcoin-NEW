@@ -50,7 +50,7 @@ public class ActivityStandardList extends ActionBarActivity {
 
         parseAdapter = new StandardListViewAdapter(ActivityStandardList.this, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery<ParseObject> create() {
-                return requestedQuery(contentMode).fromLocalDatastore();
+                return requestedQuery(contentMode);//.fromLocalDatastore();
             }
         });
 
@@ -68,7 +68,22 @@ public class ActivityStandardList extends ActionBarActivity {
                     findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
                 }
                 progressDialog.dismiss();
-                requestedQuery(contentMode).findInBackground(new FindCallback() {
+
+                ParseObject.unpinAllInBackground(contentMode, new DeleteCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        ParseObject.pinAllInBackground(objects, new SaveCallback() {
+
+                            @Override
+                            public void done(com.parse.ParseException e) {
+                                //    System.out.println("Pinned " + objects.size() + " objects successfully");
+
+                            }
+                        });
+                    }
+                });
+
+                /*requestedQuery(contentMode).findInBackground(new FindCallback() {
                     @Override
                     public void done(List list, ParseException e) {
                         ParseObject.unpinAllInBackground(contentMode, new DeleteCallback() {
@@ -85,7 +100,7 @@ public class ActivityStandardList extends ActionBarActivity {
                             }
                         });
                     }
-                });
+                });*/
 
             }
         });

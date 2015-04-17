@@ -82,13 +82,15 @@ public class ActivityCoinItemView extends ActionBarActivity {
 
                 System.out.println(object.getObjectId());
 
-                coin.setValue((String) object.get("value"));
-                coin.setDate((Date) object.get("date"));
-                coin.setLocation((String) object.get("location"));
+                /*coin.setValue((String) object.get("value"));
+
+                coin.setLocation((String) object.get("location"));*/
                 coin.setLimited((Boolean) object.get("limited"));
 
-                location.setText(coin.getLocation());
-                value.setText(coin.getValue());
+                coin.setDate((Date) object.get("date"));
+
+                location.setText((String)object.get("location"));
+                value.setText((String)object.get("value"));
                 date.setText(coin.getDate());
 
                 coinLocation = (String) object.get("location");
@@ -131,12 +133,20 @@ public class ActivityCoinItemView extends ActionBarActivity {
                     }
                     //Überprüfe ob eingelöst
                     ArrayList<String> cashedInUsers = (ArrayList<String>)object.get("cashedInUsers");
+                    int cashedInAmount = object.getInt("cashedInAmount");
+                    int amount = object.getInt("amount");
                     if(cashedInUsers!=null){
                         if(cashedInUsers.contains(ParseInstallation.getCurrentInstallation().getInstallationId())){
                             button.setBackgroundColor(getResources().getColor(R.color.dark_red));
                             button.setText("Du hast diesen Coin bereits eingelöst");
                             button.setVisibility(View.VISIBLE);
-                        }else{
+                        }
+                        else if(amount - cashedInAmount <=0){
+                            button.setBackgroundColor(getResources().getColor(R.color.dark_red));
+                            button.setText("Limit erreicht - dieser Coin ist nicht mehr verfügbar");
+                            button.setVisibility(View.VISIBLE);
+                        }
+                        else{
                             button.setVisibility(View.VISIBLE);
                             button.setOnClickListener(new View.OnClickListener() {
                                 @Override
