@@ -27,6 +27,7 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         super(context, queryFactory);
         listContext = context;
         imageLoader = new ImageLoader(context);
+        setObjectsPerPage(25);
     }
     @Override
     public View getItemView(ParseObject object, View v, ViewGroup parent) {

@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
@@ -42,7 +43,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
     ArrayList<String> favorites = new ArrayList<String>();
     Menu menu;
     MenuItem menuItemFavorites;
-    ImageColor imageColor;
+    ImageLoader imageLoader;
     int tintColor;
 
 	@Override
@@ -55,6 +56,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
         setTitle(name);
         getData(name);
         initButtons();
+        imageLoader = new ImageLoader(ActivityStandardItemView.this);
         System.out.println("ID: " + ParseInstallation.getCurrentInstallation().getInstallationId());
         //setActionBarColor(null);
 
@@ -62,8 +64,8 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        obj.getImage().recycle();
-        obj.setImage(null);
+        /*obj.getImage().recycle();
+        obj.setImage(null);*/
         obj = null;
         serverObject = null;
         System.gc();
@@ -156,7 +158,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
         });
 	}
 
-	private void getData(String name) {
+	private void getData(final String name) {
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
 		query.whereEqualTo("name", name);
 		query.setLimit(1);
@@ -169,7 +171,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				System.out.println("Creating " + objects.get(0).get("name"));
 				serverObject = objects.get(0);
 				obj.setName((String) serverObject.get("name"));
-				obj.setImage((ParseFile) serverObject.getParseFile("image"));
+				//obj.setImage((ParseFile) serverObject.getParseFile("image"));
                 obj.setAdr((String) serverObject.get("address"));
                 obj.setTel((String) serverObject.get("phone"));
                 ParseGeoPoint geo = (ParseGeoPoint) serverObject.get("geoData");
@@ -179,6 +181,10 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
 				obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
                 favorites = ((ArrayList<String>) serverObject.get("favorites"));
+
+                ParseFile imageFile = serverObject.getParseFile("image");
+                ImageView imageView = (ImageView) findViewById(R.id.imageViewStandardItemView);
+                imageLoader.DisplayImage(imageFile.getUrl(), imageView);
 
                 TextView tel = (TextView)findViewById(R.id.textViewStandardItemViewTel);
                 if(obj.getTel()!=null){
@@ -198,12 +204,15 @@ public class ActivityStandardItemView extends ActionBarActivity {
                 Button weekplan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
 
 
-
-                try {
-                    byte[] stream = serverObject.getParseFile("image").getData();
-                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    tintColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+                if (!name.equals("Piratenhöhle")) {
+                    try {
+                        imageFile.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] stream, ParseException e) {
+                                Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                                stream = null;
+                                tintColor = getDominantColor(bmp);
+                                ColorDrawable colorDrawable = new ColorDrawable(tintColor);
 
                     /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
                     TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
@@ -213,34 +222,39 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
                     Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
                     Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
-                    findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(tintColor);
-                    findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(tintColor);
-                    findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(tintColor);
-                    findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(tintColor);
+                                findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(tintColor);
+                                findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(tintColor);
+                                findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(tintColor);
+                                findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(tintColor);
                     /*call.setBackgroundColor(dominantColor);
                     map.setBackgroundColor(dominantColor);*/
 
-                    ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-                    findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(tintColor);
-                    findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(tintColor);
-                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
-                    map.setTextColor(tintColor);
-                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
-                    call.setTextColor(tintColor);
-                    //layout.setBackgroundColor(getDominantColor(bmp));
-                    bmp.recycle();
-                    bmp = null;
-                    System.gc();
-                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
-                } catch (Exception ex) {
-                    System.out.println("Error getting color");
+                                ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+                                findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(tintColor);
+                                findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(tintColor);
+                                Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                                map.setTextColor(tintColor);
+                                Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
+                                call.setTextColor(tintColor);
+                                //layout.setBackgroundColor(getDominantColor(bmp));
+                                bmp.recycle();
+                                bmp = null;
+                                System.gc();
+                                //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                            }
+                        });
+
+                    } catch (Exception ex) {
+                        System.out.println("Error getting color");
+                    }
                 }
 
 
-				ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
+
+				/*ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
 				img.setImageBitmap(obj.getImage());
 				//img.loadInBackground();
-
+*/
 				getOpening();
                 updateLocationStatistics(serverObject);
 
