@@ -143,7 +143,7 @@ public class ActivityCoinItemView extends ActionBarActivity {
                         }
                         else if(amount - cashedInAmount <= 0){
                             button.setBackgroundColor(getResources().getColor(R.color.dark_red));
-                            button.setText("Limit erreicht: dieser Coin ist nicht mehr verfügbar");
+                            button.setText("Limit erreicht: dieser Coin ist nicht mehr verfügbar.");
                             button.setVisibility(View.VISIBLE);
                         }
                         else{
