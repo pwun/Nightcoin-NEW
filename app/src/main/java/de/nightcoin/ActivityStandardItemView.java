@@ -209,10 +209,11 @@ public class ActivityStandardItemView extends ActionBarActivity {
                         imageFile.getDataInBackground(new GetDataCallback() {
                             @Override
                             public void done(byte[] stream, ParseException e) {
-                                Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                                stream = null;
-                                tintColor = getDominantColor(bmp);
-                                ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+                                if (e != null) {
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                                    stream = null;
+                                    tintColor = getDominantColor(bmp);
+                                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
 
                     /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
                     TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
@@ -222,25 +223,26 @@ public class ActivityStandardItemView extends ActionBarActivity {
                     Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
                     Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
                     Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
-                                findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(tintColor);
-                                findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(tintColor);
-                                findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(tintColor);
-                                findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(tintColor);
+                                    findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(tintColor);
+                                    findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(tintColor);
+                                    findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(tintColor);
+                                    findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(tintColor);
                     /*call.setBackgroundColor(dominantColor);
                     map.setBackgroundColor(dominantColor);*/
 
-                                ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-                                findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(tintColor);
-                                findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(tintColor);
-                                Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
-                                map.setTextColor(tintColor);
-                                Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
-                                call.setTextColor(tintColor);
-                                //layout.setBackgroundColor(getDominantColor(bmp));
-                                bmp.recycle();
-                                bmp = null;
-                                System.gc();
-                                //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                                    ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+                                    findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(tintColor);
+                                    findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(tintColor);
+                                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                                    map.setTextColor(tintColor);
+                                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
+                                    call.setTextColor(tintColor);
+                                    //layout.setBackgroundColor(getDominantColor(bmp));
+                                    bmp.recycle();
+                                    bmp = null;
+                                    System.gc();
+                                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                                }
                             }
                         });
 

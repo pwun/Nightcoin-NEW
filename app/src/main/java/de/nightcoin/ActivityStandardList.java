@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.parse.DeleteCallback;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -48,7 +50,7 @@ public class ActivityStandardList extends ActionBarActivity {
 
         parseAdapter = new StandardListViewAdapter(ActivityStandardList.this, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery<ParseObject> create() {
-                return requestedQuery(contentMode);
+                return requestedQuery(contentMode).fromLocalDatastore();
             }
         });
 
@@ -66,21 +68,25 @@ public class ActivityStandardList extends ActionBarActivity {
                     findViewById(R.id.textViewListNoData).setVisibility(View.VISIBLE);
                 }
                 progressDialog.dismiss();
-                ParseObject.unpinAllInBackground(contentMode, new DeleteCallback() {
-
-
+                requestedQuery(contentMode).findInBackground(new FindCallback() {
                     @Override
-                    public void done(com.parse.ParseException e) {
-                        ParseObject.pinAllInBackground(objects, new SaveCallback() {
-
+                    public void done(List list, ParseException e) {
+                        ParseObject.unpinAllInBackground(contentMode, new DeleteCallback() {
                             @Override
                             public void done(com.parse.ParseException e) {
-                            //    System.out.println("Pinned " + objects.size() + " objects successfully");
+                                ParseObject.pinAllInBackground(objects, new SaveCallback() {
 
+                                    @Override
+                                    public void done(com.parse.ParseException e) {
+                                        //    System.out.println("Pinned " + objects.size() + " objects successfully");
+
+                                    }
+                                });
                             }
                         });
                     }
                 });
+
             }
         });
         ListView listView = (ListView) findViewById(R.id.listViewStandardList);
