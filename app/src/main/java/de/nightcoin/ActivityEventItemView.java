@@ -3,6 +3,7 @@ package de.nightcoin;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -177,10 +178,22 @@ public class ActivityEventItemView extends ActionBarActivity {
         Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
         int color = bitmap1.getPixel(0, 0);
         System.out.println("Dominant Color = "+color);
-        if(color == -263173){//Medi Veranstaltung..
-            return -3355442;
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        double luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+        System.out.println("Luma: " + luma);
+        if(luma > 180){
+            System.out.println("Too light");
+            //Set color to black
+            r = 34;
+            g = 34;
+            b = 34;
+            color = Color.rgb(r,g,b);
         }
-
+        else{
+            System.out.println("Color ok");
+        }
         return color;
     }
 

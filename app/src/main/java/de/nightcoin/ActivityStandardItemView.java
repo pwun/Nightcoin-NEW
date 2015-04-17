@@ -279,9 +279,13 @@ public class ActivityStandardItemView extends ActionBarActivity {
         int b = Color.blue(color);
         double luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
         System.out.println("Luma: " + luma);
-        if(luma > 170){
+        if(luma > 180){
             System.out.println("Too light");
-            color = -7829368;
+            //Set color to black
+            r = 34;
+            g = 34;
+            b = 34;
+            color = Color.rgb(r,g,b);
         }
         else{
             System.out.println("Color ok");
