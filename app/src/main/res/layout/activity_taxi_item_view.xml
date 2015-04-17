@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
                     android:text="Mindestfahrpreis:"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     />
 
@@ -60,6 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
+                    android:textColor="@color/black"
                     android:text="3,20€"
                     />
 
@@ -84,6 +86,7 @@
                     android:layout_height="wrap_content"
                     android:text="Fahrpreis pro Kilometer:"
                     android:textSize="18dp"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     />
 
@@ -91,6 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
+                    android:textColor="@color/black"
                     android:text="1,60€"
                     />
 
@@ -115,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:text="Wartezeit pro Stunde:"
                     android:textSize="18dp"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     />
 
@@ -122,6 +127,7 @@
                     android:layout_width="wrap_content"
                     android:textSize="18dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="24,00€"
                     />
 
@@ -146,19 +152,21 @@
                     android:layout_height="wrap_content"
                     android:text="Zuschlag ab 5. Fahrgast (Großraumtaxi):"
                     android:textSize="18dp"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:textSize="18dp"
                     android:text="3,00€"
                     />
 
             </LinearLayout>
 
-            
+
             <Button
                 android:id="@+id/buttonTaxiItemViewCallTaxi"
                 android:layout_width="match_parent"
@@ -200,6 +208,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Mo"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -208,6 +218,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Di"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -216,6 +228,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Mi"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -224,6 +238,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Do"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -232,6 +248,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Fr"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -240,6 +258,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="Sa"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -248,6 +268,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="So"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -255,6 +277,7 @@
                     android:id="@+id/tableRowTaxiItemViewOpening"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:weightSum="7" >
 
                     <TextView
@@ -263,6 +286,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -271,6 +296,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -279,6 +306,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -287,6 +316,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -295,6 +326,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -303,6 +336,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -311,6 +346,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
                 </TableRow>
 
@@ -318,6 +355,7 @@
                     android:id="@+id/tableRowTaxiItemViewClosing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:weightSum="7" >
 
                     <TextView
@@ -326,6 +364,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -334,6 +374,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -342,6 +384,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -350,6 +394,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -358,6 +404,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -366,6 +414,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
 
                     <TextView
@@ -374,6 +424,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/textSizeDefault"
                         android:text="-"
+                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1" />
                 </TableRow>
             </TableLayout>

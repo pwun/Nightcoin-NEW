@@ -1,6 +1,7 @@
 package de.nightcoin;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ActivityWeekplan extends ActionBarActivity {
 
 	String name;
+    int color;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,11 @@ public class ActivityWeekplan extends ActionBarActivity {
 		setContentView(R.layout.activity_weekplan);
 		Intent i = getIntent();
 		name = i.getStringExtra("name");
-		
+		color = i.getIntExtra("color", 1);
+
+        ColorDrawable colorDrawable = new ColorDrawable(color);
+        ActivityWeekplan.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
         query.selectKeys(Arrays.asList("weekplan"));
 		query.whereEqualTo("name", name);
@@ -41,8 +47,8 @@ public class ActivityWeekplan extends ActionBarActivity {
 				ArrayList<String> weekplan = new ArrayList<String>();
 				weekplan = (ArrayList<String>) object.get("weekplan");
 				ListView listview = (ListView) findViewById(R.id.listViewWeekplan);
-				WeekplanAdapter adapter = new WeekplanAdapter(ActivityWeekplan.this, weekplan);
-				listview.setAdapter(adapter);
+                WeekplanAdapter adapter = new WeekplanAdapter(ActivityWeekplan.this, weekplan, color);
+                listview.setAdapter(adapter);
 			}
 		});
 	}

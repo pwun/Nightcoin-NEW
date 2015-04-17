@@ -3,6 +3,7 @@ package de.nightcoin;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -101,6 +102,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ActivityStandardItemView.this,ActivityWeekplan.class);
 				i.putExtra("name", name);
+                i.putExtra("color", tintColor);
 				ActivityStandardItemView.this.startActivity(i);
 			}
 		});
@@ -199,27 +201,31 @@ public class ActivityStandardItemView extends ActionBarActivity {
                 try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    int dominantColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
+                    tintColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
 
-                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
                     TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
                     TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
                     Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
                     Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
                     Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
-                    /*Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
                     Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
-
-                    nextCoins.setBackgroundColor(dominantColor);
-                    nextEvents.setBackgroundColor(dominantColor);
-                    weekPlan.setBackgroundColor(dominantColor);
+                    findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(tintColor);
+                    findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(tintColor);
+                    findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(tintColor);
+                    findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(tintColor);
                     /*call.setBackgroundColor(dominantColor);
                     map.setBackgroundColor(dominantColor);*/
 
                     ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-                    hours.setBackgroundColor(dominantColor);
-                    contact.setBackgroundColor(dominantColor);
+                    findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(tintColor);
+                    findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(tintColor);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    map.setTextColor(tintColor);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
+                    call.setTextColor(tintColor);
                     //layout.setBackgroundColor(getDominantColor(bmp));
                     bmp.recycle();
                     bmp = null;
@@ -267,6 +273,19 @@ public class ActivityStandardItemView extends ActionBarActivity {
     public static int getDominantColor(Bitmap bitmap) {
         Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 1, 1, true);
         int color = bitmap1.getPixel(0, 0);
+        System.out.println("Dominant Color = "+color);
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        double luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+        System.out.println("Luma: " + luma);
+        if(luma > 170){
+            System.out.println("Too light");
+            color = -7829368;
+        }
+        else{
+            System.out.println("Color ok");
+        }
         return color;
     }
 

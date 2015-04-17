@@ -29,6 +29,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
     String name;
     ParseObject serverObject;
     StandardObject obj = new StandardObject();
+    int tintColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,21 +83,34 @@ public class ActivityTaxiItemView extends ActionBarActivity {
                 img.setImageBitmap(obj.getImage());
 
 
-                /*try {
+                try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    int dominantColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
+                    tintColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
 
-                    findViewById(R.id.layoutTaxiItemViewBackground).setBackgroundColor(getDominantColor(bmp));
-                    findViewById(R.id.textViewTaxiItemViewOpening).setBackgroundColor(dominantColor);
+                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
+                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
+                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
+                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
+                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
+
+                    /*call.setBackgroundColor(dominantColor);
+                    map.setBackgroundColor(dominantColor);*/
+
                     ActivityTaxiItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
+                    //layout.setBackgroundColor(getDominantColor(bmp));
                     bmp.recycle();
+                    bmp = null;
+                    System.gc();
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
-                }*/
+                }
 
 
                 //img.loadInBackground();

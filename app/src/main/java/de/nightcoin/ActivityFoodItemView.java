@@ -32,6 +32,7 @@ public class ActivityFoodItemView extends ActionBarActivity {
     String name;
     ParseObject serverObject;
     StandardObject obj = new StandardObject();
+    int tintColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,40 @@ public class ActivityFoodItemView extends ActionBarActivity {
                     System.out.println("Fehler bei der Adresse");
                 }
 
+
+                try {
+                    byte[] stream = serverObject.getParseFile("image").getData();
+                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                    tintColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+
+                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
+                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
+                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
+                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
+                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
+
+                    findViewById(R.id.ViewfoodItemViewSeperator).setBackgroundColor(tintColor);
+                    /*call.setBackgroundColor(dominantColor);
+                    map.setBackgroundColor(dominantColor);*/
+
+                    ActivityFoodItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+                    findViewById(R.id.textViewFoodItemViewContact).setBackgroundColor(tintColor);
+                    Button map = (Button)findViewById(R.id.buttonFoodItemViewMap);
+                    map.setTextColor(tintColor);
+                    Button call = (Button)findViewById(R.id.buttonFoodItemViewCall);
+                    call.setTextColor(tintColor);
+                    //layout.setBackgroundColor(getDominantColor(bmp));
+                    bmp.recycle();
+                    bmp = null;
+                    System.gc();
+                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                } catch (Exception ex) {
+                    System.out.println("Error getting color");
+                }
                 /*try {
                     byte[] stream = serverObject.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);

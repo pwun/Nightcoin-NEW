@@ -36,6 +36,7 @@ public class ActivityEventItemView extends ActionBarActivity {
     private String description;
     private Date dateToFilterCoins;
     private ParseFile image;
+    int tintColor;
     boolean ticketsEnabled;
 
 
@@ -48,6 +49,7 @@ public class ActivityEventItemView extends ActionBarActivity {
         objectId = i.getStringExtra("objectId");
 		initView();
         getEventData();
+
 
     }
 	
@@ -91,20 +93,35 @@ public class ActivityEventItemView extends ActionBarActivity {
                 normalizeDate((Date) object.get("date"));
                 setTextViews();
                 setImage();
-                /*try {
-                    byte[] stream = image.getData();
+                try {
+                    byte[] stream = object.getParseFile("image").getData();
                     Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                    int dominantColor = getDominantColor(bmp);
-                    ColorDrawable colorDrawable = new ColorDrawable(dominantColor);
-                    findViewById(R.id.layoutEventItemViewBackground).setBackgroundColor(getDominantColor(bmp));
-                    findViewById(R.id.buttonEventItemViewFilteredCoins).setBackgroundColor(dominantColor);
-                    findViewById(R.id.textViewEventItemViewDescriptionTitle).setBackgroundColor(dominantColor);
+                    tintColor = getDominantColor(bmp);
+                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+
+                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
+                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
+                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
+                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
+                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
+                    findViewById(R.id.buttonEventItemViewFilteredCoins).setBackgroundColor(tintColor);
+                    findViewById(R.id.textViewEventItemViewDescriptionTitle).setBackgroundColor(tintColor);
+                    /*call.setBackgroundColor(dominantColor);
+                    map.setBackgroundColor(dominantColor);*/
+
                     ActivityEventItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+
+                    //layout.setBackgroundColor(getDominantColor(bmp));
                     bmp.recycle();
+                    bmp = null;
+                    System.gc();
                     //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
                 } catch (Exception ex) {
                     System.out.println("Error getting color");
-                }*/
+                }
                /* // Tickets
                 ticketsEnabled = (boolean)object.get("ticketsAvailable");
                 if (ticketsEnabled) {
