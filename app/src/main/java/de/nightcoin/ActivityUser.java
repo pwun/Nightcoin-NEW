@@ -81,15 +81,22 @@ public class ActivityUser extends ActionBarActivity {
             public void onClick(View v) {
                 new AlertDialog.Builder(ActivityUser.this)
                         .setTitle("Sende uns eine Email, um ein Event zu erstellen, zu bearbeiten oder zu löschen.")
-                        .setMessage("Wir arbeiten daran, dies schnellstmöglich innerhalb der zu ermöglichen.")
+                        .setMessage("Wir arbeiten daran, dies schnellstmöglich innerhalb der App zu ermöglichen.")
                         .setPositiveButton("Zur Email-Vorlage", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(Intent.ACTION_SEND);
+                                intent.setType("text/html");
+                                intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"info@nightcoin.de"});
+                                intent.putExtra(Intent.EXTRA_SUBJECT, ParseUser.getCurrentUser().get("location").toString() + " - Events");
+                                intent.putExtra(Intent.EXTRA_TEXT, "Titel:\n\nDatum & Uhrzeit:\n\nEintritt:\n\nAnzahl zugelassener Reservierungen über Nightcoin:\n\nBeschreibung:\n\nBitte ein Bild im Anhang einfügen.\n");
+
+                                startActivity(Intent.createChooser(intent, "Send Email"));
+                                /*Intent intent = new Intent(Intent.ACTION_SEND);
                                 intent.setType("message");
                                 intent.putExtra(Intent.EXTRA_SUBJECT, "Betreff");
                                 intent.putExtra(Intent.EXTRA_TEXT, "Nachricht");
                                 Intent mailer = Intent.createChooser(intent, null);
-                                startActivity(mailer);
+                                startActivity(mailer);*/
                             }
                         })
                         .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
