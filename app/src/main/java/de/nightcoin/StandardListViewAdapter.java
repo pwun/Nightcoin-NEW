@@ -209,7 +209,7 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         TextView amount = (TextView) v.findViewById(R.id.textViewCoinListViewAdapterAmount);
         if (object.getBoolean("limited")) {
             int totalAmount = object.getInt("amount");
-            int cashedInCoins = object.getInt("cashedIn");
+            int cashedInCoins = object.getInt("cashedInAmount");
             int coinsLeft = totalAmount - cashedInCoins;
             amount.setText("noch " + coinsLeft + " Stück");
         } else {
