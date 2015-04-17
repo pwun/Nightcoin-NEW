@@ -1540,7 +1540,7 @@ containing a value of this type.
         public static final int textViewFoodItemViewMo=0x7f08006e;
         public static final int textViewFoodItemViewMoClosing=0x7f08007e;
         public static final int textViewFoodItemViewMoOpening=0x7f080076;
-        public static final int textViewFoodItemViewName=0x7f08006c;
+        public static final int textViewFoodItemViewOpening=0x7f08006c;
         public static final int textViewFoodItemViewSa=0x7f080073;
         public static final int textViewFoodItemViewSaClosing=0x7f080083;
         public static final int textViewFoodItemViewSaOpening=0x7f08007b;

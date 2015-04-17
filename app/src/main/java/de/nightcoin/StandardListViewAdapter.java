@@ -10,8 +10,13 @@ import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
+
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 public class StandardListViewAdapter extends ParseQueryAdapter {
     Context listContext;
     LayoutInflater inflater;
@@ -26,9 +31,30 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
                                    com.parse.ParseQueryAdapter.QueryFactory<ParseObject> queryFactory) {
         super(context, queryFactory);
         listContext = context;
+        initGPS();
         imageLoader = new ImageLoader(context);
         setObjectsPerPage(25);
     }
+
+    private void initGPS(){
+                    gps = new GPSTracker(listContext);
+        if(gps.canGetLocation()) {
+            try{
+                latitude = gps.getLatitude();
+                longitude = gps.getLongitude();
+                geo = new ParseGeoPoint(latitude,longitude);
+            } catch (Exception e){
+                System.out.println("Fehler, Location nicht bekommen");
+                geo = new ParseGeoPoint(0,0);
+            }
+        }
+        else {
+            System.out.println("Fehler, GPS nicht verfügbar");
+            geo = new ParseGeoPoint(0,0);
+        }
+    }
+
+
     @Override
     public View getItemView(ParseObject object, View v, ViewGroup parent) {
         String objectType = object.getClassName();
@@ -48,6 +74,65 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         if (v == null) {
             v = View.inflate(getContext(), R.layout.standard_list_view_adapter, null);
         }
+
+        TextView distanceView = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterDistance);
+        TextView openingView = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterOpening);
+
+        ParseGeoPoint geoLocation = (ParseGeoPoint)object.get("geoData");
+        double distance = geo.distanceInKilometersTo(geoLocation);
+        if (geo.getLatitude()==0&&geo.getLongitude()==0){
+            distanceView.setText("kein GPS verfügbar");
+        }
+        else {
+            DecimalFormat df = new DecimalFormat("###.##");
+            distanceView.setText(""+ df.format(distance) +" km");
+        }
+        ArrayList<String> opening = (ArrayList<String>) object.get("opensAt");
+        ArrayList<String> closing = (ArrayList<String>) object.get("closesAt");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        int today = cal.get(Calendar.DAY_OF_WEEK);
+        String open = "";
+        String closed = "";
+        switch (today)
+        {
+            case Calendar.MONDAY:	open=opening.get(0);
+                closed=closing.get(1);
+                break;
+            case Calendar.TUESDAY:	open=opening.get(1);
+                closed=closing.get(2);
+                break;
+            case Calendar.WEDNESDAY:open=opening.get(2);
+                closed=closing.get(3);
+                break;
+            case Calendar.THURSDAY:	open=opening.get(3);
+                closed=closing.get(4);
+                break;
+            case Calendar.FRIDAY:	open=opening.get(4);
+                closed=closing.get(5);
+                break;
+            case Calendar.SATURDAY:	open=opening.get(5);
+                closed=closing.get(6);
+                break;
+            case Calendar.SUNDAY:	open=opening.get(6);
+                closed=closing.get(7);
+                break;
+        }
+
+        if(open.equals("-")){
+            openingView.setText("Heute geschlossen");
+            openingView.setTextColor(listContext.getResources().getColor(R.color.dark_red));
+        }
+        if(/*Geöffnet*/openToday(open, closed, new Date().getHours())){
+            openingView.setText("Geöffnet");
+            openingView.setTextColor(listContext.getResources().getColor(R.color.green));
+        }
+        else{
+            openingView.setText("Öffnet um "+ open+ " Uhr");
+            openingView.setTextColor(listContext.getResources().getColor(R.color.dark_red));
+        }
+
+
         final TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
         location.setText(object.getString("name"));
         ParseFile imageFile = object.getParseFile("image");
@@ -60,6 +145,27 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             }
         });
         return v;
+    }
+
+    private boolean openToday (String open, String closed, int hour){
+        int o = 1;
+        if(open.length()>1) {
+            String onew = "" + open.charAt(0) + open.charAt(1);
+            o = Integer.parseInt(onew);
+        }
+        int c = 1;
+        if(closed.length()>1) {
+            String cnew = "" + closed.charAt(0) + closed.charAt(1);
+            c = Integer.parseInt(cnew);
+        }
+
+
+        if (hour >= o || hour < c) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     private View setupEventItemView(final ParseObject object, View v) {

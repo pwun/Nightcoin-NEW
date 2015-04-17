@@ -24,7 +24,7 @@
                 android:src="@drawable/ic_launcher" />
 
             <TextView
-                android:id="@+id/textViewFoodItemViewName"
+                android:id="@+id/textViewFoodItemViewOpening"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:textSize="20dp"

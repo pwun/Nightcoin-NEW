@@ -7,7 +7,7 @@
         android:id="@+id/textViewAdapterLoadMore"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Mehr laden"
+        android:text="Mehr laden..."
         android:textColor="@color/nightcointint"
         android:textSize="17dp"
         android:gravity="center"

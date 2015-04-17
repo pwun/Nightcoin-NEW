@@ -42,6 +42,7 @@ public class ActivitySettings extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
+               /*
                // Check if data is entered correctly, log in user and open userActivity
                 // if data is wrong show error message
                 String username = usernameTextField.getText().toString();
@@ -50,7 +51,7 @@ public class ActivitySettings extends ActionBarActivity {
                 ParseUser.logInInBackground(username, password, new LogInCallback() {
                     @Override
                     public void done(ParseUser user, com.parse.ParseException e) {
-                        /*if (user != null) {
+                        if (user != null) {
                             Intent i = new Intent(ActivitySettings.this,
                                     ActivityUser.class);
                             i.putExtra("userLocation", ParseUser.getCurrentUser().get("location").toString());
@@ -58,9 +59,9 @@ public class ActivitySettings extends ActionBarActivity {
                             errorMessageTextView.setVisibility(View.INVISIBLE);
                         } else {
                             errorMessageTextView.setVisibility(View.VISIBLE);
-                        }*/
+                        }
                     }
-                });
+                });*/
 
                 Toast t = Toast.makeText(ActivitySettings.this, "Dieser Bereich wird momentan überarbeitet und steht bald zur Verfügung.", Toast.LENGTH_LONG);
                 t.show();
