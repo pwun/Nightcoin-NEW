@@ -1,9 +1,13 @@
 package de.nightcoin;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.parse.DeleteCallback;
@@ -21,6 +25,7 @@ public class ActivityStandardList extends ActionBarActivity {
 
     public StandardListViewAdapter parseAdapter;
     Intent i;
+    Menu menu;
     String contentMode;
     private final int END_OF_NIGHT = 6;
     ProgressDialog progressDialog;
@@ -28,6 +33,10 @@ public class ActivityStandardList extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadActivity();
+    }
+
+    private void loadActivity(){
         setContentView(R.layout.activity_standard_list);
         i = getIntent();
         contentMode = i.getStringExtra("input");
@@ -88,6 +97,7 @@ public class ActivityStandardList extends ActionBarActivity {
         ParseQuery query = new ParseQuery("Locations");
         if (contentMode.equals("Favorites")) {
             query.whereEqualTo("favorites", ParseInstallation.getCurrentInstallation().getInstallationId());
+            query.fromLocalDatastore();
         } else {
             query.whereEqualTo("category", contentMode);
         }
@@ -135,6 +145,66 @@ public class ActivityStandardList extends ActionBarActivity {
             return lastEvening();
         }
         return now;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_standard_list, menu);
+        this.menu = menu;
+        checkIfUserMode();
+        return true;
+    }
+
+    private void checkIfUserMode(){
+        //System.out.println();
+        if(contentMode.equals("Coins")) {
+            boolean user = i.getBooleanExtra("userModeActive",false);
+            if(user){//usermode abfragen
+                menu.findItem(R.id.action_newCoin).setVisible(true);
+                menu.findItem(R.id.action_newCoin).setEnabled(true);
+            }
+            else{
+                menu.findItem(R.id.action_Info).setVisible(true);
+                menu.findItem(R.id.action_Info).setEnabled(true);
+            }
+        }
+        /*if(menu!=null) {
+                            System.out.println(menu);
+                            MenuItem item = menu.findItem(R.id.action_newCoin);
+                            item.setVisible(true);
+                            item.setEnabled(true);
+                        }*/
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_newCoin) {
+            Intent intent = new Intent(ActivityStandardList.this, ActivityEditCoin.class);
+
+            intent.putExtra("isNewCoin", true);
+            ActivityStandardList.this.startActivity(intent);
+        }
+        if(id == R.id.action_refresh){
+            loadActivity();
+        }
+        if (id == R.id.action_Info) {
+            new AlertDialog.Builder(ActivityStandardList.this)
+                    .setTitle("So funktionieren die Coins")
+                    .setMessage("Nightcoins sind Rabatt-Gutscheine, die einfach an der Bar vorgezeigt werden. Sobald du auf 'Einlösen' tippst, startet ein Countdown bis der Coin abläuft. Du solltest coins also immer erst bei der Bestellung einlösen. \n\nJeder Coin ist pro Smartphone nur einmal einlösbar.")
+                    .setPositiveButton("Verstanden!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    })
+                    .show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
