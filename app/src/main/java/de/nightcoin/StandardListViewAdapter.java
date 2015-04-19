@@ -115,7 +115,7 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
                 closed=closing.get(6);
                 break;
             case Calendar.SUNDAY:	open=opening.get(6);
-                closed=closing.get(7);
+                closed=closing.get(0);
                 break;
         }
 
