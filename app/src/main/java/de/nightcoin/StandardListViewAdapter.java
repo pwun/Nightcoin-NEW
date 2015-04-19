@@ -70,6 +70,113 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         return v;
     }
 
+    /*
+         NSString *opensAt = [object[@"opensAt"] objectAtIndex:[self getWeekday]];
+     NSString *closesAt = [object[@"closesAt"] objectAtIndex:[self getWeekday]];
+
+     if ([self locationIsOpen:opensAt closingAt:closesAt]) {
+         cell.openLabel.text = @"Geöffnet";
+         cell.openLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.5 alpha:1.0];
+         [openLocations addObject:object[self.textKey]];
+     } else {
+         if ([opensAt isEqualToString:@"-"]) {
+             cell.openLabel.text = [NSString stringWithFormat:@"Heute geschlossen"];
+             cell.openLabel.textColor = [UIColor redColor];
+         } else {
+             cell.openLabel.text = [NSString stringWithFormat:@"öffnet um %@ Uhr", opensAt];
+             cell.openLabel.textColor = [UIColor redColor];
+         }
+     }
+
+     - (BOOL)locationIsOpen:(NSString *)opensAtString closingAt:(NSString *)closesAtString {
+
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:[NSDate date]];
+    NSInteger hour = [components hour];
+
+    NSInteger opensAt = [opensAtString integerValue];
+    NSInteger closesAt = [closesAtString integerValue];
+
+    if (opensAt == 0 && closesAt == 0) {
+        return NO;
+    }
+
+    if (hour >= opensAt || hour < closesAt) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+     */
+
+    private String hoursSring(ParseObject object) {
+        ArrayList<String> opening = (ArrayList<String>) object.get("opensAt");
+        ArrayList<String> closing = (ArrayList<String>) object.get("closesAt");
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        int today = cal.get(Calendar.DAY_OF_WEEK);
+        String open = "";
+        String closed = "";
+
+        switch (today)
+        {
+            case Calendar.MONDAY:
+                open=opening.get(0);
+                closed=closing.get(1);
+                break;
+            case Calendar.TUESDAY:
+                open=opening.get(1);
+                closed=closing.get(2);
+                break;
+            case Calendar.WEDNESDAY:
+                open=opening.get(2);
+                closed=closing.get(3);
+                break;
+            case Calendar.THURSDAY:
+                open=opening.get(3);
+                closed=closing.get(4);
+                break;
+            case Calendar.FRIDAY:
+                open=opening.get(4);
+                closed=closing.get(5);
+                break;
+            case Calendar.SATURDAY:
+                open=opening.get(5);
+                closed=closing.get(6);
+                break;
+            case Calendar.SUNDAY:
+                open=opening.get(6);
+                closed=closing.get(0);
+                break;
+        }
+
+        if (open.equals("-")) {
+            return "Heute geschlossen";
+        } else {
+            int opensAt = Integer.parseInt(open);
+            int closesAt = Integer.parseInt(closed);
+
+            if (locationIsOpen(opensAt, closesAt)) {
+                return "Geöffnet";
+            } else {
+                return "Öffnet um " + open + " Uhr";
+            }
+
+        }
+    }
+
+    private boolean locationIsOpen(int opensAt, int closesAt) {
+        int hour = new Date().getHours();
+        if (hour >= opensAt || hour < closesAt) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
     private View setupLocationItemView(final ParseObject object, View v) {
         if (v == null) {
             v = View.inflate(getContext(), R.layout.standard_list_view_adapter, null);
@@ -87,7 +194,31 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             DecimalFormat df = new DecimalFormat("###.##");
             distanceView.setText(""+ df.format(distance) +" km");
         }
-        ArrayList<String> opening = (ArrayList<String>) object.get("opensAt");
+
+        openingView.setText(hoursSring(object));
+        if( openingView.getText().toString().equals("Geöffnet")) {
+            openingView.setTextColor(R.color.dark_red);
+        } else {
+            openingView.setTextColor(R.color.green);
+        }
+
+        final TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
+        location.setText(object.getString("name"));
+        ParseFile imageFile = object.getParseFile("image");
+        ImageView imageView = (ImageView) v.findViewById(R.id.imageViewStandardListViewAdapter);
+        imageLoader.DisplayImage(imageFile.getUrl(), imageView);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               startRequestedIntent(object);
+            }
+        });
+        return v;
+    }
+
+
+    /*
+    ArrayList<String> opening = (ArrayList<String>) object.get("opensAt");
         ArrayList<String> closing = (ArrayList<String>) object.get("closesAt");
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
@@ -123,29 +254,16 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             openingView.setText("Heute geschlossen");
             openingView.setTextColor(listContext.getResources().getColor(R.color.dark_red));
         }
-        if(/*Geöffnet*/openToday(open, closed, new Date().getHours())){
-            openingView.setText("Geöffnet");
-            openingView.setTextColor(listContext.getResources().getColor(R.color.green));
-        }
-        else{
-            openingView.setText("Öffnet um "+ open+ " Uhr");
-            openingView.setTextColor(listContext.getResources().getColor(R.color.dark_red));
-        }
-
-
-        final TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
-        location.setText(object.getString("name"));
-        ParseFile imageFile = object.getParseFile("image");
-        ImageView imageView = (ImageView) v.findViewById(R.id.imageViewStandardListViewAdapter);
-        imageLoader.DisplayImage(imageFile.getUrl(), imageView);
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               startRequestedIntent(object);
-            }
-        });
-        return v;
+        if(openToday(open, closed, new Date().getHours())){
+        openingView.setText("Geöffnet");
+        openingView.setTextColor(listContext.getResources().getColor(R.color.green));
     }
+    else{
+        openingView.setText("Öffnet um "+ open+ " Uhr");
+        openingView.setTextColor(listContext.getResources().getColor(R.color.dark_red));
+    }
+
+    */
 
     private boolean openToday (String open, String closed, int hour){
         int o = 1;
