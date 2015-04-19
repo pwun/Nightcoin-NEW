@@ -153,8 +153,16 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         if (open.equals("-")) {
             return "Heute geschlossen";
         } else {
-            int opensAt = Integer.parseInt(open);
-            int closesAt = Integer.parseInt(closed);
+            int opensAt;
+            if(open.length()>2){
+                opensAt = Integer.parseInt(""+open.charAt(0))*10+Integer.parseInt(""+open.charAt(1));
+            }
+            else{opensAt = Integer.parseInt(open);}
+            int closesAt;
+            if(closed.length()>2){
+                closesAt = Integer.parseInt(""+closed.charAt(0))*10+Integer.parseInt(""+closed.charAt(1));
+            }
+            else{closesAt = Integer.parseInt(closed);}
 
             if (locationIsOpen(opensAt, closesAt)) {
                 return "Geöffnet";
@@ -197,9 +205,9 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
 
         openingView.setText(hoursSring(object));
         if( openingView.getText().toString().equals("Geöffnet")) {
-            openingView.setTextColor(R.color.dark_red);
+            openingView.setTextColor(listContext.getResources().getColor(R.color.green));
         } else {
-            openingView.setTextColor(R.color.green);
+            openingView.setTextColor(listContext.getResources().getColor(R.color.dark_red));
         }
 
         final TextView location = (TextView) v.findViewById(R.id.textViewStandardListViewAdapterName);
