@@ -101,7 +101,7 @@ public class ActivityEditCoin extends ActionBarActivity {
 
     private void init(){
         datePicker = (DatePicker) findViewById(R.id.datePickerActivityEditCoins);
-        datePicker.setMinDate(new Date().getTime());
+        //datePicker.setMinDate(new Date().getTime());
         editValue = (EditText) findViewById(R.id.editTextActivityEditCoinsValue);
         editAmount = (EditText) findViewById(R.id.editTextActivityEditCoinsAmount);
         saveButton = (Button) findViewById(R.id.buttonActivityEditCoinsSave);
@@ -120,9 +120,10 @@ public class ActivityEditCoin extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent(ActivityEditCoin.this, ActivityStandardList.class);
-        i.putExtra("input", "nextCoins");
+        i.putExtra("input", "Coins");
+        i.putExtra("filterMode", "location");
+        i.putExtra("locationToFilter", ParseUser.getCurrentUser().getString("location"));
         i.putExtra("userModeActive", true);
-        i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
         ActivityEditCoin.this.startActivity(i);
     }
 
@@ -135,23 +136,30 @@ public class ActivityEditCoin extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete) {
-            serverObject.deleteInBackground(new DeleteCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if (e != null) {
-                        Intent i = new Intent(ActivityEditCoin.this, ActivityStandardList.class);
-                        i.putExtra("input", "nextCoins");
-                        i.putExtra("userModeActive", true);
-                        i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
-                        ActivityEditCoin.this.startActivity(i);
-                        Toast t = Toast.makeText(ActivityEditCoin.this, "Coin wurde erfolgreich gelöscht.", Toast.LENGTH_SHORT);
-                        t.show();
-                    } else {
-                        Toast t = Toast.makeText(ActivityEditCoin.this, "Fehler: Coin konnte nicht gelöscht werden.", Toast.LENGTH_SHORT);
-                        t.show();
+            if(serverObject!=null){
+                serverObject.deleteInBackground(new DeleteCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Intent i = new Intent(ActivityEditCoin.this, ActivityStandardList.class);
+                            i.putExtra("input", "Coins");
+                            i.putExtra("filterMode", "location");
+                            i.putExtra("locationToFilter", ParseUser.getCurrentUser().getString("location"));
+                            i.putExtra("userModeActive", true);
+                            ActivityEditCoin.this.startActivity(i);
+                            Toast t = Toast.makeText(ActivityEditCoin.this, "Coin wurde erfolgreich gelöscht.", Toast.LENGTH_SHORT);
+                            t.show();
+                        } else {
+                            Toast t = Toast.makeText(ActivityEditCoin.this, "Fehler1: Coin konnte nicht gelöscht werden.", Toast.LENGTH_SHORT);
+                            t.show();
+                        }
                     }
-                }
-            });
+                });
+            }
+            else {
+                Toast t = Toast.makeText(ActivityEditCoin.this, "Fehler: Coin konnte nicht gelöscht werden.", Toast.LENGTH_SHORT);
+                t.show();
+            }
         }
 
         return super.onOptionsItemSelected(item);

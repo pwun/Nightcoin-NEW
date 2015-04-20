@@ -278,5 +278,16 @@ public class ActivityStandardList extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed(){
+        if(i.getBooleanExtra("userModeActive", false)){
+            Intent i = new Intent(ActivityStandardList.this, ActivityUser.class);
+            ActivityStandardList.this.startActivity(i);
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
+
 
 }

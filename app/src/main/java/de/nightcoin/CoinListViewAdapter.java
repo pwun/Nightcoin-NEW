@@ -26,6 +26,7 @@ public class CoinListViewAdapter extends BaseAdapter{
 		list = new ArrayList<CoinObject>();
 		list.addAll(objectList);
         this.userModeActive = userModeActice;
+        System.out.println(userModeActice);
 	}
 
 	@Override

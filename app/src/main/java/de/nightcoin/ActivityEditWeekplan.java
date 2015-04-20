@@ -138,9 +138,9 @@ public class ActivityEditWeekplan extends ActionBarActivity {
                 final int finalI = i;
                 String[] choices = {"Normaler Betrieb", "Geschlossen", "Eintrag überarbeiten"};
                 AlertDialog.Builder alert = new AlertDialog.Builder(this)
-                        .setTitle("Feld darf nicht leer sein")
+                        .setTitle( week[i] + " darf nicht leer sein")
                         .setCancelable(false)
-                        .setMessage("Das Feld für " + week[i] + " ist leer.\nBitte wähle für diesen Tag ein Inhalt aus oder überarbeite den Eintrag!")
+                        /*.setMessage("Das Feld für " + week[i] + " ist leer.\nBitte wähle für diesen Tag ein Inhalt aus oder überarbeite den Eintrag!")*/
                         /*.setOnCancelListener(new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
@@ -151,43 +151,29 @@ public class ActivityEditWeekplan extends ActionBarActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // The 'which' argument contains the index position
                                         // of the selected item
+                                        switch (which){
+                                            case 0: System.out.println("Überarbeiten: Normaler Bertrieb ausgewählt");
+                                                weekplan.set(finalI, "Normaler Betrieb");
+                                                finalEdit.setText("Normaler Betrieb");
+                                                save();
+                                                break;
+                                            case 1: System.out.println("Überarbeiten: Geschlossen ausgewählt");
+                                                weekplan.set(finalI, "Geschlossen");
+                                                finalEdit.setText("Geschlossen");
+                                                save();
+                                                break;
+                                            case 2:
+                                                System.out.println("Überarbeiten: Cancel");
+                                                weekplan.set(finalI, "");
+                                                finalEdit.setText("");
+                                                save();
+                                                break;
+                                        }
                                     }
                                 });
-                        /*.setPositiveButton("Normaler Betrieb", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                System.out.println("Überarbeiten: Normaler Bertrieb ausgewählt");
-                                weekplan.set(finalI, "Normaler Betrieb");
-                                finalEdit.setText("Normaler Betrieb");
-                                save();
-                            }
-                        })
-                        .setNegativeButton("Überarbeiten", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                System.out.println("Überarbeiten: Cancel");
-                                weekplan.set(finalI, "");
-                                finalEdit.setText("");
-                                save();
-                            }
-                        })
-                        .setNeutralButton("Geschlossen", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                System.out.println("Überarbeiten: Geschlossen ausgewählt");
-                                weekplan.set(finalI, "Geschlossen");
-                                finalEdit.setText("Geschlossen");
-                                save();
-                            }
-                        });*/
 
                 AlertDialog a = alert.create();
                 a.show();
-
-                //Button normal = a.getButton(DialogInterface.BUTTON_POSITIVE);
-                //normal.setTextColor(getResources().getColor(R.color.green));
-                //Button closed = a.getButton(DialogInterface.BUTTON_NEUTRAL);
-                //closed.setTextColor(getResources().getColor(R.color.green));
             }
 
             weekplan.set(i, edits[i].getText().toString());

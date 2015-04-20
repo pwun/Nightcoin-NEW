@@ -58,9 +58,10 @@ public class ActivityUser extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ActivityUser.this, ActivityStandardList.class);
-                i.putExtra("input", "nextCoins");
+                i.putExtra("input", "Coins");
+                i.putExtra("filterMode", "location");
+                i.putExtra("locationToFilter", ParseUser.getCurrentUser().getString("location"));
                 i.putExtra("userModeActive", true);
-                i.putExtra("name", ParseUser.getCurrentUser().get("location").toString());
                 ActivityUser.this.startActivity(i);
             }
         });
@@ -112,6 +113,7 @@ public class ActivityUser extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent(ActivityUser.this, ActivityMain.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ActivityUser.this.startActivity(i);
     }
 

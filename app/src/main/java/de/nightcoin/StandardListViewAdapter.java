@@ -10,6 +10,7 @@ import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseUser;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -344,12 +345,20 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(listContext,
-                        ActivityCoinItemView.class);
-                i.putExtra("id", object.getObjectId());
-                if(listContext!=null) {
+                if(ParseUser.getCurrentUser()!=null){
+                    Intent i = new Intent(listContext, ActivityEditCoin.class);
+                    i.putExtra("isNewCoin", false);
+                    i.putExtra("id", object.getObjectId());
                     listContext.startActivity(i);
                 }
+                else{
+                    Intent i = new Intent(listContext, ActivityCoinItemView.class);
+                    i.putExtra("id", object.getObjectId());
+                    if(listContext!=null) {
+                        listContext.startActivity(i);
+                    }
+                }
+
             }
         });
         return v;
