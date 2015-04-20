@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 
 
 public class ActivitySettings extends ActionBarActivity {
@@ -42,7 +43,7 @@ public class ActivitySettings extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-               /*
+
                // Check if data is entered correctly, log in user and open userActivity
                 // if data is wrong show error message
                 String username = usernameTextField.getText().toString();
@@ -61,7 +62,7 @@ public class ActivitySettings extends ActionBarActivity {
                             errorMessageTextView.setVisibility(View.VISIBLE);
                         }
                     }
-                });*/
+                });
 
                 Toast t = Toast.makeText(ActivitySettings.this, "Dieser Bereich wird momentan überarbeitet und steht bald zur Verfügung.", Toast.LENGTH_LONG);
                 t.show();
@@ -74,20 +75,20 @@ public class ActivitySettings extends ActionBarActivity {
         forgotPasswortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*                usernameTextField.setVisibility(View.INVISIBLE);
+                usernameTextField.setVisibility(View.INVISIBLE);
                 passwordTextField.setVisibility(View.INVISIBLE);
 
                 forgotPasswortButton.setVisibility(View.GONE);
                 loginButton.setVisibility(View.GONE);
-                sendMailButton.setVisibility(View.VISIBLE);*/
+                sendMailButton.setVisibility(View.VISIBLE);
 
-               /* TextView infoTextView = (TextView)findViewById(R.id.textViewSettingsInfoMessage);
+                TextView infoTextView = (TextView)findViewById(R.id.textViewSettingsInfoMessage);
                 infoTextView.setText("Sobald die zu Deinem Account zugehörige Email-Adresse bestätigt wurde, senden wir Dir umgehend eine Email, mit der Du Dein Passwort wiederherstellen kannst. Solltest du diese Email-Adresse vergessen haben oder keinen Zugang mehr dazu haben, kontaktiere uns bitte telefonisch oder über info@nightcoin.de.");
 
                 final EditText mailEditText = (EditText) findViewById(R.id.editTextSettingsEmail);
                 mailEditText.setVisibility(View.VISIBLE);
-*/
-       /*         sendMailButton.setOnClickListener(new View.OnClickListener() {
+
+               sendMailButton.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
@@ -105,7 +106,7 @@ public class ActivitySettings extends ActionBarActivity {
                                     }
                                 });
                     }
-                });*/
+                });
 
                 Toast t = Toast.makeText(ActivitySettings.this, "Dieser Bereich wird momentan überarbeitet und steht bald zur Verfügung.", Toast.LENGTH_LONG);
                 t.show();

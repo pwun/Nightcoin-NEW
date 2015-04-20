@@ -47,6 +47,7 @@ public class ActivityEditWeekplan extends ActionBarActivity {
         setContentView(R.layout.activity_edit_weekplan);
         context = this;
 
+
         EditText mon = (EditText)findViewById(R.id.editTextEditWeekplanMo);
         edits[0] = mon;
         EditText die = (EditText)findViewById(R.id.editTextEditWeekplanDi);
@@ -86,6 +87,14 @@ public class ActivityEditWeekplan extends ActionBarActivity {
                 //list.setAdapter(adapter);
             }
         });
+
+        Button save = (Button)findViewById(R.id.buttonEditWeekplanSave);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveWeekList();
+            }
+        });
     }
 
 
@@ -105,75 +114,7 @@ public class ActivityEditWeekplan extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
-            int counter = 0;
-            for (int i = 0; i < 7; i++) {
-
-                System.out.println("EditText: "+ edits[i].getText().toString());
-                if(edits[i].getText().toString().trim().length() < 1){
-                    counter ++;
-                    System.out.println("Leerer Eintrag!!");
-                    final EditText finalEdit = edits[i];
-                    final int finalI = i;
-                    AlertDialog.Builder alert = new AlertDialog.Builder(this)
-                    .setTitle("Feld darf nicht leer sein")
-                    .setCancelable(false)
-                    .setMessage("Das Feld für " + week[i] + " ist leer.\nBitte wähle für diesen Tag ein Inhalt aus oder überarbeite den Eintrag!")
-                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            init();
-                        }
-                    })
-                    .setPositiveButton("Normaler Betrieb", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            System.out.println("Überarbeiten: Normaler Bertrieb ausgewählt");
-                            weekplan.set(finalI, "Normaler Betrieb");
-                            finalEdit.setText("Normaler Betrieb");
-                            save();
-                        }
-                    })
-                    .setNegativeButton("Überarbeiten", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            System.out.println("Überarbeiten: Cancel");
-                            weekplan.set(finalI, "");
-                            finalEdit.setText("");
-                            save();
-                        }
-                    })
-                    .setNeutralButton("Geschlossen", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            System.out.println("Überarbeiten: Geschlossen ausgewählt");
-                            weekplan.set(finalI, "Geschlossen");
-                            finalEdit.setText("Geschlossen");
-                            save();
-                        }
-                    });
-
-                    AlertDialog a = alert.create();
-                    a.show();
-
-                    Button normal = a.getButton(DialogInterface.BUTTON_POSITIVE);
-                    normal.setTextColor(getResources().getColor(R.color.green));
-                    Button closed = a.getButton(DialogInterface.BUTTON_NEUTRAL);
-                    closed.setTextColor(getResources().getColor(R.color.green));
-                }
-
-                weekplan.set(i,edits[i].getText().toString());
-
-
-
-
-                //EditText editText = (EditText)adapter.getChildView(i, 1, true, null, null).findViewById(R.id.editTextEditWeekPlanAdapter);
-
-                //System.out.println("" + editText.getText().toString());
-
-            }
-
-            save();
-
+            saveWeekList();
         }
 
         return super.onOptionsItemSelected(item);
@@ -184,5 +125,83 @@ public class ActivityEditWeekplan extends ActionBarActivity {
         for(int i = 0; i < 7; i++){
             System.out.println("Saved "+ week[i] + ":" +weekplan.get(i));
         }
+    }
+
+    private void saveWeekList(){int counter = 0;
+        for (int i = 0; i < 7; i++) {
+
+            System.out.println("EditText: "+ edits[i].getText().toString());
+            if(edits[i].getText().toString().trim().length() < 1){
+                counter ++;
+                System.out.println("Leerer Eintrag!!");
+                final EditText finalEdit = edits[i];
+                final int finalI = i;
+                String[] choices = {"Normaler Betrieb", "Geschlossen", "Eintrag überarbeiten"};
+                AlertDialog.Builder alert = new AlertDialog.Builder(this)
+                        .setTitle("Feld darf nicht leer sein")
+                        .setCancelable(false)
+                        .setMessage("Das Feld für " + week[i] + " ist leer.\nBitte wähle für diesen Tag ein Inhalt aus oder überarbeite den Eintrag!")
+                        /*.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                init();
+                            }
+                        })*/
+                        .setItems(choices, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // The 'which' argument contains the index position
+                                        // of the selected item
+                                    }
+                                });
+                        /*.setPositiveButton("Normaler Betrieb", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("Überarbeiten: Normaler Bertrieb ausgewählt");
+                                weekplan.set(finalI, "Normaler Betrieb");
+                                finalEdit.setText("Normaler Betrieb");
+                                save();
+                            }
+                        })
+                        .setNegativeButton("Überarbeiten", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("Überarbeiten: Cancel");
+                                weekplan.set(finalI, "");
+                                finalEdit.setText("");
+                                save();
+                            }
+                        })
+                        .setNeutralButton("Geschlossen", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("Überarbeiten: Geschlossen ausgewählt");
+                                weekplan.set(finalI, "Geschlossen");
+                                finalEdit.setText("Geschlossen");
+                                save();
+                            }
+                        });*/
+
+                AlertDialog a = alert.create();
+                a.show();
+
+                //Button normal = a.getButton(DialogInterface.BUTTON_POSITIVE);
+                //normal.setTextColor(getResources().getColor(R.color.green));
+                //Button closed = a.getButton(DialogInterface.BUTTON_NEUTRAL);
+                //closed.setTextColor(getResources().getColor(R.color.green));
+            }
+
+            weekplan.set(i, edits[i].getText().toString());
+
+
+
+
+            //EditText editText = (EditText)adapter.getChildView(i, 1, true, null, null).findViewById(R.id.editTextEditWeekPlanAdapter);
+
+            //System.out.println("" + editText.getText().toString());
+
+        }
+
+        save();
+
     }
 }
