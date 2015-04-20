@@ -26,11 +26,13 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
     GPSTracker gps;
     double longitude;
     double latitude;
+    boolean edit;
     ParseGeoPoint geo;
     ImageLoader imageLoader;
     public StandardListViewAdapter(Context context,
                                    com.parse.ParseQueryAdapter.QueryFactory<ParseObject> queryFactory) {
         super(context, queryFactory);
+        this.edit = edit;
         listContext = context;
         initGPS();
         imageLoader = new ImageLoader(context);
@@ -345,19 +347,20 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ParseUser.getCurrentUser()!=null){
+                System.out.println("ParseUser: " + ParseUser.getCurrentUser());
+                /*if(ParseUser.getCurrentUser().get("location").equals(object.get("location"))){//Nur wenn usermode
                     Intent i = new Intent(listContext, ActivityEditCoin.class);
                     i.putExtra("isNewCoin", false);
                     i.putExtra("id", object.getObjectId());
                     listContext.startActivity(i);
                 }
-                else{
+                else{*/
                     Intent i = new Intent(listContext, ActivityCoinItemView.class);
                     i.putExtra("id", object.getObjectId());
                     if(listContext!=null) {
                         listContext.startActivity(i);
                     }
-                }
+              //  }
 
             }
         });

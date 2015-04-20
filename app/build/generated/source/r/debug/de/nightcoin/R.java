@@ -1360,7 +1360,7 @@ containing a value of this type.
         public static final int action_context_bar=0x7f080032;
         public static final int action_delete=0x7f08010c;
         public static final int action_favorites=0x7f080108;
-        public static final int action_logout=0x7f08010e;
+        public static final int action_logout=0x7f08010f;
         public static final int action_menu_divider=0x7f080002;
         public static final int action_menu_presenter=0x7f080003;
         public static final int action_mode_bar=0x7f08002e;
@@ -1368,7 +1368,7 @@ containing a value of this type.
         public static final int action_mode_close_button=0x7f080020;
         public static final int action_newCoin=0x7f080109;
         public static final int action_refresh=0x7f08010b;
-        public static final int action_save=0x7f08010d;
+        public static final int action_save=0x7f08010e;
         public static final int action_settings=0x7f080107;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
@@ -1411,6 +1411,7 @@ containing a value of this type.
         public static final int dialog=0x7f08001b;
         public static final int disableHome=0x7f08000c;
         public static final int dropdown=0x7f08001c;
+        public static final int editImage_action_save=0x7f08010d;
         public static final int editTextActivityEditCoinsAmount=0x7f08004e;
         public static final int editTextActivityEditCoinsValue=0x7f08004d;
         public static final int editTextActivityEditPhoneNumber=0x7f080056;
