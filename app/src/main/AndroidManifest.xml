@@ -133,11 +133,11 @@
 
         <activity
             android:name=".ActivityEditCoin"
-            android:label="@string/title_activity_activity_edit_coin" >
+            android:label="Coin bearbeiten" >
         </activity>
         <activity
             android:name=".ActivityEditImages"
-            android:label="@string/title_activity_activity_edit_images" >
+            android:label="Bilder bearbeiten" >
         </activity>
     </application>
 

@@ -31,6 +31,8 @@ public class ActivityEditImages extends ActionBarActivity {
     ImageButton image4;
     ImageButton image5;
 
+    boolean[] changed = {false, false, false, false, false};
+
     ProgressDialog progressDialog;
 
     ParseObject serverObject;
@@ -41,6 +43,7 @@ public class ActivityEditImages extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_images);
+        init();
         queryForData();
     }
 
@@ -49,7 +52,7 @@ public class ActivityEditImages extends ActionBarActivity {
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*getImageFromDevice();*/
+                getImageFromDevice(1);
             }
         });
 
@@ -57,9 +60,7 @@ public class ActivityEditImages extends ActionBarActivity {
         image2.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-/*
-                 getImageFromDevice();
-*/
+                 getImageFromDevice(2);
              }
         });
 
@@ -67,9 +68,7 @@ public class ActivityEditImages extends ActionBarActivity {
         image3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*
-                getImageFromDevice();
-*/
+                getImageFromDevice(3);
             }
         });
 
@@ -77,9 +76,7 @@ public class ActivityEditImages extends ActionBarActivity {
         image4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*
-                getImageFromDevice();
-*/
+                getImageFromDevice(4);
             }
         });
 
@@ -87,9 +84,7 @@ public class ActivityEditImages extends ActionBarActivity {
         image5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*
-                getImageFromDevice();
-*/
+                getImageFromDevice(5);
             }
         });
     }
@@ -217,13 +212,13 @@ public class ActivityEditImages extends ActionBarActivity {
     }
 
 
-    private void getImageFromDevice() {
+    private void getImageFromDevice(int imageViewIndex) {
         Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, 1);
-/*
+
         imageId = imageViewIndex;
-*/
+
 
     }
 
@@ -231,35 +226,37 @@ public class ActivityEditImages extends ActionBarActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             Uri chosenImageUri = data.getData();
-/*            if (imageId == 1) {
+           if (imageId == 1) {
                 image1.setImageURI(chosenImageUri);
+               changed[0] = true;
             }
             if (imageId == 2) {
                 image2.setImageURI(chosenImageUri);
+                changed[1] = true;
             }
             if (imageId == 3) {
                 image3.setImageURI(chosenImageUri);
+                changed[2] = true;
             }
             if (imageId == 4) {
                 image5.setImageURI(chosenImageUri);
+                changed[3] = true;
             }
             if (imageId == 5) {
                 image5.setImageURI(chosenImageUri);
-            }*/
+                changed[4] = true;
+            }
         }
     }
 
     public void setImage(Bitmap map, int imageIndex) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         // Compress image to lower quality scale 1 - 100
-        map.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        map.compress(Bitmap.CompressFormat.JPEG, 10, stream);
         byte[] image = stream.toByteArray();
 
         // Create the ParseFile
         ParseFile file  = new ParseFile("image.jpeg", image);
-
-
-
 
     }
 
@@ -279,8 +276,13 @@ public class ActivityEditImages extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.editImage_action_save) {
+            //save all images that changed
+            for(int i = 0; i < 5 ; i++){
+                if(changed[i] == true){
+                    //uploadImage
+                }
+            }
         }
 
         return super.onOptionsItemSelected(item);
