@@ -89,7 +89,7 @@ public class ActivityEventItemView extends ActionBarActivity {
                 title = object.getString("title");
                 location = object.getString("location");
                 priceString = "Eintritt: " + (String) object.get("price");
-                dateString = new SimpleDateFormat("cccc, dd. MMMM, hh:ss").format(object.get("date")) + " Uhr";
+                dateString = new SimpleDateFormat("cccc, dd. MMMM, HH:mm").format(object.get("date")) + " Uhr";
                 description = (String) object.get("details");
                 image = object.getParseFile("image");
                 normalizeDate((Date) object.get("date"));
@@ -163,9 +163,10 @@ public class ActivityEventItemView extends ActionBarActivity {
     // gets the date of the event as parameter and sets it to 1 p.m.
     // then sets the Date ivar that's later used to filter coins
     private void normalizeDate (Date date) {
-        date.setHours(12);
-        date.setMinutes(0);
-        dateToFilterCoins = date;
+        Date newDate = new Date(date.getTime());
+        newDate.setHours(12);
+        newDate.setMinutes(0);
+        dateToFilterCoins = newDate;
     }
 
     public static int getDominantColor(Bitmap bitmap) {
