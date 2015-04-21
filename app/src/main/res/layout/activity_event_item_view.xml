@@ -39,16 +39,18 @@
                     android:textSize="22dp"
                     android:text="Title" />
 
-                <TextView
-                    android:id="@+id/textViewEventItemViewLocation"
+                <Button
+                    android:id="@+id/buttonEventItemViewLocation"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="Location"
+                    android:background="@color/transparent"
                     android:textColor="@color/black"
                     android:layout_below="@+id/textViewEventItemViewTitle"
-                    android:layout_marginTop="7dp"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="10dp"
-                    android:textSize="@dimen/textSizeDefault"
+                    android:textSize="22dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
@@ -58,11 +60,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="Datum"
-                    android:layout_below="@+id/textViewEventItemViewLocation"
+                    android:layout_below="@+id/buttonEventItemViewLocation"
                     android:paddingLeft="10dp"
-                    android:textSize="@dimen/textSizeDefault"
+                    android:textSize="22dp"
                     android:textColor="@color/black"
                     android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
@@ -73,7 +77,9 @@
                     android:text="Eintritt"
                     android:layout_below="@+id/textViewEventItemViewDate"
                     android:paddingLeft="10dp"
-                    android:textSize="@dimen/textSizeDefault"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="22dp"
                     android:textColor="@color/black"
                     android:gravity="center_vertical"
                     android:layout_alignParentLeft="true"

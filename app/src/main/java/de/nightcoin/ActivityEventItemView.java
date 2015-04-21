@@ -76,6 +76,18 @@ public class ActivityEventItemView extends ActionBarActivity {
             }
         });
 
+        final Button location = (Button) findViewById(R.id.buttonEventItemViewLocation);
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityEventItemView.this, ActivityStandardItemView.class);
+                i.putExtra("name", location.getText().toString());
+                System.out.println(location.getText().toString());
+                ActivityEventItemView.this.startActivity(i);
+            }
+        });
+
         //ticketButton = (Button) findViewById(R.id.buttonEventItemViewReservateTicket);
     }
 
@@ -104,6 +116,8 @@ public class ActivityEventItemView extends ActionBarActivity {
                             ColorDrawable colorDrawable = new ColorDrawable(tintColor);
                             findViewById(R.id.buttonEventItemViewFilteredCoins).setBackgroundColor(tintColor);
                             findViewById(R.id.textViewEventItemViewDescriptionTitle).setBackgroundColor(tintColor);
+                            Button locationButton = (Button) findViewById(R.id.buttonEventItemViewLocation);
+                            locationButton.setTextColor(tintColor);
 
                             ActivityEventItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
 
@@ -135,7 +149,7 @@ public class ActivityEventItemView extends ActionBarActivity {
     private void setTextViews() {
         TextView titleTextView = (TextView) findViewById(R.id.textViewEventItemViewTitle);
         titleTextView.setText(title);
-        TextView locationTextView = (TextView) findViewById(R.id.textViewEventItemViewLocation);
+        TextView locationTextView = (TextView) findViewById(R.id.buttonEventItemViewLocation);
         locationTextView.setText(location);
         TextView dateTextView = (TextView) findViewById(R.id.textViewEventItemViewDate);
         dateTextView.setText(dateString);

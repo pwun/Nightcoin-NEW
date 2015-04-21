@@ -1378,6 +1378,7 @@ containing a value of this type.
         public static final int buttonCoinItemViewCashIn=0x7f080045;
         public static final int buttonEditWeekplanSave=0x7f080060;
         public static final int buttonEventItemViewFilteredCoins=0x7f080068;
+        public static final int buttonEventItemViewLocation=0x7f080065;
         public static final int buttonFoodItemViewCall=0x7f080087;
         public static final int buttonFoodItemViewMap=0x7f08008a;
         public static final int buttonLayout=0x7f0800a5;
@@ -1524,7 +1525,6 @@ containing a value of this type.
         public static final int textViewEventItemViewDate=0x7f080066;
         public static final int textViewEventItemViewDescription=0x7f08006a;
         public static final int textViewEventItemViewDescriptionTitle=0x7f080069;
-        public static final int textViewEventItemViewLocation=0x7f080065;
         public static final int textViewEventItemViewPrice=0x7f080067;
         public static final int textViewEventItemViewTitle=0x7f080064;
         public static final int textViewFoodItemViewAdress=0x7f08008b;
