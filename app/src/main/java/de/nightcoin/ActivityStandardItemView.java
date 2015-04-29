@@ -87,7 +87,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
             public void onClick(View v) {
                 String tel = obj.getTel();
 
-                String uri = "tel:" + tel.trim() ;
+                String uri = "tel:" + tel.trim();
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(uri));
                 startActivity(intent);
@@ -112,31 +112,31 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 		nextEvents.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(ActivityStandardItemView.this,ActivityStandardList.class);
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(ActivityStandardItemView.this, ActivityStandardList.class);
                 i.putExtra("filterMode", "location");
-				i.putExtra("locationToFilter", name);
-				i.putExtra("input", "Events");
-				ActivityStandardItemView.this.startActivity(i);
-			}
-		});
+                i.putExtra("locationToFilter", name);
+                i.putExtra("input", "Events");
+                ActivityStandardItemView.this.startActivity(i);
+            }
+        });
 		
 		Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
 
 		nextCoins.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(ActivityStandardItemView.this,ActivityStandardList.class);
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(ActivityStandardItemView.this, ActivityStandardList.class);
                 i.putExtra("input", "Coins");
                 i.putExtra("filterMode", "location");
                 i.putExtra("locationToFilter", name);
-				ActivityStandardItemView.this.startActivity(i);
-			}
-		});
+                ActivityStandardItemView.this.startActivity(i);
+            }
+        });
 
         Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
         map.setOnClickListener(new View.OnClickListener() {
@@ -144,136 +144,48 @@ public class ActivityStandardItemView extends ActionBarActivity {
             public void onClick(View v) {
                 double latitude = obj.getLat();
                 double longitude = obj.getLong();
-                try{
+                try {
                     String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
                     //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+latitude+","+longitude+"?q="+latitude+","+longitude+"("+obj.getName()+")"));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:" + latitude + "," + longitude + "?q=" + latitude + "," + longitude + "(" + obj.getName() + ")"));
 
                     ActivityStandardItemView.this.startActivity(intent);
-                    System.out.println("Lon/Lat = "+ latitude + "/" + longitude);
-                }catch(Exception e){
-                    System.out.println("FEHLER! Lon/Lat = "+ latitude + "/" + longitude);
+                    System.out.println("Lon/Lat = " + latitude + "/" + longitude);
+                } catch (Exception e) {
+                    System.out.println("FEHLER! Lon/Lat = " + latitude + "/" + longitude);
                 }
             }
         });
 	}
 
 	private void getData(final String name) {
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
-		query.whereEqualTo("name", name);
-		query.setLimit(1);
-		query.fromLocalDatastore();
-		query.findInBackground(new FindCallback<ParseObject>() {
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
+        query.whereEqualTo("name", name);
+        query.setLimit(1);
+        query.fromLocalDatastore();
+        query.findInBackground(new FindCallback<ParseObject>() {
 
-			@Override
-			public void done(List<ParseObject> objects, ParseException e) {
-				// TODO Auto-generated method stub
-				System.out.println("Creating " + objects.get(0).get("name"));
-				serverObject = objects.get(0);
-				obj.setName((String) serverObject.get("name"));
-				//obj.setImage((ParseFile) serverObject.getParseFile("image"));
-                obj.setAdr((String) serverObject.get("address"));
-                obj.setTel((String) serverObject.get("phone"));
-                ParseGeoPoint geo = (ParseGeoPoint) serverObject.get("geoData");
-                obj.setLat(geo.getLatitude());
-                obj.setLong(geo.getLongitude());
-				obj.setWeekplan((ArrayList<String>) serverObject.get("weekplan"));
-				obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
-				obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
-                favorites = ((ArrayList<String>) serverObject.get("favorites"));
-
-                ParseFile imageFile = serverObject.getParseFile("image");
-                ImageView imageView = (ImageView) findViewById(R.id.imageViewStandardItemView);
-                imageLoader.DisplayImage(imageFile.getUrl(), imageView);
-
-                TextView tel = (TextView)findViewById(R.id.textViewStandardItemViewTel);
-                if(obj.getTel()!=null){
-                    tel.setText("Tel.: "+obj.getTel());
-                    System.out.println(obj.getTel());
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                // TODO Auto-generated method stub
+                if (objects.get(0) == null) {
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
+                    query.whereEqualTo("name", name);
+                    query.setLimit(1);
+                    query.findInBackground(new FindCallback<ParseObject>() {
+                        @Override
+                        public void done(List<ParseObject> list, ParseException e) {
+                            manualDone(list, e);
+                        }
+                    });
+                } else {
+                    manualDone(objects, e);
                 }
-                else{System.out.println("Fehler bei Telefonnummer");}
-                TextView adr = (TextView)findViewById(R.id.textViewStandardItemViewAdress);
-                if(obj.getAdr() != null){
-                    adr.setText("Adr.: "+obj.getAdr());
-                    System.out.println(obj.getAdr());
-                }
-                else{
-                    System.out.println("Fehler bei der Adresse");
-                }
+            }
 
-                Button weekplan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+        });
 
-
-                if (!name.equals("Piratenhöhle")) {
-                    try {
-                        System.out.println("FARBANPASSUNG LÄUFT");
-                        imageFile.getDataInBackground(new GetDataCallback() {
-                            @Override
-                            public void done(byte[] stream, ParseException e) {
-                                if (e == null) {
-                                    Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
-                                    tintColor = getDominantColor(bmp);
-                                    ColorDrawable colorDrawable = new ColorDrawable(tintColor);
-
-                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
-                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
-                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
-                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
-                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
-                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
-                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
-                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
-                                    findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(tintColor);
-                                    findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(tintColor);
-                                    findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(tintColor);
-                                    findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(tintColor);
-                    /*call.setBackgroundColor(dominantColor);
-                    map.setBackgroundColor(dominantColor);*/
-
-                                    ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
-                                    findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(tintColor);
-                                    findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(tintColor);
-                                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
-                                    map.setTextColor(tintColor);
-                                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);
-                                    call.setTextColor(tintColor);
-                                    //layout.setBackgroundColor(getDominantColor(bmp));
-                                    stream = null;
-                                    bmp.recycle();
-                                    bmp = null;
-                                    System.gc();
-                                    //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
-                                }
-                                else{System.out.println(e.getStackTrace());}
-                            }
-                        });
-
-                    } catch (Exception ex) {
-                        System.out.println("Error getting color");
-                    }
-                }
-
-
-
-				/*ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
-				img.setImageBitmap(obj.getImage());
-				//img.loadInBackground();
-*/
-				getOpening();
-                updateLocationStatistics(serverObject);
-
-                if(menu!= null){
-                    checkIfFavorite();
-                }
-                else{
-                    System.out.println("Menu still null");
-                }
-
-			}
-		});
-
-		getDailyData();
-	}
+    }
 
     private int getSecundaryColorFromColor(int color) {
         String hexColor = String.format("#%06X", (0xFFFFFF & color));
@@ -359,6 +271,113 @@ public class ActivityStandardItemView extends ActionBarActivity {
 			return date.getDay() - 1;
 		}
 	}
+
+    private void manualDone(List<ParseObject> objects, ParseException e){
+        System.out.println("Creating " + objects.get(0).get("name"));
+        serverObject = objects.get(0);
+        obj.setName((String) serverObject.get("name"));
+        //obj.setImage((ParseFile) serverObject.getParseFile("image"));
+        obj.setAdr((String) serverObject.get("address"));
+        obj.setTel((String) serverObject.get("phone"));
+        ParseGeoPoint geo = (ParseGeoPoint) serverObject.get("geoData");
+        obj.setLat(geo.getLatitude());
+        obj.setLong(geo.getLongitude());
+        obj.setWeekplan((ArrayList<String>) serverObject.get("weekplan"));
+        obj.setOpening((ArrayList<String>) serverObject.get("opensAt"));
+        obj.setClosing((ArrayList<String>) serverObject.get("closesAt"));
+        favorites = ((ArrayList<String>) serverObject.get("favorites"));
+
+        ParseFile imageFile = serverObject.getParseFile("image");
+        ImageView imageView = (ImageView) findViewById(R.id.imageViewStandardItemView);
+        imageLoader.DisplayImage(imageFile.getUrl(), imageView);
+
+        TextView tel = (TextView) findViewById(R.id.textViewStandardItemViewTel);
+        if (obj.getTel() != null) {
+            tel.setText("Tel.: " + obj.getTel());
+            System.out.println(obj.getTel());
+        } else {
+            System.out.println("Fehler bei Telefonnummer");
+        }
+        TextView adr = (TextView) findViewById(R.id.textViewStandardItemViewAdress);
+        if (obj.getAdr() != null) {
+            adr.setText("Adr.: " + obj.getAdr());
+            System.out.println(obj.getAdr());
+        } else {
+            System.out.println("Fehler bei der Adresse");
+        }
+
+        Button weekplan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+
+
+        if (!name.equals("Piratenhöhle")) {
+            try {
+                System.out.println("FARBANPASSUNG LÄUFT");
+                imageFile.getDataInBackground(new GetDataCallback() {
+                    @Override
+                    public void done(byte[] stream, ParseException e) {
+                        if (e == null) {
+                            Bitmap bmp = BitmapFactory.decodeByteArray(stream, 0, stream.length);
+                            tintColor = getDominantColor(bmp);
+                            ColorDrawable colorDrawable = new ColorDrawable(tintColor);
+
+                    /*RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutStandardItemViewBackground);
+                    TextView hours = (TextView) findViewById(R.id.textViewStandardItemViewHours);
+                    TextView contact = (TextView) findViewById(R.id.textViewStandardItemViewContact);
+                    Button nextCoins = (Button) findViewById(R.id.buttonStandardItemViewNextCoins);
+                    Button nextEvents = (Button) findViewById(R.id.buttonStandardItemViewNextEvents);
+                    Button weekPlan = (Button) findViewById(R.id.buttonStandardItemViewWeekplan);
+                    Button map = (Button)findViewById(R.id.buttonStandardItemViewMap);
+                    Button call = (Button)findViewById(R.id.buttonStandardItemViewCall);*/
+                            findViewById(R.id.buttonStandardItemViewNextCoins).setBackgroundColor(tintColor);
+                            findViewById(R.id.buttonStandardItemViewNextEvents).setBackgroundColor(tintColor);
+                            findViewById(R.id.buttonStandardItemViewWeekplan).setBackgroundColor(tintColor);
+                            findViewById(R.id.ViewstandardItemViewSeperator).setBackgroundColor(tintColor);
+                    /*call.setBackgroundColor(dominantColor);
+                    map.setBackgroundColor(dominantColor);*/
+
+                            ActivityStandardItemView.this.getSupportActionBar().setBackgroundDrawable(colorDrawable);
+                            findViewById(R.id.textViewStandardItemViewHours).setBackgroundColor(tintColor);
+                            findViewById(R.id.textViewStandardItemViewContact).setBackgroundColor(tintColor);
+                            Button map = (Button) findViewById(R.id.buttonStandardItemViewMap);
+                            map.setTextColor(tintColor);
+                            Button call = (Button) findViewById(R.id.buttonStandardItemViewCall);
+                            call.setTextColor(tintColor);
+                            //layout.setBackgroundColor(getDominantColor(bmp));
+                            stream = null;
+                            bmp.recycle();
+                            bmp = null;
+                            System.gc();
+                            //System.out.println(getSecundaryColorFromColor(getDominantColor(bmp)));
+                        } else {
+                            System.out.println(e.getStackTrace());
+                        }
+                    }
+                });
+
+            } catch (Exception ex) {
+                System.out.println("Error getting color");
+            }
+        }
+
+
+
+				/*ImageView img = (ImageView) findViewById(R.id.imageViewStandardItemView);
+				img.setImageBitmap(obj.getImage());
+				//img.loadInBackground();
+*/
+        getOpening();
+        updateLocationStatistics(serverObject);
+
+        if (menu != null) {
+            checkIfFavorite();
+        } else {
+            System.out.println("Menu still null");
+        }
+
+        getDailyData();
+
+    }
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

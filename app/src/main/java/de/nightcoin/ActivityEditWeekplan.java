@@ -12,16 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.TextView;
+import android.widget.*;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.parse.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +28,7 @@ public class ActivityEditWeekplan extends ActionBarActivity {
     ArrayList<String> weekplan = new ArrayList<String>();
     private Activity context;
     private EditWeekplanListAdapter adapter;
+    ParseObject object;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +67,7 @@ public class ActivityEditWeekplan extends ActionBarActivity {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 // TODO Auto-generated method stub
-                ParseObject object = objects.get(0);
+                object = objects.get(0);
 
                 weekplan = (ArrayList<String>) object.get("weekplan");
 
@@ -123,6 +117,14 @@ public class ActivityEditWeekplan extends ActionBarActivity {
     private void save(){
         System.out.println("Saving...");
         for(int i = 0; i < 7; i++){
+            object.put("weekplan", week);
+            object.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    Toast t = Toast.makeText(ActivityEditWeekplan.this, "Wochenprogramm gespeichert", Toast.LENGTH_SHORT);
+                    t.show();
+                }
+            });
             System.out.println("Saved "+ week[i] + ":" +weekplan.get(i));
         }
     }

@@ -23,7 +23,7 @@
         android:layout_below="@+id/textViewActivityEditImagesInstructions"
         android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent" android:src="@drawable/ic_launcher"/>
 
     <ImageButton
         android:id="@+id/imageViewActivityEditImages2"
@@ -33,7 +33,7 @@
         android:layout_below="@+id/imageViewActivityEditImages1"
         android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent" android:src="@drawable/ic_launcher"/>
 
     <ImageButton
         android:id="@+id/imageViewActivityEditImages3"
@@ -43,7 +43,7 @@
         android:layout_below="@+id/imageViewActivityEditImages2"
         android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent" android:src="@drawable/ic_launcher"/>
 
     <ImageButton
         android:id="@+id/imageViewActivityEditImages4"
@@ -53,7 +53,7 @@
         android:layout_below="@+id/imageViewActivityEditImages3"
         android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent" android:src="@drawable/ic_launcher"/>
 
     <ImageButton
         android:id="@+id/imageViewActivityEditImages5"
@@ -63,6 +63,6 @@
         android:layout_below="@+id/imageViewActivityEditImages4"
         android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent" android:src="@drawable/ic_launcher"/>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package de.nightcoin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -69,10 +70,11 @@ public class ActivityCoinItemView extends ActionBarActivity {
     private void checkIfLimited(){}
 
     private void init(){
-        final TextView location = (TextView) findViewById(R.id.textViewCoinItemViewLocation);
+        final Button location = (Button) findViewById(R.id.textViewCoinItemViewLocation);
         final TextView date = (TextView) findViewById(R.id.textViewCoinItemViewDate);
         final TextView value = (TextView) findViewById(R.id.textViewCoinItemViewValue);
         button = (Button) findViewById(R.id.buttonCoinItemViewCashIn);
+
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Coupons");
         query.fromLocalDatastore();
@@ -89,11 +91,21 @@ public class ActivityCoinItemView extends ActionBarActivity {
 
                 coin.setDate((Date) object.get("date"));
 
-                location.setText((String)object.get("location"));
-                value.setText((String)object.get("value"));
+                location.setText((String) object.get("location"));
+                value.setText((String) object.get("value"));
                 date.setText(coin.getDate());
 
                 coinLocation = (String) object.get("location");
+
+                location.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(ActivityCoinItemView.this, ActivityStandardItemView.class);
+                        //put extras here
+                        i.putExtra("name", coinLocation);
+                        ActivityCoinItemView.this.startActivity(i);
+                    }
+                });
 
                 Calendar cal1 = Calendar.getInstance();
                 Calendar cal2 = Calendar.getInstance();

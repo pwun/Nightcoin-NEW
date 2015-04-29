@@ -1,9 +1,12 @@
 package de.nightcoin;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,12 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.parse.GetCallback;
-import com.parse.GetDataCallback;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
+import android.widget.Toast;
+import com.parse.*;
 
 import java.io.ByteArrayOutputStream;
 
@@ -45,6 +44,86 @@ public class ActivityEditImages extends ActionBarActivity {
         setContentView(R.layout.activity_edit_images);
         init();
         queryForData();
+    }
+
+    @Override
+    public void onBackPressed(){
+        boolean changes = false;
+
+        for(int i = 0; i < 5 ; i++){
+            if(changed[i] == true){
+                changes = true;
+            }
+        }
+
+        if(!changes){
+            super.onBackPressed();
+        }
+        else{
+            //Dialog
+            new AlertDialog.Builder(ActivityEditImages.this)
+                    .setTitle("Änderungen speichern?")
+//                    .setMessage("Wir arbeiten daran, dies schnellstmöglich innerhalb der App zu ermöglichen.")
+                    .setPositiveButton("Speichern", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            saveAll();
+                            ActivityEditImages.super.onBackPressed();
+                        }
+                    })
+                    .setNegativeButton("Verwerfen", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                            ActivityEditImages.super.onBackPressed();
+                        }
+                    })
+                    .show();
+        }
+    }
+
+    private void saveAll(){
+        for (int i = 0; i < 5; i++) {
+            if (changed[i] == true){
+                System.out.println("Saved Picture Nr."+(i+1)+"!");
+                //uploadImage
+                ImageButton img;
+                String imageString;
+                switch (i){
+                    case 0: img = image1;
+                        imageString = "image";
+                        break;
+                    case 1: img= image2;
+                        imageString = "image2";
+                        break;
+                    case 2: img = image3;
+                        imageString = "image3";
+                        break;
+                    case 3: img = image4;
+                        imageString = "image4";
+                        break;
+                    case 4: img = image5;
+                        imageString = "image5";
+                        break;
+                    default:img = image1;
+                        imageString = "image";
+                }
+                Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                byte[] bitmapdata = stream.toByteArray();
+
+                ParseFile pf = new ParseFile(bitmapdata);
+                serverObject.put(imageString, pf);
+                //Upload
+                serverObject.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        Toast t = Toast.makeText(ActivityEditImages.this, "Bilder gespeichert", Toast.LENGTH_SHORT);
+                        t.show();
+                    }
+                });
+
+            }
+        }
     }
 
     private void init() {
@@ -100,113 +179,125 @@ public class ActivityEditImages extends ActionBarActivity {
             @Override
             public void done(ParseObject parseObject, com.parse.ParseException e) {
                 serverObject = parseObject;
-                ParseFile file1 = (ParseFile) parseObject.get("image");
-                ParseFile file2 = (ParseFile) parseObject.get("image2");
-                ParseFile file3 = (ParseFile) parseObject.get("image3");
-                ParseFile file4 = (ParseFile) parseObject.get("image4");
-                ParseFile file5 = (ParseFile) parseObject.get("image5");
-                file1.getDataInBackground(new GetDataCallback() {
+                if(parseObject.get("image") != null) {
+                    ParseFile file1 = (ParseFile) parseObject.get("image");
+                    file1.getDataInBackground(new GetDataCallback() {
 
-                    @Override
-                    public void done(byte[] bytes, com.parse.ParseException e) {
-                        if (e == null) {
-                            Log.d("test",
-                                    "We've got data in data.");
-                            // Decode the Byte[] into
-                            // Bitmap
-                            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        @Override
+                        public void done(byte[] bytes, com.parse.ParseException e) {
+                            if (e == null) {
+                                Log.d("test",
+                                        "We've got data in data.");
+                                // Decode the Byte[] into
+                                // Bitmap
 
-                            // Set the Bitmap into the
-                            // ImageView
-                            image1.setImageBitmap(bmp);
-                        } else {
-                            Log.d("test",
-                                    "There was a problem downloading the data.");
+                                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+                                // Set the Bitmap into the
+                                // ImageView
+                                image1.setImageBitmap(bmp);
+                            } else {
+                                Log.d("test",
+                                        "There was a problem downloading the data.");
+                            }
                         }
-                    }
-                });
-                file2.getDataInBackground(new GetDataCallback() {
+                    });
+                }
+                if(parseObject.get("image2") != null) {
+                    ParseFile file2 = (ParseFile) parseObject.get("image2");
+                    file2.getDataInBackground(new GetDataCallback() {
 
-                    @Override
-                    public void done(byte[] bytes, com.parse.ParseException e) {
-                        if (e == null) {
-                            Log.d("test",
-                                    "We've got data in data.");
-                            // Decode the Byte[] into
-                            // Bitmap
-                            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        @Override
+                        public void done(byte[] bytes, com.parse.ParseException e) {
+                            if (e == null) {
+                                Log.d("test",
+                                        "We've got data in data.");
+                                // Decode the Byte[] into
+                                // Bitmap
+                                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-                            // Set the Bitmap into the
-                            // ImageView
-                            image2.setImageBitmap(bmp);
-                        } else {
-                            Log.d("test",
-                                    "There was a problem downloading the data.");
+                                // Set the Bitmap into the
+                                // ImageView
+                                image2.setImageBitmap(bmp);
+                            } else {
+                                Log.d("test",
+                                        "There was a problem downloading the data.");
+                            }
                         }
-                    }
-                });
-                file3.getDataInBackground(new GetDataCallback() {
+                    });
+                }
+                if(parseObject.get("image3") != null) {
+                    ParseFile file3 = (ParseFile) parseObject.get("image3");
+                    file3.getDataInBackground(new GetDataCallback() {
 
-                    @Override
-                    public void done(byte[] bytes, com.parse.ParseException e) {
-                        if (e == null) {
-                            Log.d("test",
-                                    "We've got data in data.");
-                            // Decode the Byte[] into
-                            // Bitmap
-                            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        @Override
+                        public void done(byte[] bytes, com.parse.ParseException e) {
+                            if (e == null) {
+                                Log.d("test",
+                                        "We've got data in data.");
+                                // Decode the Byte[] into
+                                // Bitmap
+                                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-                            // Set the Bitmap into the
-                            // ImageView
-                            image3.setImageBitmap(bmp);
-                        } else {
-                            Log.d("test",
-                                    "There was a problem downloading the data.");
+                                // Set the Bitmap into the
+                                // ImageView
+                                image3.setImageBitmap(bmp);
+                            } else {
+                                Log.d("test",
+                                        "There was a problem downloading the data.");
+                            }
                         }
-                    }
-                });
-                file4.getDataInBackground(new GetDataCallback() {
+                    });
+                }
+                if(parseObject.get("image4") != null) {
+                    ParseFile file4 = (ParseFile) parseObject.get("image4");
+                    file4.getDataInBackground(new GetDataCallback() {
 
-                    @Override
-                    public void done(byte[] bytes, com.parse.ParseException e) {
-                        if (e == null) {
-                            Log.d("test",
-                                    "We've got data in data.");
-                            // Decode the Byte[] into
-                            // Bitmap
-                            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        @Override
+                        public void done(byte[] bytes, com.parse.ParseException e) {
+                            if (e == null) {
+                                Log.d("test",
+                                        "We've got data in data.");
+                                // Decode the Byte[] into
+                                // Bitmap
+                                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-                            // Set the Bitmap into the
-                            // ImageView
-                            image4.setImageBitmap(bmp);
-                        } else {
-                            Log.d("test",
-                                    "There was a problem downloading the data.");
+                                // Set the Bitmap into the
+                                // ImageView
+                                image4.setImageBitmap(bmp);
+                            } else {
+                                Log.d("test",
+                                        "There was a problem downloading the data.");
+                            }
                         }
-                    }
-                });
-                file5.getDataInBackground(new GetDataCallback() {
+                    });
+                }
+                if(parseObject.get("image5") != null) {
+                    ParseFile file5 = (ParseFile) parseObject.get("image5");
+                    file5.getDataInBackground(new GetDataCallback() {
 
-                    @Override
-                    public void done(byte[] bytes, com.parse.ParseException e) {
-                        if (e == null) {
-                            Log.d("test",
-                                    "We've got data in data.");
-                            // Decode the Byte[] into
-                            // Bitmap
-                            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        @Override
+                        public void done(byte[] bytes, com.parse.ParseException e) {
+                            if (e == null) {
+                                Log.d("test",
+                                        "We've got data in data.");
+                                // Decode the Byte[] into
+                                // Bitmap
+                                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-                            // Set the Bitmap into the
-                            // ImageView
-                            image5.setImageBitmap(bmp);
-                            // Close progress dialog
-                            progressDialog.dismiss();
-                        } else {
-                            Log.d("test",
-                                    "There was a problem downloading the data.");
+                                // Set the Bitmap into the
+                                // ImageView
+                                image5.setImageBitmap(bmp);
+                                // Close progress dialog
+                                //progressDialog.dismiss();
+                            } else {
+                                Log.d("test",
+                                        "There was a problem downloading the data.");
+                            }
                         }
-                    }
-                });
+                    });
+                }
+                progressDialog.dismiss();
             }
         });
     }
@@ -225,26 +316,29 @@ public class ActivityEditImages extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            Uri chosenImageUri = data.getData();
-           if (imageId == 1) {
-                image1.setImageURI(chosenImageUri);
-               changed[0] = true;
-            }
-            if (imageId == 2) {
-                image2.setImageURI(chosenImageUri);
-                changed[1] = true;
-            }
-            if (imageId == 3) {
-                image3.setImageURI(chosenImageUri);
-                changed[2] = true;
-            }
-            if (imageId == 4) {
-                image5.setImageURI(chosenImageUri);
-                changed[3] = true;
-            }
-            if (imageId == 5) {
-                image5.setImageURI(chosenImageUri);
-                changed[4] = true;
+            Uri chosenImageUri;
+            if(data!= null) {
+                chosenImageUri = data.getData();
+                if (imageId == 1) {
+                    image1.setImageURI(chosenImageUri);
+                    changed[0] = true;
+                }
+                if (imageId == 2) {
+                    image2.setImageURI(chosenImageUri);
+                    changed[1] = true;
+                }
+                if (imageId == 3) {
+                    image3.setImageURI(chosenImageUri);
+                    changed[2] = true;
+                }
+                if (imageId == 4) {
+                    image5.setImageURI(chosenImageUri);
+                    changed[3] = true;
+                }
+                if (imageId == 5) {
+                    image5.setImageURI(chosenImageUri);
+                    changed[4] = true;
+                }
             }
         }
     }
@@ -278,11 +372,12 @@ public class ActivityEditImages extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.editImage_action_save) {
             //save all images that changed
-            for(int i = 0; i < 5 ; i++){
-                if(changed[i] == true){
-                    //uploadImage
-                }
-            }
+            saveAll();
+
+            //Close Activity
+            Intent i = new Intent(ActivityEditImages.this, ActivityUser.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            ActivityEditImages.this.startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
