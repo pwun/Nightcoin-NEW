@@ -62,6 +62,7 @@ public class ActivityUser extends ActionBarActivity {
                 i.putExtra("filterMode", "location");
                 i.putExtra("locationToFilter", ParseUser.getCurrentUser().getString("location"));
                 i.putExtra("userModeActive", true);
+                i.putExtra("usermode", true);
                 ActivityUser.this.startActivity(i);
             }
         });

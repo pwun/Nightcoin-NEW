@@ -513,7 +513,7 @@ public class ActivityStandardItemView extends ActionBarActivity {
 
 					if (sameDay) {
 						TextView title = (TextView) findViewById(R.id.textViewStandardItemViewTodaysCoins);
-						title.setText("1 Coin verfügbar");
+						title.setText("Coins verfügbar");
 						TextView detail = (TextView) findViewById(R.id.textViewStandardItemViewTodaysCoinsDetail);
 						detail.setText("" + object.get("value"));
 					} else {

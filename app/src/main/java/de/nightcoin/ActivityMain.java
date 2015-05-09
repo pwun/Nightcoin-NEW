@@ -71,6 +71,7 @@ public class ActivityMain extends ActionBarActivity {
 				Intent i = new Intent(ActivityMain.this, ActivityStandardList.class);
 				i.putExtra("input", "Coins");
                 i.putExtra("filterMode", "none");
+				i.putExtra("usermode", false);
 				ActivityMain.this.startActivity(i);
 			}
 		});
@@ -83,6 +84,7 @@ public class ActivityMain extends ActionBarActivity {
 				Intent i = new Intent(ActivityMain.this,
 						ActivityStandardList.class);
 				i.putExtra("input", "Bar");
+				i.putExtra("usermode", false);
 				ActivityMain.this.startActivity(i);
 			}
 		});
@@ -95,6 +97,7 @@ public class ActivityMain extends ActionBarActivity {
 				Intent i = new Intent(ActivityMain.this,
 						ActivityStandardList.class);
 				i.putExtra("input", "Club");
+				i.putExtra("usermode", false);
 				ActivityMain.this.startActivity(i);
 			}
 		});
@@ -107,6 +110,7 @@ public class ActivityMain extends ActionBarActivity {
 				Intent i = new Intent(ActivityMain.this,
 						ActivityStandardList.class);
 				i.putExtra("input", "Favorites");
+				i.putExtra("usermode", false);
 				ActivityMain.this.startActivity(i);
 			}
 		});
@@ -132,6 +136,7 @@ public class ActivityMain extends ActionBarActivity {
                 Intent i = new Intent(ActivityMain.this,
                         ActivityStandardList.class);
                 i.putExtra("input", "Food");
+				i.putExtra("usermode", false);
                 ActivityMain.this.startActivity(i);
             }
         });
@@ -144,6 +149,7 @@ public class ActivityMain extends ActionBarActivity {
                 Intent i = new Intent(ActivityMain.this,
                         ActivityTaxiItemView.class);
                 i.putExtra("name", "Taxi Regensburg");
+				i.putExtra("usermode", false);
                 ActivityMain.this.startActivity(i);
             }
         });

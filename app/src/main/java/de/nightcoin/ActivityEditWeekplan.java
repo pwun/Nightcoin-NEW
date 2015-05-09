@@ -59,8 +59,8 @@ public class ActivityEditWeekplan extends ActionBarActivity {
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
         query.selectKeys(Arrays.asList("weekplan"));
-        query.whereEqualTo("name", "Pavo");
-        /*query.whereEqualTo("name", ParseUser.getCurrentUser().get("location"));*/
+        //query.whereEqualTo("name", "Pavo");
+        query.whereEqualTo("name", ParseUser.getCurrentUser().get("location"));
         query.setLimit(1);
         query.findInBackground(new FindCallback<ParseObject>() {
 
@@ -117,7 +117,7 @@ public class ActivityEditWeekplan extends ActionBarActivity {
     private void save(){
         System.out.println("Saving...");
         for(int i = 0; i < 7; i++){
-            object.put("weekplan", week);
+            object.put("weekplan", weekplan);
             object.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {

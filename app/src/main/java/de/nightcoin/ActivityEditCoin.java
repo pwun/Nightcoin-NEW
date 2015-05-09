@@ -41,7 +41,7 @@ public class ActivityEditCoin extends ActionBarActivity {
         isNewCoin = getIntent().getBooleanExtra("isNewCoin", true);
         if (isNewCoin) {
             Date now = new Date();
-            datePicker.init(now.getYear(), now.getMonth(), now.getDay(), null);
+            datePicker.init(2015, now.getMonth(), now.getDay(), null);
             editValue.setHint("Wert");
             editAmount.setHint("Anzahl");
         } else {
@@ -56,7 +56,7 @@ public class ActivityEditCoin extends ActionBarActivity {
                     // TODO Auto-generated method stub
                     serverObject = objects.get(0);
                     Date objectDate = (serverObject.getDate("date"));
-                    datePicker.init(objectDate.getYear(), objectDate.getMonth(), objectDate.getDay(), null);
+                    datePicker.init((objectDate.getYear()+1900), objectDate.getMonth(), objectDate.getDay(), null);
                     editValue.setText(serverObject.get("value").toString());
                     editAmount.setText(serverObject.get("amount").toString());
                 }
@@ -68,10 +68,7 @@ public class ActivityEditCoin extends ActionBarActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date coinDate = new Date();
-                coinDate.setYear(datePicker.getYear());
-                coinDate.setMonth(datePicker.getMonth());
-                coinDate.setDate(datePicker.getDayOfMonth());
+                Date coinDate = new Date((datePicker.getYear()-1900),datePicker.getMonth(),datePicker.getDayOfMonth());
                 coinDate.setHours(21);
                 if (isNewCoin) {
                     serverObject = new ParseObject("Coupons");
@@ -122,6 +119,7 @@ public class ActivityEditCoin extends ActionBarActivity {
         Intent i = new Intent(ActivityEditCoin.this, ActivityStandardList.class);
         i.putExtra("input", "Coins");
         i.putExtra("filterMode", "location");
+        i.putExtra("usermode", true);
         i.putExtra("locationToFilter", ParseUser.getCurrentUser().getString("location"));
         i.putExtra("userModeActive", true);
         ActivityEditCoin.this.startActivity(i);
@@ -144,6 +142,7 @@ public class ActivityEditCoin extends ActionBarActivity {
                             Intent i = new Intent(ActivityEditCoin.this, ActivityStandardList.class);
                             i.putExtra("input", "Coins");
                             i.putExtra("filterMode", "location");
+                            i.putExtra("usermode", true);
                             i.putExtra("locationToFilter", ParseUser.getCurrentUser().getString("location"));
                             i.putExtra("userModeActive", true);
                             ActivityEditCoin.this.startActivity(i);

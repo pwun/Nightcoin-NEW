@@ -31,6 +31,7 @@ public class ActivityStandardList extends ActionBarActivity {
     public StandardListViewAdapter parseAdapter;
     Intent i;
     Menu menu;
+    boolean usermode = false;
     String contentMode;
     private final int END_OF_NIGHT = 6;
     ProgressDialog progressDialog;
@@ -45,6 +46,7 @@ public class ActivityStandardList extends ActionBarActivity {
         setContentView(R.layout.activity_standard_list);
         i = getIntent();
         contentMode = i.getStringExtra("input");
+        this.usermode = i.getBooleanExtra("usermode", false);
 
         setCorrectTitle();
 
@@ -52,7 +54,7 @@ public class ActivityStandardList extends ActionBarActivity {
             public ParseQuery<ParseObject> create() {
                 return requestedQuery(contentMode);
             }
-        });
+        }, usermode);
 
         parseAdapter.addOnQueryLoadListener(new ParseQueryAdapter.OnQueryLoadListener<ParseObject>() {
             public void onLoading() {

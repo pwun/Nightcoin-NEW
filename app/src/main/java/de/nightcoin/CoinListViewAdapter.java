@@ -96,12 +96,14 @@ public class CoinListViewAdapter extends BaseAdapter{
 				// TODO Auto-generated method stub
 
                 if (userModeActive) {
+					System.out.println("Coin bearbeiten!!");
                     Intent intent = new Intent(listContext, ActivityEditCoin.class);
 
                     intent.putExtra("id", list.get(position).getId());
                     intent.putExtra("isNewCoin", false);
                     listContext.startActivity(intent);
                 } else {
+					System.out.println("Coin normal anzeigen!!");
                     Intent intent = new Intent(listContext, ActivityCoinItemView.class);
 
                     intent.putExtra("id", list.get(position).getId());

@@ -23,6 +23,7 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
     LayoutInflater inflater;
     ArrayList<ParseObject> list;
     String mode;
+    boolean usermode = false;
     GPSTracker gps;
     double longitude;
     double latitude;
@@ -30,11 +31,12 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
     ParseGeoPoint geo;
     ImageLoader imageLoader;
     public StandardListViewAdapter(Context context,
-                                   com.parse.ParseQueryAdapter.QueryFactory<ParseObject> queryFactory) {
+                                   com.parse.ParseQueryAdapter.QueryFactory<ParseObject> queryFactory, boolean usermode) {
         super(context, queryFactory);
         this.edit = edit;
         listContext = context;
         initGPS();
+        this.usermode = usermode;
         imageLoader = new ImageLoader(context);
         setObjectsPerPage(25);
     }
@@ -348,19 +350,19 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             @Override
             public void onClick(View v) {
                 System.out.println("ParseUser: " + ParseUser.getCurrentUser());
-                /*if(ParseUser.getCurrentUser().get("location").equals(object.get("location"))){//Nur wenn usermode
+                if(ParseUser.getCurrentUser().get("location").equals(object.get("location"))&&usermode){//Nur wenn usermode
                     Intent i = new Intent(listContext, ActivityEditCoin.class);
                     i.putExtra("isNewCoin", false);
                     i.putExtra("id", object.getObjectId());
                     listContext.startActivity(i);
                 }
-                else{*/
+                else{
                     Intent i = new Intent(listContext, ActivityCoinItemView.class);
                     i.putExtra("id", object.getObjectId());
                     if(listContext!=null) {
                         listContext.startActivity(i);
                     }
-              //  }
+                }
 
             }
         });
