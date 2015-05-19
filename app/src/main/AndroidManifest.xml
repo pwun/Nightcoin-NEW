@@ -11,16 +11,20 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <permission android:name="de.nightcoin.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+
+    <permission
+        android:name="de.nightcoin.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="de.nightcoin.permission.C2D_MESSAGE" />
 
     <application
@@ -95,10 +99,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".ActivityEditWeekplan"
             android:label="Wochenprogramm bearbeiten"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
 
         <service android:name="com.parse.PushService" />
@@ -109,7 +113,6 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name="com.parse.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
@@ -138,6 +141,10 @@
         <activity
             android:name=".ActivityEditImages"
             android:label="Bilder bearbeiten" >
+        </activity>
+        <activity
+            android:name=".ActivityImageSlider"
+            android:label="@string/title_activity_activity_image_slider" >
         </activity>
     </application>
 

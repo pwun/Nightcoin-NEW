@@ -63,6 +63,7 @@ public class ActivityTaxiItemView extends ActionBarActivity {
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Locations");
         query.whereEqualTo("name", name);
         query.setLimit(1);
+        //query.fromLocalDatastore();
         query.findInBackground(new FindCallback<ParseObject>() {
 
             @Override

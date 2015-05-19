@@ -19,5 +19,6 @@
     <string name="title_activity_activity_taxi_item_view">ActivityTaxiItemView</string>
     <string name="title_activity_activity_edit_coin">ActivityEditCoin</string>
     <string name="title_activity_activity_edit_images">ActivityEditImages</string>
+    <string name="title_activity_activity_image_slider">Alle Bilder</string>
 
 </resources>

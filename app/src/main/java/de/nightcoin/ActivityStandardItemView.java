@@ -288,8 +288,63 @@ public class ActivityStandardItemView extends ActionBarActivity {
         favorites = ((ArrayList<String>) serverObject.get("favorites"));
 
         ParseFile imageFile = serverObject.getParseFile("image");
+        String imageurl = imageFile.getUrl();
+
+
+        /* IMAGE SLIDER
+        Bundle images = new Bundle();
+        byte[] image1 = new byte[0];
+        byte[] image2 = new byte[0];
+        byte[] image3 = new byte[0];
+        byte[] image4 = new byte[0];
+        byte[] image5 = new byte[0];
+        try {
+            image1 = imageFile.getData();
+            images.putByteArray("image1", image1);
+        } catch (ParseException e1) {
+            e1.printStackTrace();
+        }
+        try {
+            image2 = serverObject.getParseFile("image2").getData();
+            images.putByteArray("image2", image2);
+        } catch (ParseException e1) {
+            e1.printStackTrace();
+        }
+        try {
+            image3 = serverObject.getParseFile("image3").getData();
+            images.putByteArray("image3", image3);
+        } catch (ParseException e1) {
+            e1.printStackTrace();
+        }
+        try {
+            image4 = serverObject.getParseFile("image4").getData();
+            images.putByteArray("image4", image4);
+        } catch (ParseException e1) {
+            e1.printStackTrace();
+        }
+        try {
+            image5 = serverObject.getParseFile("image5").getData();
+            images.putByteArray("image5", image5);
+        } catch (ParseException e1) {
+            e1.printStackTrace();
+        }
+
+
+
         ImageView imageView = (ImageView) findViewById(R.id.imageViewStandardItemView);
-        imageLoader.DisplayImage(imageFile.getUrl(), imageView);
+        imageLoader.DisplayImage(imageurl, imageView);
+        final Bundle bundle = images;
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityStandardItemView.this, ActivityImageSlider.class);
+                i.putExtra("bundle", bundle);
+                ActivityStandardItemView.this.startActivity(i);
+            }
+        });*/
+
+        ImageView imageView = (ImageView) findViewById(R.id.imageViewStandardItemView);
+        imageLoader.DisplayImage(imageurl, imageView);
 
         TextView tel = (TextView) findViewById(R.id.textViewStandardItemViewTel);
         if (obj.getTel() != null) {
