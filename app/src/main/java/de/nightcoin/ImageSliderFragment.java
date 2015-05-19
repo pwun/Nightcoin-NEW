@@ -23,7 +23,16 @@ public class ImageSliderFragment extends Fragment {
         ImageView imageview = (ImageView) view.findViewById(R.id.imageViewImageSliderFragment);
         Bundle bundle = getArguments();
         String imageurl = bundle.getString("image");
-        imageview.setImageURI(Uri.parse(imageurl));
+        if(imageurl.equals("Fehler")){
+            imageview.setImageResource(R.drawable.ic_launcher);
+        }
+        else {
+            try {
+                imageview.setImageURI(Uri.parse(imageurl));
+            } catch (Exception e) {
+                imageview.setImageResource(R.drawable.ic_launcher);
+            }
+        }
 
         return view;
     }

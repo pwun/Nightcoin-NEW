@@ -16,4 +16,5 @@
     <color name="black_alpha_main">#8333</color>
     <color name="transparent_white">#5FFF</color>
     <color name="black">#222222</color>
+    <color name="background_slider">#333</color>
 </resources>

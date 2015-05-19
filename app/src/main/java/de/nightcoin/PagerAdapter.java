@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class PagerAdapter extends FragmentPagerAdapter {
 
     //byte[] image1, image2, image3, image4, image5;
-    String url1, url2, url3, url4, url5;
+    String uri1, uri2, uri3, uri4, uri5;
 
     public PagerAdapter(FragmentManager fm, String[] urls) {
         super(fm);
@@ -18,11 +18,11 @@ public class PagerAdapter extends FragmentPagerAdapter {
         image3 = images.getByteArray("image1");
         image4 = images.getByteArray("image1");
         image5 = images.getByteArray("image1");*/
-        url1 = urls[0];
-        url2 = urls[1];
-        url3 = urls[2];
-        url4 = urls[3];
-        url5 = urls[4];
+        uri1 = urls[0];
+        uri2 = urls[1];
+        uri3 = urls[2];
+        uri4 = urls[3];
+        uri5 = urls[4];
     }
 
     @Override
@@ -32,38 +32,50 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
         switch (position){
             case 0:
+                System.out.println("POSITION: 1");
+                System.out.println("Lade Bild: "+ uri1);
                 bundle= new Bundle();
-                bundle.putString("image", url1);
+                bundle.putString("image", uri1);
                 fragment = new ImageSliderFragment();
                 fragment.setArguments(bundle);
                 return fragment;
             case 1:
+                System.out.println("POSITION: 2");
+                System.out.println("Lade Bild: "+ uri2);
                 bundle= new Bundle();
-                bundle.putString("image", url2);
+                bundle.putString("image", uri2);
                 fragment = new ImageSliderFragment();
                 fragment.setArguments(bundle);
                 return fragment;
             case 2:
+                System.out.println("POSITION: 3");
+                System.out.println("Lade Bild: "+ uri3);
                 bundle= new Bundle();
-                bundle.putString("image", url3);
+                bundle.putString("image", uri3);
                 fragment = new ImageSliderFragment();
                 fragment.setArguments(bundle);
                 return fragment;
             case 3:
+                System.out.println("POSITION: 4");
+                System.out.println("Lade Bild: "+ uri4);
                 bundle= new Bundle();
-                bundle.putString("image", url4);
+                bundle.putString("image", uri4);
                 fragment = new ImageSliderFragment();
                 fragment.setArguments(bundle);
                 return fragment;
             case 4:
+                System.out.println("POSITION: 5");
+                System.out.println("Lade Bild: "+ uri5);
                 bundle= new Bundle();
-                bundle.putString("image", url5);
+                bundle.putString("image", uri5);
                 fragment = new ImageSliderFragment();
                 fragment.setArguments(bundle);
                 return fragment;
             default:
+                System.out.println("POSITION: DEFAULT");
+                System.out.println("Lade Bild: "+ uri1);
                 bundle= new Bundle();
-                bundle.putString("image", url1);
+                bundle.putString("image", uri1);
                 fragment = new ImageSliderFragment();
                 fragment.setArguments(bundle);
                 return fragment;

@@ -146,7 +146,7 @@ public class ActivityStandardList extends ActionBarActivity {
             query.whereEqualTo("category", contentMode);
         }
         query.orderByAscending("name");
-        //query.whereEqualTo("city", "Regensburg");
+        query.whereEqualTo("city", "Regensburg");
         return query;
     }
 
