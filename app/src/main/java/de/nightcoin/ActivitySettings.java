@@ -36,8 +36,8 @@ public class ActivitySettings extends ActionBarActivity {
         final EditText usernameTextField = (EditText)findViewById(R.id.textFieldSettingsUsername);
         final EditText passwordTextField = (EditText)findViewById(R.id.textFieldSettingsPassword);
 
-        Toast t = Toast.makeText(ActivitySettings.this, "Dieser Bereich wird momentan überarbeitet und steht bald zur Verfügung.", Toast.LENGTH_LONG);
-        t.show();
+        /*Toast t = Toast.makeText(ActivitySettings.this, "Dieser Bereich wird momentan überarbeitet und steht bald zur Verfügung.", Toast.LENGTH_LONG);
+        t.show();*/
 
         loginButton.setOnClickListener(new View.OnClickListener() {
 

@@ -19,7 +19,6 @@ import java.util.Arrays;
 public class ActivityDashboard extends ActionBarActivity {
 
     private String userLocation;
-    private ParseObject serverObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

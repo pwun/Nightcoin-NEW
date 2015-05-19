@@ -19,6 +19,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class ActivityEditCoin extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Calendar calNow = Calendar.getInstance();
+        final Calendar calCoin = Calendar.getInstance();
+        calNow.setTime(new Date());
         setContentView(R.layout.activity_edit_coin);
         init();
         setSaveButtonClickListener();
@@ -56,7 +60,8 @@ public class ActivityEditCoin extends ActionBarActivity {
                     // TODO Auto-generated method stub
                     serverObject = objects.get(0);
                     Date objectDate = (serverObject.getDate("date"));
-                    datePicker.init((objectDate.getYear()+1900), objectDate.getMonth(), objectDate.getDay(), null);
+                    calCoin.setTime(objectDate);
+                    datePicker.init(calCoin.get(Calendar.YEAR), calCoin.get(Calendar.MONTH), calCoin.get(Calendar.DAY_OF_MONTH), null);
                     editValue.setText(serverObject.get("value").toString());
                     editAmount.setText(serverObject.get("amount").toString());
                 }
@@ -149,7 +154,8 @@ public class ActivityEditCoin extends ActionBarActivity {
                             Toast t = Toast.makeText(ActivityEditCoin.this, "Coin wurde erfolgreich gelöscht.", Toast.LENGTH_SHORT);
                             t.show();
                         } else {
-                            Toast t = Toast.makeText(ActivityEditCoin.this, "Fehler1: Coin konnte nicht gelöscht werden.", Toast.LENGTH_SHORT);
+                            e.printStackTrace();
+                            Toast t = Toast.makeText(ActivityEditCoin.this, "Fehler: Coin konnte nicht gelöscht werden.", Toast.LENGTH_SHORT);
                             t.show();
                         }
                     }
