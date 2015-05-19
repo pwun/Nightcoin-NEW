@@ -17,11 +17,12 @@ public class ActivityImageSlider extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent i = getIntent();
-        Bundle images = i.getBundleExtra("bundle");
+        //String[] urls = i.getStringArrayExtra("urls");
+        String[] urls = i.getStringArrayExtra("urls");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_slider);
         viewpager = (ViewPager) findViewById(R.id.ActivityImageSlider_viewpager);
-        android.support.v4.view.PagerAdapter padapter = new PagerAdapter(getSupportFragmentManager(), images);
+        android.support.v4.view.PagerAdapter padapter = new PagerAdapter(getSupportFragmentManager(), urls);
         viewpager.setAdapter(padapter);
     }
 

@@ -20,5 +20,6 @@
     <string name="title_activity_activity_edit_coin">ActivityEditCoin</string>
     <string name="title_activity_activity_edit_images">ActivityEditImages</string>
     <string name="title_activity_activity_image_slider">Alle Bilder</string>
+    <string name="title_activity_screen_slide_pager">ScreenSlidePagerActivity</string>
 
 </resources>

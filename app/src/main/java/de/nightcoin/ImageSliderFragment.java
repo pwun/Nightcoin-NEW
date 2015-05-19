@@ -17,18 +17,14 @@ import android.widget.ImageView;
  */
 public class ImageSliderFragment extends Fragment {
 
-    ImageView imageview;
-    byte[] image;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        imageview = (ImageView) getView().findViewById(R.id.imageViewImageSliderFragment);
+        View view = inflater.inflate(R.layout.layout_imageslider_fragment, container,false);
+        ImageView imageview = (ImageView) view.findViewById(R.id.imageViewImageSliderFragment);
         Bundle bundle = getArguments();
+        String imageurl = bundle.getString("image");
+        imageview.setImageURI(Uri.parse(imageurl));
 
-        image = bundle.getByteArray("image");
-        Bitmap bmp = BitmapFactory.decodeByteArray(image,0,image.length);
-        imageview.setImageBitmap(bmp);
-
-        return inflater.inflate(R.layout.layout_imageslider_fragment, container,false);
+        return view;
     }
 }

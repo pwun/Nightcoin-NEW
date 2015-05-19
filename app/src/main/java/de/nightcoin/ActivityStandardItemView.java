@@ -27,6 +27,9 @@ import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -290,8 +293,142 @@ public class ActivityStandardItemView extends ActionBarActivity {
         ParseFile imageFile = serverObject.getParseFile("image");
         String imageurl = imageFile.getUrl();
 
+        ImageView imageView = (ImageView) findViewById(R.id.imageViewStandardItemView);
+        imageLoader.DisplayImage(imageurl, imageView);
 
-        /* IMAGE SLIDER
+        /*imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityStandardItemView.this, ScreenSlidePagerActivity.class);
+                ActivityStandardItemView.this.startActivity(i);
+            }
+        });*/
+        /*String[] urls = new String[5];
+        urls[0] = serverObject.getParseFile("image").getUrl();
+        urls[1] = serverObject.getParseFile("image2").getUrl();
+        urls[2] = serverObject.getParseFile("image3").getUrl();
+        urls[3] = serverObject.getParseFile("image4").getUrl();
+        urls[4] = serverObject.getParseFile("image5").getUrl();*/
+
+        String[] uris = new String[5];
+
+
+        //create a file to write bitmap data
+        File f = new File(ActivityStandardItemView.this.getCacheDir(), "myfile");
+        String uristring="";
+        try{
+            f.createNewFile();
+            //Convert bitmap to byte array
+            byte[] bitmapdata = serverObject.getParseFile("image").getData();
+
+            //write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            Uri uri = Uri.fromFile(f);
+            uristring = uri.toString();
+        }catch (Exception m){
+            System.out.println("Fehler beim File schreiben1");
+        }
+        uris[0] = uristring;
+
+
+        //create a file to write bitmap data
+        f = new File(ActivityStandardItemView.this.getCacheDir(), "myfile2");
+        uristring="";
+        try{
+            f.createNewFile();
+            //Convert bitmap to byte array
+            byte[] bitmapdata = serverObject.getParseFile("image2").getData();
+
+            //write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            Uri uri = Uri.fromFile(f);
+            uristring = uri.toString();
+        }catch (Exception m){
+            System.out.println("Fehler beim File schreiben1");
+        }
+        uris[1] = uristring;
+
+
+        //create a file to write bitmap data
+        f = new File(ActivityStandardItemView.this.getCacheDir(), "myfile3");
+        uristring="";
+        try{
+            f.createNewFile();
+            //Convert bitmap to byte array
+            byte[] bitmapdata = serverObject.getParseFile("image3").getData();
+
+            //write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            Uri uri = Uri.fromFile(f);
+            uristring = uri.toString();
+        }catch (Exception m){
+            System.out.println("Fehler beim File schreiben1");
+        }
+        uris[2] = uristring;
+
+
+        //create a file to write bitmap data
+        f = new File(ActivityStandardItemView.this.getCacheDir(), "myfile4");
+        uristring="";
+        try{
+            f.createNewFile();
+            //Convert bitmap to byte array
+            byte[] bitmapdata = serverObject.getParseFile("image4").getData();
+
+            //write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            Uri uri = Uri.fromFile(f);
+            uristring = uri.toString();
+        }catch (Exception m){
+            System.out.println("Fehler beim File schreiben1");
+        }
+        uris[3] = uristring;
+
+
+        //create a file to write bitmap data
+        f = new File(ActivityStandardItemView.this.getCacheDir(), "myfile5");
+        uristring="";
+        try{
+            f.createNewFile();
+            //Convert bitmap to byte array
+            byte[] bitmapdata = serverObject.getParseFile("image5").getData();
+
+            //write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            Uri uri = Uri.fromFile(f);
+            uristring = uri.toString();
+        }catch (Exception m){
+            System.out.println("Fehler beim File schreiben1");
+        }
+        uris[4] = uristring;
+
+
+        final String[] urisToSend = uris;
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityStandardItemView.this, ActivityImageSlider.class);
+                i.putExtra("urls", urisToSend);
+                ActivityStandardItemView.this.startActivity(i);
+            }
+        });
+/*
+         IMAGE SLIDER
         Bundle images = new Bundle();
         byte[] image1 = new byte[0];
         byte[] image2 = new byte[0];
@@ -342,9 +479,6 @@ public class ActivityStandardItemView extends ActionBarActivity {
                 ActivityStandardItemView.this.startActivity(i);
             }
         });*/
-
-        ImageView imageView = (ImageView) findViewById(R.id.imageViewStandardItemView);
-        imageLoader.DisplayImage(imageurl, imageView);
 
         TextView tel = (TextView) findViewById(R.id.textViewStandardItemViewTel);
         if (obj.getTel() != null) {
