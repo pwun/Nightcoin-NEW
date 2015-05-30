@@ -350,11 +350,20 @@ public class StandardListViewAdapter extends ParseQueryAdapter {
             @Override
             public void onClick(View v) {
                 System.out.println("ParseUser: " + ParseUser.getCurrentUser());
-                if(ParseUser.getCurrentUser().get("location").equals(object.get("location"))&&usermode){//Nur wenn usermode
-                    Intent i = new Intent(listContext, ActivityEditCoin.class);
-                    i.putExtra("isNewCoin", false);
-                    i.putExtra("id", object.getObjectId());
-                    listContext.startActivity(i);
+                if(ParseUser.getCurrentUser().get("location")!=null){
+                    if(ParseUser.getCurrentUser().get("location").equals(object.get("location"))&&usermode){//Nur wenn usermode
+                        Intent i = new Intent(listContext, ActivityEditCoin.class);
+                        i.putExtra("isNewCoin", false);
+                        i.putExtra("id", object.getObjectId());
+                        listContext.startActivity(i);
+                    }
+                    else{
+                        Intent i = new Intent(listContext, ActivityCoinItemView.class);
+                        i.putExtra("id", object.getObjectId());
+                        if(listContext!=null) {
+                            listContext.startActivity(i);
+                        }
+                    }
                 }
                 else{
                     Intent i = new Intent(listContext, ActivityCoinItemView.class);

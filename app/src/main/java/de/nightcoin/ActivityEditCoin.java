@@ -44,8 +44,7 @@ public class ActivityEditCoin extends ActionBarActivity {
         setSaveButtonClickListener();
         isNewCoin = getIntent().getBooleanExtra("isNewCoin", true);
         if (isNewCoin) {
-            Date now = new Date();
-            datePicker.init(2015, now.getMonth(), now.getDay(), null);
+            datePicker.init(calNow.get(Calendar.YEAR), calNow.get(Calendar.MONTH), calNow.get(Calendar.DAY_OF_MONTH), null);
             editValue.setHint("Wert");
             editAmount.setHint("Anzahl");
         } else {
@@ -73,8 +72,14 @@ public class ActivityEditCoin extends ActionBarActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date coinDate = new Date((datePicker.getYear()-1900),datePicker.getMonth(),datePicker.getDayOfMonth());
-                coinDate.setHours(21);
+                Calendar calCoin2 = Calendar.getInstance();
+                calCoin2.set(Calendar.YEAR, datePicker.getYear());
+                calCoin2.set(Calendar.MONTH,datePicker.getMonth());
+                calCoin2.set(Calendar.DAY_OF_MONTH,datePicker.getDayOfMonth());
+                calCoin2.set(Calendar.HOUR_OF_DAY,21);
+                Date coinDate = calCoin2.getTime();
+                //Date coinDate = new Date((datePicker.getYear()-1900),datePicker.getMonth(),datePicker.getDayOfMonth());
+                //coinDate.setHours(21);
                 if (isNewCoin) {
                     serverObject = new ParseObject("Coupons");
                 }
